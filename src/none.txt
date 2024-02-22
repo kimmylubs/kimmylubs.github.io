@@ -1,0 +1,108 @@
+import logo from './logo.svg';
+
+function App() {
+  return (
+    <div className="App" style={{ display: "flex", justifyContent: "center" }}>
+      <Notes />
+    </div>
+  );
+}
+
+function Notes() {
+  const backendData = [
+    { title: "Grocery List", description: "Milk, Soup, Bread", createdat: "01-18-2021" },
+    { title: "Math Homework", description: "Remember to finish question 8-10 before monday", createdat: "12-01-2020" },
+    { title: "Call James", description: "Ask him about the company party.", createdat: "12-30-2020" }
+  ]
+
+  const noteRootStyle = {
+    border: "2px #0af solid",
+    borderRadius: 9,
+    margin: 20,
+    backgroundColor: "#efefef",
+    padding: 6
+  };
+
+  return (
+    <div style={{ width: 400 }}>
+      {backendData.map(ele => 
+        <div style={noteRootStyle}>
+          <h3>{ele.title}</h3>
+          <p>{ele.description}</p>
+          <small>{ele.createdat}</small>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default App;
+
+  const allergen = [{Name: "Decyl Glucoside"}, {Name: "Alkyl (c8,c10) Polyglycoside"}]
+  // , 'APG0810', '(C8-10) Alkyl ether of corn sugar' , 'C16H32O6' , 'D-Glucopyranoside, decyl', 'D-Glucopyranose, Oligomeric, Decyl Octyl Glycosides', 'D-glucose, decyl octyl ethers, oligomeric', 'Decyl D-glucopyranoside','Decyl D-glucoside','Decyl octyl d-glucose', 'Glucoside, decyl'];
+  
+  // const allergensRank2 = ['Hexyl cinnamic aldehyde (Article Number H-025', 'Coumarin (Article Number C-038)', 'Farnesol (Article Number F-004)', 'Hydroxyisohexyl 3 Cyclohexene Carboxaldehyde (Article Number L-003)']
+
+
+  // function App() {
+//   return (
+//     <div className="App">
+//       <Allergen />
+//     </div>
+//   );
+// }
+
+// function Allergen() {
+//   const listOfAllergen = [
+//     { Name: "Decyl Glucoside",
+//     { Name: "Alkyl (c8,c10) Polyglycoside", Ranking: "1" },
+//     { Name: "APG0810", Ranking: "1" },
+//     { Name: "(C8-10) Alkyl ether of corn sugar", Ranking: "1" },
+//     { Name: "C16H32O6", Ranking: "1" },
+//     { Name: "D-Glucopyranoside, decyl", Ranking: "1" },
+//     { Name: "D-Glucopyranose, Oligomeric, Decyl Octyl Glycosides", Ranking: "1" },
+//     { Name: "D-glucose, decyl octyl ethers, oligomeric", Ranking: "1" },
+//     { Name: "Decyl D-glucopyranoside", Ranking: "1" },
+//     { Name: "Decyl D-glucoside", Ranking: "1" },
+//     { Name: "Decyl octyl d-glucose", Ranking: "1" },
+//     { Name: "Glucoside, decyl", Ranking: "1" },
+//     { Name: "Hexyl cinnamic aldehyde (Article Number H-025", 
+//     { Name: "Coumarin (Article Number C-038)", Ranking: "2" },
+//     { Name: "Farnesol (Article Number F-004)", Ranking: "2" },
+//     { Name: "Hydroxyisohexyl 3 Cyclohexene Carboxaldehyde (Article Number L-003)", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//     { Name: "", Ranking: "2" },
+//   ]
+
+//   const noteRootStyle = {
+//     border: "2px #0af solid",
+//     borderRadius: 9,
+//     margin: 20,
+//     backgroundColor: "#efefef",
+//     padding: 6
+//   };
+
+//   return (
+//     <div >
+//       {listOfAllergen.map(ele => 
+//         <div>
+//           <h3>{ele.Name}</h3>
+//         </div>
+//       )}
+//     </div>
+//   )
+// }
