@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Function to fetch and display shop items
-    fetchShopItems();
+    // fetchShopItems();
 });
 
 function fetchShopItems() {
