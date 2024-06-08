@@ -22,12 +22,12 @@
             <li><a href="../Shop/">Shop</a></li>
         </ul>
     </nav>
-    <script src="Allergens.js" type="module"></script>
+    <script src="Allergens/Allergens.js" type="module"></script>
     <script>
         // Function to display the content of the JavaScript file
         const displayJSCode = async () => {
             // Import the default export from script.js
-            const { default: myFunction } = await import('./Allergens.js');
+            const { default: myFunction } = await import('.Allergens/Allergens.js');
             
             // Display the code of myFunction
             const code = myFunction.toString();
