@@ -70,7 +70,7 @@ function App() {
 }
 
 
-document.addEventListener(App);
+document.addEventListener(App());
   // Function to fetch and display shop items
 // });
 
