@@ -43,6 +43,7 @@ function App() {
         <input id="search-box" onChange={filterBySearch} />
       </div>
       <div id="item-list">
+        <h1> hello world </h1>
         <ul>
           {filteredList.map((item, index) => (
             <li key={index}>
@@ -70,7 +71,7 @@ function App() {
 }
 
 
-document.addEventListener(App());
+// document.addEventListener(App());
   // Function to fetch and display shop items
 // });
 
