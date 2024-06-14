@@ -1,61 +1,66 @@
-let input = document.getElementById("input");
-let currentState = "Standby";
-let Ans = 0;
+const display = document.getElementById("display");
+let firstOperand = null;
+let secondOperand = null;
+let currentOperator = null;
 
-function onInput(event) {
-  let keyValue = event.target.textContent;
-  switch (keyValue) {
-    case "ON":
-      currentState = "Standby";
-      input.value = "";
-      break;
-    case "ANS":
-      onNumberPress(Ans);
-      break;
-    case "AC":
-      currentState = "Standby";
-      input.value = "";
-      Ans = 0;
-      break;
-    case "DEL":
-      input.value = input.value.slice(0, -1);
-      break;
-    default:
-      if (currentState === "Standby") {
-        input.value = keyValue;
-        currentState = "Input";
-      } else {
-        input.value += keyValue;
-      }
-  }
-}
-
-function onNumberPress(number) {
-  if (currentState === "Standby") {
-    input.value = number;
-    currentState = "Input";
+function appendNumber(number) {
+  if (currentOperator === null) {
+    firstOperand = firstOperand!== null? parseFloat(`${firstOperand}${number}`) : number;
+    display.value = firstOperand;
   } else {
-    input.value += number;
+    secondOperand = secondOperand!== null? parseFloat(`${secondOperand}${number}`) : number;
+    display.value = secondOperand;
   }
 }
 
-function onOperatorPress(operator) {
-  if (currentState === "Input") {
-    input.value += operator;
-    currentState = "Operator";
+function setOperator(operator) {
+  if (firstOperand!== null && secondOperand!== null) {
+    calculateResult();
+  }
+
+  currentOperator = operator;
+}
+
+function calculateResult() {
+  if (firstOperand!== null && secondOperand!== null && currentOperator!== null) {
+    let result;
+    switch (currentOperator) {
+      case '+':
+        result = firstOperand + secondOperand;
+        break;
+      case '-':
+        result = firstOperand - secondOperand;
+        break;
+      case '*':
+        result = firstOperand * secondOperand;
+        break;
+      case '/':
+        result = firstOperand / secondOperand;
+        break;
+      default:
+        return;
+    }
+
+    display.value = result;
+    firstOperand = result;
+    secondOperand = null;
+    currentOperator = null;
   }
 }
 
-function onEqualsPress() {
-  let result = eval(input.value);
-  input.value = result;
-  Ans = result;
-  currentState = "Standby";
+function clearDisplay() {
+  firstOperand = null;
+  secondOperand = null;
+  currentOperator = null;
+  display.value = "";
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  let buttons = document.querySelectorAll("button");
-  buttons.forEach(function (button) {
-    button.addEventListener("click", onInput);
-  });
-});
+function appendDecimal() {
+  if (currentOperator === null) {
+    firstOperand = firstOperand!== null? `${firstOperand}.` : "0.";
+    display.value = firstOperand;
+  } else {
+    secondOperand = secondOperand!== null? `${secondOperand}.` : "0.";
+    display.value = secondOperand;
+  }
+}
