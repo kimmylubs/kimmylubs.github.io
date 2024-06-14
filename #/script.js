@@ -5,16 +5,16 @@ let currentOperator = null;
 
 function appendNumber(number) {
   if (currentOperator === null) {
-    firstOperand = firstOperand!== null? parseFloat(`${firstOperand}${number}`) : number;
+    firstOperand = firstOperand !== null ? parseFloat(`${firstOperand}${number}`) : number;
     display.value = firstOperand;
   } else {
-    secondOperand = secondOperand!== null? parseFloat(`${secondOperand}${number}`) : number;
+    secondOperand = secondOperand !== null ? parseFloat(`${secondOperand}${number}`) : number;
     display.value = secondOperand;
   }
 }
 
 function setOperator(operator) {
-  if (firstOperand!== null && secondOperand!== null) {
+  if (firstOperand !== null && secondOperand !== null) {
     calculateResult();
   }
 
@@ -22,7 +22,7 @@ function setOperator(operator) {
 }
 
 function calculateResult() {
-  if (firstOperand!== null && secondOperand!== null && currentOperator!== null) {
+  if (firstOperand !== null && secondOperand !== null && currentOperator !== null) {
     let result;
     switch (currentOperator) {
       case '+':
@@ -57,10 +57,10 @@ function clearDisplay() {
 
 function appendDecimal() {
   if (currentOperator === null) {
-    firstOperand = firstOperand!== null? `${firstOperand}.` : "0.";
+    firstOperand = firstOperand !== null ? `${firstOperand}.` : "0.";
     display.value = firstOperand;
   } else {
-    secondOperand = secondOperand!== null? `${secondOperand}.` : "0.";
+    secondOperand = secondOperand !== null ? `${secondOperand}.` : "0.";
     display.value = secondOperand;
   }
 }
