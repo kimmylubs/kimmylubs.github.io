@@ -1,48 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Allergens</title>
-    <!-- Link your JavaScript file -->
-    <link rel="stylesheet" href="styles.css">
-    <!-- <script src="Allergens.js" defer></script> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <pre>
-        <code id="js-code" class="javascript"></code>
-    </pre>
-    <nav>
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../allergens/">Allergens</a></li>
-            <li><a href="../fragments/">Fragments</a></li>
-            <li><a href="../unix/">Unix</a></li>
-            <li><a href="../calculator/">Calculator</a></li>
-            <li><a href="../shop/">Shop</a></li>
-        </ul>
-    </nav>
-    <script src="Allergens/Allergens.js" type="module"></script>
-    <script>
-        // Function to display the content of the JavaScript file
-        const displayJSCode = async () => {
-            // Import the default export from script.js
-            const { default: myFunction } = await import('.Allergens/Allergens.js');
-            
-            // Display the code of myFunction
-            const code = myFunction.toString();
-            document.getElementById('js-code').textContent = code;
-        };
-
-        // Call the function to display the JavaScript code
-        displayJSCode();
-    </script>
-    <div class="container">
-        <h1>Allergens</h1>
-        <!-- <section id="products"> -->
-            <!-- Product Cards will go here -->
-        <!-- </section> -->
-    <!-- </div> -->
-    <!-- <script src="src/Sample.js"></script> -->
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../allergens/">Allergens</a></li>
+      <li><a href="../fragments/">Fragments</a></li>
+      <li><a href="../unix/">Unix</a></li>
+      <li><a href="../calculator/">Calculator</a></li>
+      <li><a href="../shop/">Shop</a></li>
+    </ul>
+  </nav>
+<div class="allergens">
+    <h1>Allergens</h1>
+</div>
 </body>
 </html>
