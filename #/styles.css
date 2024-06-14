@@ -3,61 +3,6 @@ body {
   text-align: center;
 }
 
-input {
-  background-color: #f0f0f0;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  width: 200px;
-  margin: 20px auto;
-}
-
-#buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, 1fr);
-  grid-column-gap: 8px;
-  grid-row-gap: 8px;
-  padding: 8px;
-}
-
-button {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #3e8e41;
-}
-
-#power {
-  grid-area: power;
-  border-radius: 100%;
-  margin-bottom: 8px;
-}
-
-#ans {
-  grid-area: ans;
-  border-radius: 100%;
-  margin-bottom: 8px;
-}
-
-#ac {
-  grid-area: a;
-  border-radius: 100%;
-  margin-bottom: 8px;
-}
-
-#del {
-  grid-area: b;
-  border-radius: 100%;
-  margin-bottom: 8px;
-}
-
 nav {
   background-color: #333;
   overflow: hidden;
@@ -86,4 +31,26 @@ nav ul li a:hover {
   background-color: #111;
 }
 
-/* Add styles for the rest of the buttons */
+input {
+  background-color: #f0f0f0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+  margin: 20px auto;
+}
+
+#buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
+  padding: 8px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+}
