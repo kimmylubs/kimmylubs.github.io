@@ -1,33 +1,89 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  text-align: center;
+}
+
+input {
+  background-color: #f0f0f0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 200px;
+  margin: 20px auto;
+}
+
+#buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
+  padding: 8px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+#power {
+  grid-area: power;
+  border-radius: 100%;
+  margin-bottom: 8px;
+}
+
+#ans {
+  grid-area: ans;
+  border-radius: 100%;
+  margin-bottom: 8px;
+}
+
+#ac {
+  grid-area: a;
+  border-radius: 100%;
+  margin-bottom: 8px;
+}
+
+#del {
+  grid-area: b;
+  border-radius: 100%;
+  margin-bottom: 8px;
 }
 
 nav {
   background-color: #333;
-  color: #fff;
-  padding: 10px 0;
+  overflow: hidden;
 }
 
 nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 nav ul li {
-  display: inline;
-  margin-right: 20px;
+  float: left;
 }
 
 nav ul li a {
-  color: #fff;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
 }
 
-.container {
-  max-width: 800px;
-  margin: 20px auto;
-  text-align: center;
+nav ul li a:hover {
+  background-color: #111;
 }
+
+/* Add styles for the rest of the buttons */
