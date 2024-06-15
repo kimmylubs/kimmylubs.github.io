@@ -6,18 +6,56 @@
     <title>Shop</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .nav {
+      background-color: #333;
+      color: #fff;
+      padding: 1em;
+      text-align: center;
+    }
+    .nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav a:hover {
+      background-color: #444;
+    }
+    .generator {
+      margin-top: 2em;
+    }
+  </style>
+</head>
 <body>
-    <nav>
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="../allergens/">Allergens</a></li>
-          <li><a href="../fragments/">Fragments</a></li>
-          <li><a href="../unix/">Unix</a></li>
-          <li><a href="../calculator/">Calculator</a></li>
-          <li><a href="../shop/">Shop</a></li>
-        </ul>
-      </nav>
-      <h1> stinky pinky </h1>
-      <!-- <script src="script.js"></script> -->
+  <nav class="nav">
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#generator">Unix Time Generator</a></li>
+        <li><a href="../allergens/">Allergens</a></li>
+        <li><a href="../fragments/">Fragments</a></li>
+        <li><a href="../unix/">Unix</a></li>
+        <li><a href="../calculator/">Calculator</a></li>
+        <li><a href="../shop/">Shop</a></li>
+    </ul>
+
+  </nav>
+  <div class="generator">
+    <h1>Unix Time Generator</h1>
+    <p id="unix-time"></p>
+    <button id="generate-btn">Generate Unix Time</button>
+  </div>
+
+  <script>
+    const generateBtn = document.getElementById('generate-btn');
+    const unixTimeElement = document.getElementById('unix-time');
+
+    generateBtn.addEventListener('click', () => {
+      const unixTime = Math.floor(Date.now() / 1000);
+      unixTimeElement.textContent = `Unix Time: ${unixTime}`;
+    });
+  </script>
 </body>
 </html>
