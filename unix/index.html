@@ -63,9 +63,9 @@
 
       const date = new Date(Date.UTC(year, month, day, hour, minute, second));
       const unixTime = Math.floor(date.getTime() / 1000);
-      console.log(`Unix Time: <t:/${unixTime}/:F>`)
+      const discordFullTime = (`Unix Time: <t:${unixTime}:F>`)
 
-      document.getElementById("unix-time").innerHTML = `Unix Time: <t:/${unixTime}/:F>`;
+      document.getElementById("unix-time").innerHTML = discordFullTime;
     }
   </script>
   <!-- <script src="script.js"></script> -->
