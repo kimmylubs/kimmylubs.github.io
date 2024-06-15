@@ -34,6 +34,7 @@ const skillNodes = {
 };
 
 const masteryNode = {
+  0: 0,
     1: 50,
     2: 65,
     3: 83,
@@ -67,6 +68,7 @@ const masteryNode = {
   };
   
   const boostNode = {
+    0: 0,
     1: 75,
     2: 98,
     3: 125,
@@ -100,6 +102,7 @@ const masteryNode = {
   };
   
   const commonNode = {
+    0: 0,
     1: 125,
     2: 163,
     3: 207,
@@ -152,9 +155,9 @@ document.getElementById("calc-1").addEventListener("click", () => {
 document.getElementById("calc-2").addEventListener("click", () => {
   const level1 = parseInt(document.getElementById("level2-1").value);
   const level2 = parseInt(document.getElementById("level2-2").value);
-  if (level1 < 1 || level1 > 30 || level2 < 1 || level2 > 30) {
+  if (level1 < 0 || level1 > 30 || level2 < 0 || level2 > 30) {
     document.getElementById("result-2").innerHTML =
-      "Error: Levels must be between 1 and 30";
+      "Error: Levels must be between 0 and 30";
   } else {
     const score1 = masteryNode[level1];
     const score2 = masteryNode[level2];
@@ -168,9 +171,9 @@ document.getElementById("calc-2").addEventListener("click", () => {
 document.getElementById("calc-3").addEventListener("click", () => {
   const level1 = parseInt(document.getElementById("level3-1").value);
   const level2 = parseInt(document.getElementById("level3-2").value);
-  if (level1 < 1 || level1 > 30 || level2 < 1 || level2 > 30) {
+  if (level1 < 0 || level1 > 30 || level2 < 0 || level2 > 30) {
     document.getElementById("result-3").innerHTML =
-      "Error: Levels must be between 1 and 30";
+      "Error: Levels must be between 0 and 30";
   } else {
     const score1 = boostNode[level1];
     const score2 = boostNode[level2];
@@ -184,9 +187,9 @@ document.getElementById("calc-3").addEventListener("click", () => {
 document.getElementById("calc-4").addEventListener("click", () => {
   const level1 = parseInt(document.getElementById("level4-1").value);
   const level2 = parseInt(document.getElementById("level4-2").value);
-  if (level1 < 1 || level1 > 30 || level2 < 1 || level2 > 30) {
+  if (level1 < 0 || level1 > 30 || level2 < 0 || level2 > 30) {
     document.getElementById("result-4").innerHTML =
-      "Error: Levels must be between 1 and 30";
+      "Error: Levels must be between 0 and 30";
   } else {
     const score1 = commonNode[level1];
     const score2 = commonNode[level2];
