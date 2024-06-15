@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Unix</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <nav>
     <ul>
@@ -19,7 +21,6 @@
   <form>
     <label for="year">Year:</label>
     <input type="number" id="year" value="2024" min="1970" max="2030">
-    <br><br>
     <label for="month">Month:</label>
     <select id="month">
       <option value="0">January</option>
@@ -35,39 +36,48 @@
       <option value="10">November</option>
       <option value="11">December</option>
     </select>
-    <br><br>
     <label for="day">Day:</label>
     <input type="number" id="day" value="15" min="1" max="31">
-    <br><br>
     <label for="hour">Hour:</label>
     <input type="number" id="hour" value="0" min="0" max="23">
-    <br><br>
     <label for="minute">Minute:</label>
     <input type="number" id="minute" value="0" min="0" max="59">
-    <br><br>
     <label for="second">Second:</label>
     <input type="number" id="second" value="0" min="0" max="59">
     <br><br>
     <button type="button" onclick="generateUnixTime()">Generate Unix Time</button>
+    <button type="button" onClick="copyButton(generateUnixTime())">Copy Discord Format</button>
     <br><br>
     <p id="unix-time"></p>
   </form>
   <script>
     function generateUnixTime() {
-      const year = document.getElementById("year").value;
       const month = document.getElementById("month").value;
       const day = document.getElementById("day").value;
+      const year = document.getElementById("year").value;
       const hour = document.getElementById("hour").value;
       const minute = document.getElementById("minute").value;
       const second = document.getElementById("second").value;
 
       const date = new Date(Date.UTC(year, month, day, hour, minute, second));
       const unixTime = Math.floor(date.getTime() / 1000);
-      const discordFullTime = (`Unix Time: <t:${unixTime}:F>`)
+      const formattedDate = `<t:${unixTime}:F>`
 
       document.getElementById("unix-time").innerHTML = `Unix Time: ${unixTime}`;
+      return formattedDate;
     }
+
+    function copyButton(text) {
+      navigator.clipboard.writeText(text).then(function () {
+        console.log('Text copied to clipboard!');
+      }, function (error) {
+        console.error('Failed to copy text:', error);
+      });
+    }
+
   </script>
-  <!-- <script src="script.js"></script> -->
+
+  <script src="script.js"></script>
 </body>
+
 </html>

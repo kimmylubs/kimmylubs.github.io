@@ -1,1 +1,1 @@
-console.log("unxp page script loaded!");
+console.log("shop page script loaded!");
