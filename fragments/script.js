@@ -153,7 +153,7 @@ document.getElementById("calc-2").addEventListener("click", () => {
   const level1 = parseInt(document.getElementById("level2-1").value);
   const level2 = parseInt(document.getElementById("level2-2").value);
   if (level1 < 1 || level1 > 30 || level2 < 1 || level2 > 30) {
-    document.getElementById("result-1").innerHTML =
+    document.getElementById("result-2").innerHTML =
       "Error: Levels must be between 1 and 30";
   } else {
     const score1 = masteryNode[level1];
@@ -169,7 +169,7 @@ document.getElementById("calc-3").addEventListener("click", () => {
   const level1 = parseInt(document.getElementById("level3-1").value);
   const level2 = parseInt(document.getElementById("level3-2").value);
   if (level1 < 1 || level1 > 30 || level2 < 1 || level2 > 30) {
-    document.getElementById("result-1").innerHTML =
+    document.getElementById("result-3").innerHTML =
       "Error: Levels must be between 1 and 30";
   } else {
     const score1 = boostNode[level1];
@@ -185,7 +185,7 @@ document.getElementById("calc-4").addEventListener("click", () => {
   const level1 = parseInt(document.getElementById("level4-1").value);
   const level2 = parseInt(document.getElementById("level4-2").value);
   if (level1 < 1 || level1 > 30 || level2 < 1 || level2 > 30) {
-    document.getElementById("result-1").innerHTML =
+    document.getElementById("result-4").innerHTML =
       "Error: Levels must be between 1 and 30";
   } else {
     const score1 = commonNode[level1];
