@@ -64,7 +64,7 @@
       const date = new Date(Date.UTC(year, month, day, hour, minute, second));
       const unixTime = Math.floor(date.getTime() / 1000);
 
-      document.getElementById("unix-time").innerHTML = `Unix Time: ${unixTime}`;
+      document.getElementById("unix-time").innerHTML = `Unix Time: <t:${unixTime}:F>`;
     }
   </script>
 </body>
