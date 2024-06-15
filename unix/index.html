@@ -21,7 +21,7 @@
   <h1>Unix Time Generator</h1>
   <form>
     <label for="date">Select a date:</label>
-    <input type="date" id="date" value="2024-06-15">
+    <input type="date" id="date" value="">
     <br>
     <label for="time">Select a time:</label>
     <input type="time" id="time" value="12:00">
@@ -31,6 +31,13 @@
   <p id="unix-time"></p>
 
   <script>
+    const dateInput = document.getElementById('date');
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1; // months are 0-based
+    const day = today.getDate();
+    dateInput.value = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+
     function generateUnixTime() {
       const dateInput = document.getElementById('date').value;
       const timeInput = document.getElementById('time').value;
@@ -65,7 +72,7 @@
     }
 
   </script>
-    <button type="button" onClick="copyButton(generateUnixTime())">Copy Discord Format</button>
+  <button type="button" onClick="copyButton(generateUnixTime())">Copy Discord Format</button>
 
 
   <script src="script.js"></script>
