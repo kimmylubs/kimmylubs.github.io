@@ -17,53 +17,42 @@
       <li><a href="../shop/">Shop</a></li>
     </ul>
   </nav>
+
   <h1>Unix Time Generator</h1>
   <form>
-    <label for="month">Month:</label>
-    <select id="month">
-      <option value="0">January</option>
-      <option value="1">February</option>
-      <option value="2">March</option>
-      <option value="3">April</option>
-      <option value="4">May</option>
-      <option value="5">June</option>
-      <option value="6">July</option>
-      <option value="7">August</option>
-      <option value="8">September</option>
-      <option value="9">October</option>
-      <option value="10">November</option>
-      <option value="11">December</option>
-    </select>
-    <label for="day">Day:</label>
-    <input type="number" id="day" value="15" min="1" max="31">
-    <label for="year">Year:</label>
-    <input type="number" id="year" value="2024" min="1970" max="2030">
-    <label for="hour">Hour:</label>
-    <input type="number" id="hour" value="0" min="0" max="23">
-    <label for="minute">Minute:</label>
-    <input type="number" id="minute" value="0" min="0" max="59">
-    <label for="second">Second:</label>
-    <input type="number" id="second" value="0" min="0" max="59">
-    <br><br>
+    <label for="date">Select a date:</label>
+    <input type="date" id="date" value="2024-06-15">
+    <br>
+    <label for="time">Select a time:</label>
+    <input type="time" id="time" value="12:00">
+    <br>
     <button type="button" onclick="generateUnixTime()">Generate Unix Time</button>
-    <button type="button" onClick="copyButton(generateUnixTime())">Copy Discord Format</button>
-    <br><br>
-    <p id="unix-time"></p>
   </form>
+  <p id="unix-time"></p>
+
   <script>
     function generateUnixTime() {
-      const month = document.getElementById("month").value;
-      const day = document.getElementById("day").value;
-      const year = document.getElementById("year").value;
-      const hour = document.getElementById("hour").value;
-      const minute = document.getElementById("minute").value;
-      const second = document.getElementById("second").value;
+      const dateInput = document.getElementById('date').value;
+      const timeInput = document.getElementById('time').value;
 
-      const date = new Date(Date.UTC(year, month, day, hour, minute, second));
+      const dateParts = dateInput.split('-');
+      const timeParts = timeInput.split(':');
+      const year = parseInt(dateParts[0], 10);
+      const month = parseInt(dateParts[1], 10) - 1; // months are 0-based
+      const day = parseInt(dateParts[2], 10);
+      const hour = parseInt(timeParts[0], 10);
+      const minute = parseInt(timeParts[1], 10);
+      const second = 0; // assume 0 seconds
+
+      const date = new Date(year, month, day, hour, minute, second);
       const unixTime = Math.floor(date.getTime() / 1000);
+
       const formattedDate = `<t:${unixTime}:F>`
 
       document.getElementById("unix-time").innerHTML = `Unix Time: ${unixTime}`;
+      console.log(unixTime)
+      console.log(date)
+      console.log(formattedDate)
       return formattedDate;
     }
 
@@ -76,6 +65,8 @@
     }
 
   </script>
+    <button type="button" onClick="copyButton(generateUnixTime())">Copy Discord Format</button>
+
 
   <script src="script.js"></script>
 </body>
