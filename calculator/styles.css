@@ -1,6 +1,7 @@
 #calculator {
   width: 200px;
-  margin: 0 auto;
+  align-items: left;
+  margin-left: 40px;
 }
 
 #display {
