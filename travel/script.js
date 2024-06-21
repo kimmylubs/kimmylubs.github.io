@@ -1,3 +1,5 @@
+console.log("shop page script loaded!");
+
 let map;
 let countries = [];
 let countryColors = {};
@@ -17,17 +19,7 @@ fetch("countries.geojson")
  .then(data => {
     // Create a feature for each country
     data.features.forEach(feature => {
-      const country = L.geoJSON(feature, {
-        style: feature => {
-          const countryName = feature.properties.name;
-          const color = countryColors[countryName] || "#ffffff"; // Default color if not set
-          return {
-            fillColor: color,
-            strokeColor: "#000",
-            strokeWeight: 1,
-          };
-        },
-      });
+      const country = L.geoJSON(feature);
       countries.push(country);
       map.addLayer(country);
     });
@@ -41,17 +33,10 @@ fetch("countries.geojson")
       countrySelector.appendChild(option);
     });
 
-    // Add event listener to apply color changes
+    // Add event listener to store color changes
     document.getElementById("apply-color").addEventListener("click", () => {
       const selectedCountry = countrySelector.value;
       const newColor = document.getElementById("color-picker").value;
       countryColors[selectedCountry] = newColor;
-      countries.forEach(country => {
-        if (country.feature.properties.name === selectedCountry) {
-          country.setStyle({
-            fillColor: newColor,
-          });
-        }
-      });
     });
   });
