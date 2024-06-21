@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Map with Customizable Country Colors</title>
+    <title>Map with Different Colors for Each Country</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   </head>
   <body>
-    <nav>
-      <ul>
-        <a href="/index.html">Home</a>
-        <!-- <a href="/allergen/">Allergens</a> -->
-        <a href="/fragments/">Fragments</a>
-        <a href="/unix/">Unix</a>
-        <a href="/calculator/">Calculator</a>
-        <a href="/travel/">travel</a>
-        <!-- <a href="/shop/">Shop</a> -->
-      </ul>
-    </nav>
     <div id="map"></div>
     <select id="country-selector">
       <!-- We'll populate this dropdown dynamically -->
@@ -23,6 +13,5 @@
     <input id="color-picker" type="color" value="#ff0000">
     <button id="apply-color">Apply Color</button>
     <script src="script.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
   </body>
 </html>
