@@ -1,42 +1,19 @@
-console.log("shop page script loaded!");
+console.log('runnin');
+const countries = [
+  { name: "Afghanistan", code: "AFG", d: "M 10 20 L 30 40 L 50 60 L 70 80 Z" },
+  { name: "Albania", code: "ALB", d: "M 15 25 L 35 45 L 55 65 L 75 85 Z" },
+  // Add all countries here, with their corresponding d attribute values
+];
 
-let map;
-let countries = [];
-let countryColors = {};
+const map = document.getElementById("map");
+const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+svg.setAttribute("width", "100%");
+svg.setAttribute("height", "100%");
+map.appendChild(svg);
 
-// Create the map
-map = L.map("map").setView([0, 0], 2);
-
-// Add a tile layer
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: "&copy; <a href='https://www.openstreetmap.org/'>OpenStreetMap</a>",
-  subdomains: ["a", "b", "c"],
-}).addTo(map);
-
-// Load country boundaries from GeoJSON file
-fetch("countries.geojson")
- .then(response => response.json())
- .then(data => {
-    // Create a feature for each country
-    data.features.forEach(feature => {
-      const country = L.geoJSON(feature);
-      countries.push(country);
-      map.addLayer(country);
-    });
-
-    // Populate the country dropdown
-    const countrySelector = document.getElementById("country-selector");
-    countries.forEach(country => {
-      const option = document.createElement("option");
-      option.text = country.feature.properties.name;
-      option.value = country.feature.properties.name;
-      countrySelector.appendChild(option);
-    });
-
-    // Add event listener to store color changes
-    document.getElementById("apply-color").addEventListener("click", () => {
-      const selectedCountry = countrySelector.value;
-      const newColor = document.getElementById("color-picker").value;
-      countryColors[selectedCountry] = newColor;
-    });
-  });
+countries.forEach((country) => {
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", country.d); // Use the d attribute value from the country object
+  path.setAttribute("fill", "#ccc"); // default color
+  svg.appendChild(path);
+});
