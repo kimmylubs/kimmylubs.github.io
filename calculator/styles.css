@@ -1,6 +1,15 @@
+
+body {
+  font-family: Avantgarde;
+  margin: 0px;
+  padding: 0px;
+  background-color: #ec7a7a;
+}
+
 #calculator {
   width: 200px;
   align-items: left;
+  margin-top: 40px;
   margin-left: 40px;
 }
 
@@ -52,6 +61,7 @@ nav li {
 
 nav a {
   color: #fff;
+  font-size: 20px;
   text-decoration: none;
   transition: color 0.2s ease;
 }

@@ -1,44 +1,53 @@
-.copy-button {
-    background-color: #4CAF50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
-.copy-button:hover {
-    background-color: #3e8e41;
+body {
+    font-family: Avantgarde;
+    margin: 0px;
+    padding: 0px;
+    background-color: #ec7a7a;
+  }
+  
+form{
+  margin: 15px;
 }
-
-nav {
+h1{
+  margin: 15px;
+}
+  nav {
     background-color: #333;
     padding: 1em;
     text-align: center;
-}
-
-nav ul {
+  }
+  
+  nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
-}
-
-nav li {
+  }
+  
+  nav li {
     margin: 0 1em;
-}
-
-nav a {
+  }
+  
+  nav a {
     color: #fff;
+    font-size: 20px;
     text-decoration: none;
     transition: color 0.2s ease;
-}
-
-nav a:hover {
+  }
+  
+  nav a:hover {
     color: #ccc;
-}
-
-nav a.active {
+  }
+  
+  nav a.active {
     color: #66d9ef;
-}
+  }
+  
+  h4{
+    text-align: center;
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 10px;
+  }
