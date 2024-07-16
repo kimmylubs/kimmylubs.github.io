@@ -6,16 +6,24 @@ body {
 }
 
 .container {
-  margin-right: 500px;
+  /* margin-right: 500px;
   display: grid;
   align-items: center;
   justify-content: center;
   grid-template-columns: auto auto;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
+  /* background-color: #fff; */
+  /* border-radius: 10px; */
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
+  margin-left: 100px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: center;
 }
 
 .bubble{
+  margin-right: 15px;
   margin-left: 15px;
   width: 350px;
   background-color: #d98cd9;
@@ -27,16 +35,19 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  /* box-shadow: 0px 0px 5px rgba(0,0,0,0.1); */
 }
 
 img{
-  float: right; margin-right: 50px; padding: 0; border: none;
+  float: right; 
+  margin-right: 25px; 
+  padding: 0; 
+  border: none;
 }
 
 .sources {
   margin: 15px;
 }
+
 h1{
   text-align: center;
 }
@@ -83,34 +94,4 @@ nav a:hover {
 nav a.active {
   color: #66d9ef;
 }
-nav {
-  background-color: #333;
-  padding: 1em;
-  text-align: center;
-}
 
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
-
-nav li {
-  margin: 0 1em;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-nav a:hover {
-  color: #ccc;
-}
-
-nav a.active {
-  color: #66d9ef;
-}
