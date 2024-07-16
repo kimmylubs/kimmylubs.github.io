@@ -1,5 +1,39 @@
 console.log("Fragments page script loaded!");
 
+const skillEnergy = {
+  0:0,
+  1:5,
+2:6,
+3:7,
+4:8,
+5:10,
+6:12,
+7:14,
+8:17,
+9:20,
+10:30,
+11:33,
+12:36,
+13:40,
+14:44,
+15:48,
+16:52,
+17:56,
+18:60,
+19:65,
+20:80,
+21:85,
+22:90,
+23:95,
+24:100,
+25:105,
+26:111,
+27:117,
+28:123,
+29:130,
+30:150,
+}
+
 const skillNodes = {
     1: 0,
     2: 30,
@@ -32,6 +66,40 @@ const skillNodes = {
     29: 3900,
     30: 4400,
 };
+
+const masteryEnergy = {
+  0:0,
+  1:3,
+  2:4,
+  3:5,
+  4:6,
+  5:7,
+  6:8,
+  7:9,
+  8:11,
+  9:13,
+  10:18,
+  11:20,
+  12:22,
+  13:24,
+  14:26,
+  15:28,
+  16:30,
+  17:32,
+  18:34,
+  19:37,
+  20:45,
+  21:48,
+  22:51,
+  23:54,
+  24:57,
+  25:60,
+  26:63,
+  27:66,
+  28:69,
+  29:73,
+  30:83,
+}
 
 const masteryNode = {
   0: 0,
@@ -67,6 +135,40 @@ const masteryNode = {
     30: 2252,
   };
   
+  const boostEnergy = {
+    0:0,
+    1:4,
+    2:5,
+    3:6,
+    4:7,
+    5:9,
+    6:11,
+    7:13,
+    8:16,
+    9:19,
+    10:27,
+    11:30,
+    12:33,
+    13:36,
+    14:39,
+    15:42,
+    16:45,
+    17:48,
+    18:51,
+    19:55,
+    20:67,
+    21:71,
+    22:75,
+    23:79,
+    24:83,
+    25:87,
+    26:92,
+    27:97,
+    28:102,
+    29:108,
+    30:123,
+  }
+
   const boostNode = {
     0: 0,
     1: 75,
@@ -101,6 +203,39 @@ const masteryNode = {
     30: 3383,
   };
   
+  const commonEnergy = {
+    0:0,
+1:7,
+2:9,
+3:11,
+4:13,
+5:16,
+6:19,
+7:22,
+8:27,
+9:32,
+10:46,
+11:51,
+12:56,
+13:62,
+14:68,
+15:74,
+16:80,
+17:86,
+18:92,
+19:99,
+20:116,
+21:123,
+22:130,
+23:137,
+24:144,
+25:151,
+26:160,
+27:169,
+28:178,
+29:188,
+30:208,
+  }
   const commonNode = {
     0: 0,
     1: 125,
@@ -140,6 +275,8 @@ const masteryNode = {
 document.getElementById("calc-1").addEventListener("click", () => {
   const level1 = parseInt(document.getElementById("level1-1").value);
   const level2 = parseInt(document.getElementById("level1-2").value);
+
+
   if (level1 < 1 || level1 > 30 || level2 < 1 || level2 > 30) {
     document.getElementById("result-1").innerHTML =
       "Error: Levels must be between 1 and 30";
@@ -147,9 +284,12 @@ document.getElementById("calc-1").addEventListener("click", () => {
     const score1 = skillNodes[level1];
     const score2 = skillNodes[level2];
     const difference = Math.abs(score2 - score1);
+    const score3 = skillEnergy[level1];
+    const score4 = skillEnergy[level2];
+    const differenceEnergy = Math.abs(score4 - score3);
     document.getElementById(
       "result-1"
-    ).innerHTML = `The difference is: ${difference}`;
+    ).innerHTML = `Fragments: ${difference} & Energy: ${differenceEnergy}`;
   }
 });
 document.getElementById("calc-2").addEventListener("click", () => {
@@ -162,9 +302,12 @@ document.getElementById("calc-2").addEventListener("click", () => {
     const score1 = masteryNode[level1];
     const score2 = masteryNode[level2];
     const difference = Math.abs(score2 - score1);
+    const score3 = masteryEnergy[level1];
+    const score4 = masteryEnergy[level2];
+    const differenceEnergy = Math.abs(score4 - score3);
     document.getElementById(
       "result-2"
-    ).innerHTML = `The difference is: ${difference}`;
+    ).innerHTML = `Fragments: ${difference} & Energy: ${differenceEnergy}`;
   }
 });
 
@@ -178,9 +321,12 @@ document.getElementById("calc-3").addEventListener("click", () => {
     const score1 = boostNode[level1];
     const score2 = boostNode[level2];
     const difference = Math.abs(score2 - score1);
+    const score3 = boostEnergy[level1];
+    const score4 = boostEnergy[level2];
+    const differenceEnergy = Math.abs(score4 - score3);
     document.getElementById(
       "result-3"
-    ).innerHTML = `The difference is: ${difference}`;
+    ).innerHTML = `Fragments: ${difference} & Energy: ${differenceEnergy}`;
   }
 });
 
@@ -194,8 +340,11 @@ document.getElementById("calc-4").addEventListener("click", () => {
     const score1 = commonNode[level1];
     const score2 = commonNode[level2];
     const difference = Math.abs(score2 - score1);
+    const score3 = commonEnergy[level1];
+    const score4 = commonEnergy[level2];
+    const differenceEnergy = Math.abs(score4 - score3);
     document.getElementById(
       "result-4"
-    ).innerHTML = `The difference is: ${difference}`;
+    ).innerHTML = `Fragments: ${difference} & Energy: ${differenceEnergy}`;
   }
 });
