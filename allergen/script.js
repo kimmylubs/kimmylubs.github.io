@@ -7,7 +7,7 @@ const searchInput2 = document.getElementById('mySearch2');
 const searchResultsList2 = document.getElementById('search-results-list2');
 
 
-export const ProductList = ["Eye Care Acuvue Multi-Purpose Solution (2022-Oct)",
+const ProductList = ["Eye Care Acuvue Multi-Purpose Solution (2022-Oct)",
     "Eye Care Bio True Advance Cleaner (2022-Oct)",
     "Eye Care Boston Original Conditioning Solution (2022-Oct)",
     "Eye Care Boston Advance Comfort Formula Conditioning Solution (2022-Oct)",
@@ -2625,7 +2625,7 @@ export const ProductList = ["Eye Care Acuvue Multi-Purpose Solution (2022-Oct)",
     "Skin Care: Wipes (9/30) Pampers Aqua Pure Wipes (2020-Dec)",
     "Skin Care: Wipes (9/30) Pampers "]
   
-export const data = [
+const data = [
     "Decyl Glucoside",
     "Alkyl (c8,c10) Polyglycoside",
     "APG0810",
