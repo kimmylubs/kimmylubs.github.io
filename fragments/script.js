@@ -35,6 +35,7 @@ const skillEnergy = {
 }
 
 const skillNodes = {
+  0:0,
     1: 0,
     2: 30,
     3: 65,
@@ -277,9 +278,9 @@ document.getElementById("calc-1").addEventListener("click", () => {
   const level2 = parseInt(document.getElementById("level1-2").value);
 
 
-  if (level1 < 1 || level1 > 30 || level2 < 1 || level2 > 30) {
+  if (level1 < 0 || level1 > 30 || level2 < 0 || level2 > 30) {
     document.getElementById("result-1").innerHTML =
-      "Error: Levels must be between 1 and 30";
+      "Error: Levels must be between 0 and 30";
   } else {
     const score1 = skillNodes[level1];
     const score2 = skillNodes[level2];
