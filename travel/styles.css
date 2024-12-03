@@ -5,18 +5,6 @@ body {
     padding: 0px;
     background-color: #ec7a7a;
   }
-  
-    
-  nav.second-nav {
-    font-family:Calibri;
-    background-color: #c7f5fd;
-    padding: 1em;
-    text-align: center;
-    font-size: 5pt;
-text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-text-shadow: horizontal-offset vertical-offset blur-radius color;
-
-  }
 
   nav {
     background-color: #333;
@@ -65,7 +53,9 @@ section {
     padding: 20px;
     /* margin-top: 50px;  */
 }
-#section1,#section5 { background-color: #a953bf; }
-#section2,#section6 { background-color: #f0bfcb; }
-#section3 { background-color: #d88ccc; }
-#section4 { background-color: #f3c8cb; }
+section.section1 section.section3 section.section5{
+  background-color: #d88ccc;
+}
+section.section2 section.section4 section.section6{
+  background-color: #f0bfcb;
+}
