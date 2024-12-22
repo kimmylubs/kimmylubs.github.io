@@ -1,8 +1,7 @@
 body {
   background-color: #87CEEB; /* Sky blue background */
-  /* overflow: hidden;  */
+  overflow: hidden; 
 }
-
 
 .container {
   /* margin-right: 500px;

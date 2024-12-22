@@ -22,7 +22,6 @@ nav a {
   text-decoration: none;
   transition: color 0.2s ease;
 }
-
 nav a:hover {
   color: #ccc;
 }
@@ -30,6 +29,7 @@ nav a:hover {
 nav a.active {
   color: #66d9ef;
 }
+
 
 h4{
   text-align: center;
@@ -44,14 +44,14 @@ h4{
 }
 
 .background {
-  position: fixed;
+  /* position: fixed;
   width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
+  height: 100vh; */
+  /* top: 0;
+  left: 0; */
   background-color: #87CEEB; /* Sky blue background */
-  overflow: hidden; 
-  overflow: hidden;
+  /* overflow: hidden; 
+  overflow: hidden; */
 }
 
 .background span {
