@@ -1,10 +1,7 @@
-
 body {
-    font-family: Avantgarde;
-    margin: 0px;
-    padding: 0px;
-    background-color: #ec7a7a;
-  }
+  background-color: #87CEEB; /* Sky blue background */
+  /* overflow: hidden;  */
+}
 
   nav.second-nav {
     font-family: Calibri;
