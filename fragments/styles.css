@@ -1,5 +1,5 @@
 body {
-  background-color: #87CEEB; /* Sky blue background */
+      background-color: #E6E6FA; /* Soft lilac background */
   overflow: hidden; 
 }
 
@@ -24,7 +24,7 @@ body {
   margin-right: 15px;
   margin-left: 15px;
   width: 350px;
-  background-color: #d98cd9;
+  background-color: #C8BFE7;
   color: rgb(0, 0, 0);
   padding: 20px;
   border-radius: 5px;
@@ -62,7 +62,7 @@ h1{
 }
 
 nav {
-  background-color: #333;
+ background-color: #C8BFE7; /* Soft, darker lilac */
   padding: 1em;
   text-align: center;
 }

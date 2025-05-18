@@ -1,5 +1,5 @@
 body {
-  background-color: #87CEEB; /* Sky blue background */
+      background-color: #E6E6FA; /* Soft lilac background */
   /* overflow: hidden;  */
 }
 
@@ -40,7 +40,7 @@ button:hover {
 }
 
 nav {
-  background-color: #333;
+ background-color: #C8BFE7; /* Soft, darker lilac */
   padding: 1em;
   text-align: center;
 }

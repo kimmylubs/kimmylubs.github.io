@@ -1,20 +1,19 @@
 body {
-  background-color: #87CEEB; /* Sky blue background */
+      background-color: #E6E6FA; /* Soft lilac background */
   /* overflow: hidden;  */
 }
 
   nav.second-nav {
     font-family: Calibri;
-    background-color: #00ccf0;
+    background-color: #B7AFCB; /* Soft lilac background */
     padding: 1em;
     text-align: center;
     font-size: 5pt;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     text-shadow: horizontal-offset vertical-offset blur-radius color;
 }
 
   nav {
-    background-color: #333;
+   background-color: #C8BFE7; /* Soft, darker lilac */
     padding: 1em;
     text-align: center;
   }
@@ -65,4 +64,24 @@ section {
 }
 #section2 #section4 #section6{
   background-color: #f0bfcb;
+}
+#toTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 100;
+  border: none;
+  outline: none;
+  background-color: #B7AFCB;
+  color: white;
+  cursor: pointer;
+  padding: 16px 20px;
+  border-radius: 50px;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: background 0.2s;
+}
+#toTopBtn:hover {
+  background-color: #8d7bbd;
 }

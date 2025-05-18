@@ -1,5 +1,5 @@
 nav {
-  background-color: #333;
+background-color: #C8BFE7; /* Soft, darker lilac */
   padding: 1em;
   text-align: center;
 }
@@ -49,7 +49,7 @@ h4{
   height: 100vh; */
   /* top: 0;
   left: 0; */
-  background-color: #87CEEB; /* Sky blue background */
+      background-color: #E6E6FA; /* Soft lilac background */
   /* overflow: hidden; 
   overflow: hidden; */
 }
