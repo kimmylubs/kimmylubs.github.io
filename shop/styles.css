@@ -1,42 +1,4 @@
-body {
-      background-color: #E6E6FA; /* Soft lilac background */
-  overflow: hidden; /* Prevent scrollbars */
-}
-
-nav {
- background-color: #C8BFE7; /* Soft, darker lilac */
-  padding: 1em;
-  text-align: center;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-}
-
-nav li {
-  margin: 0 1em;
-}
-
-nav a {
-  color: #fff;
-  font-size: 20px;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-nav a:hover {
-  color: #ccc;
-}
-
-nav a.active {
-  color: #66d9ef;
-}
-
-h4{
+h4 {
   text-align: center;
   font-size: 25px;
   padding: 10px;

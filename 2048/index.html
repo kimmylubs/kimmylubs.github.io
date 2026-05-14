@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2048</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../shared.css">
+  <style>
+    body { background: #ede9f8; }
+
+    .page {
+      display: flex;
+      gap: 1.5em;
+      padding: 1.5em;
+      max-width: 820px;
+      margin: 0 auto;
+      align-items: flex-start;
+    }
+
+    .game-wrap { flex: 1; min-width: 0; }
+
+    .game-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.6em;
+    }
+    .game-title { font-size: 3rem; font-weight: 900; color: #3d2c6e; line-height: 1; }
+
+    .score-boxes { display: flex; gap: 0.5em; }
+    .score-box {
+      background: rgba(255,255,255,0.85);
+      border: 2px solid #e4dcf8;
+      border-radius: 12px;
+      padding: 0.4em 0.9em;
+      text-align: center;
+      min-width: 70px;
+    }
+    .score-label { font-size: 0.65rem; font-weight: 700; color: #9b72cf; letter-spacing: 0.05em; }
+    .score-num   { font-size: 1.2rem; font-weight: 700; color: #3d2c6e; }
+
+    .game-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.8em;
+    }
+    .game-hint { font-size: 0.8rem; color: #9b72cf; margin: 0; }
+
+    .btn {
+      background: linear-gradient(135deg, #c4b5f4, #9b72cf);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 0.5em 1.1em;
+      font-size: 0.88rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      box-shadow: none;
+    }
+    .btn:hover { opacity: 0.88; transform: none; }
+    .btn.ghost { background: none; border: 2px solid #c4b5f4; color: #7c5abf; }
+
+    /* ── Board ── */
+    .board-wrap { position: relative; }
+
+    .board {
+      position: relative;
+      background: rgba(155,114,207,0.18);
+      border-radius: 14px;
+      padding: 10px;
+      aspect-ratio: 1;
+      width: 100%;
+      max-width: 420px;
+      touch-action: none;
+      user-select: none;
+    }
+
+    /* Background cells (pure visual, not interactive) */
+    .bg-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      width: 100%;
+      height: 100%;
+    }
+    .bg-cell {
+      background: rgba(155,114,207,0.12);
+      border-radius: 8px;
+    }
+
+    /* Tiles: absolutely positioned, animated via transform */
+    .tile {
+      position: absolute;
+      top: 0; left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-family: inherit;
+      border-radius: 8px;
+      will-change: transform;
+      z-index: 2;
+    }
+    .tile.moving  { transition: transform 120ms ease-in-out; }
+    .tile.t-new   { animation: tileAppear 0.15s ease-out both; }
+    .tile.t-merge { animation: tileMerge 0.15s ease-out both; }
+
+    @keyframes tileAppear {
+      from { transform: var(--base-transform) scale(0); }
+      to   { transform: var(--base-transform) scale(1); }
+    }
+    @keyframes tileMerge {
+      0%   { transform: var(--base-transform) scale(1); }
+      50%  { transform: var(--base-transform) scale(1.15); }
+      100% { transform: var(--base-transform) scale(1); }
+    }
+
+    /* ── End overlay ── */
+    .end-panel {
+      position: absolute;
+      inset: 0;
+      background: rgba(237,233,248,0.92);
+      border-radius: 14px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+      z-index: 10;
+    }
+    .end-panel.show { display: flex; }
+    .end-inner { text-align: center; padding: 1.5em; }
+    .end-title  { font-size: 1.8rem; font-weight: 900; color: #3d2c6e; margin: 0 0 0.2em; }
+    .end-score  { font-size: 1rem; color: #7c5abf; margin: 0 0 1em; font-weight: 600; }
+    .save-row   { display: flex; gap: 0.4em; margin-bottom: 0.8em; }
+    .save-row input {
+      flex: 1; padding: 0.5em 0.7em;
+      border: 1.5px solid #e4dcf8; border-radius: 8px;
+      font-size: 0.88rem; font-family: inherit; color: #3d2c6e;
+      background: #fff; outline: none;
+    }
+    .save-row input:focus { border-color: #9b72cf; }
+    .end-actions { display: flex; gap: 0.5em; justify-content: center; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 240px; flex-shrink: 0;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(10px);
+      border: 2px solid #e4dcf8;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 4px 16px rgba(155,114,207,0.1);
+    }
+    .sb-header {
+      padding: 1em 1.2em 0.7em;
+      border-bottom: 2px solid #e4dcf8;
+    }
+    .sb-header h2 { margin: 0; font-size: 1rem; color: #3d2c6e; }
+    .score-list { list-style: none; margin: 0; padding: 0.4em 0; }
+    .score-entry {
+      display: flex; align-items: center; gap: 0.5em;
+      padding: 0.55em 1.2em;
+      border-bottom: 1px solid #f5f0ff;
+      font-size: 0.85rem;
+    }
+    .score-entry:last-child { border-bottom: none; }
+    .score-entry .rank  { width: 1.6em; text-align: center; flex-shrink: 0; }
+    .score-entry .sname { flex: 1; color: #3d2c6e; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .score-entry .sval  { color: #9b72cf; font-weight: 700; flex-shrink: 0; }
+    .no-scores { padding: 1.2em; text-align: center; color: #b8a8e8; font-size: 0.85rem; font-style: italic; }
+
+    @media (max-width: 600px) {
+      .page { flex-direction: column; padding: 1em; }
+      .sidebar { width: 100%; }
+      .game-hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../2048/" class="active">2048</a></li>
+      <li><a href="../allergens/">Allergens</a></li>
+      <li><a href="../bucketlist/">Bucket List</a></li>
+      <li><a href="../calculator/">Calculator</a></li>
+      <li><a href="../flappy/">Flappy Rabbit</a></li>
+      <li><a href="../fragments/">Fragments</a></li>
+      <li><a href="../kaling/">Kaling</a></li>
+      <li><a href="../shop/">Shop</a></li>
+      <li><a href="../travel/">Travels</a></li>
+      <li><a href="../unix/">Unix</a></li>
+      <li><a href="../yelp/">Yelp</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <div class="game-wrap">
+      <div class="game-header">
+        <div class="game-title">2048</div>
+        <div class="score-boxes">
+          <div class="score-box"><div class="score-label">SCORE</div><div class="score-num" id="score">0</div></div>
+          <div class="score-box"><div class="score-label">BEST</div><div class="score-num" id="best">0</div></div>
+        </div>
+      </div>
+      <div class="game-controls">
+        <p class="game-hint">Arrow keys or swipe to move</p>
+        <button class="btn" id="new-game">New Game</button>
+      </div>
+      <div class="board-wrap">
+        <div class="board" id="board">
+          <div class="bg-grid">
+            <div class="bg-cell"></div><div class="bg-cell"></div>
+            <div class="bg-cell"></div><div class="bg-cell"></div>
+            <div class="bg-cell"></div><div class="bg-cell"></div>
+            <div class="bg-cell"></div><div class="bg-cell"></div>
+            <div class="bg-cell"></div><div class="bg-cell"></div>
+            <div class="bg-cell"></div><div class="bg-cell"></div>
+            <div class="bg-cell"></div><div class="bg-cell"></div>
+            <div class="bg-cell"></div><div class="bg-cell"></div>
+          </div>
+        </div>
+        <div class="end-panel" id="end-panel">
+          <div class="end-inner">
+            <div class="end-title" id="end-title">Game Over!</div>
+            <div class="end-score">Score: <strong id="end-score-val">0</strong></div>
+            <div class="save-row">
+              <input type="text" id="name-input" placeholder="Your name (optional)" maxlength="20" autocomplete="off">
+              <button class="btn" id="save-btn">Save</button>
+            </div>
+            <div class="end-actions">
+              <button class="btn" id="try-again">New Game</button>
+              <button class="btn ghost" id="keep-playing">Keep Playing</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="sb-header"><h2>🏆 High Scores</h2></div>
+      <ol class="score-list" id="score-list"></ol>
+    </aside>
+  </div>
+
+  <script>
+    const TILE_COLORS = {
+      2:    ['#f5f0ff','#3d2c6e'], 4:    ['#ede9f8','#3d2c6e'],
+      8:    ['#ddd6fe','#5b21b6'], 16:   ['#c4b5f4','#3d2c6e'],
+      32:   ['#a78bfa','#fff'],    64:   ['#9b72cf','#fff'],
+      128:  ['#7c5abf','#fff'],    256:  ['#6d28d9','#fff'],
+      512:  ['#ec4899','#fff'],    1024: ['#be185d','#fff'],
+      2048: ['#f59e0b','#fff'],
+    };
+
+    const LS_SCORES = '2048_scores';
+    const LS_BEST   = '2048_best';
+    const BOARD_EL  = document.getElementById('board');
+    const GAP = 10, PAD = 10;
+    const ANIM_MS = 120;
+
+    let tiles = [], nextId = 0;
+    let score = 0, gameOver = false, won = false, scoreSaved = false, animating = false;
+
+    // ── Sizing ────────────────────────────────────────────────────────────
+    function tileSize() {
+      return (BOARD_EL.clientWidth - 2 * PAD - 3 * GAP) / 4;
+    }
+
+    function tileXY(row, col) {
+      const s = tileSize();
+      return { x: PAD + col * (s + GAP), y: PAD + row * (s + GAP), s };
+    }
+
+    // ── Tile DOM ──────────────────────────────────────────────────────────
+    function applyTransform(el, row, col) {
+      const { x, y, s } = tileXY(row, col);
+      el.style.width  = s + 'px';
+      el.style.height = s + 'px';
+      el.style.setProperty('--base-transform', `translate(${x}px,${y}px)`);
+      el.style.transition = 'none';
+      el.style.transform  = `translate(${x}px,${y}px)`;
+    }
+
+    function styleEl(el, value) {
+      const [bg, color] = TILE_COLORS[Math.min(value, 2048)] || ['#312e81','#fff'];
+      el.style.background = bg;
+      el.style.color = color;
+      el.style.fontSize = value >= 1024 ? '1.35rem' : value >= 128 ? '1.65rem' : '2rem';
+      el.textContent = value;
+    }
+
+    function spawnTile(value, row, col, isNew = true) {
+      const el = document.createElement('div');
+      el.className = 'tile';
+      BOARD_EL.appendChild(el);
+      applyTransform(el, row, col);
+      styleEl(el, value);
+      if (isNew) {
+        el.classList.add('t-new');
+        el.addEventListener('animationend', () => el.classList.remove('t-new'), { once: true });
+      }
+      const tile = { id: nextId++, value, row, col, el };
+      tiles.push(tile);
+      return tile;
+    }
+
+    function removeTile(tile) {
+      tile.el.remove();
+      tiles = tiles.filter(t => t !== tile);
+    }
+
+    // ── Grid helpers ──────────────────────────────────────────────────────
+    function getGrid() {
+      const g = Array.from({length:4}, () => Array(4).fill(null));
+      tiles.forEach(t => { g[t.row][t.col] = t; });
+      return g;
+    }
+
+    function emptyPositions(grid) {
+      const e = [];
+      for (let r=0;r<4;r++) for (let c=0;c<4;c++) if (!grid[r][c]) e.push([r,c]);
+      return e;
+    }
+
+    function addRandomTile(grid) {
+      const e = emptyPositions(grid);
+      if (!e.length) return;
+      const [r,c] = e[Math.floor(Math.random() * e.length)];
+      const val = Math.random() < 0.9 ? 2 : 4;
+      const t = spawnTile(val, r, c, true);
+      grid[r][c] = t;
+    }
+
+    // ── Move logic ────────────────────────────────────────────────────────
+    function computeMove(grid, dir) {
+      const movements = []; // { tile, toRow, toCol }
+      const merges    = []; // { primary, shadow, newVal }
+      const newGrid   = Array.from({length:4}, () => Array(4).fill(null));
+      let moved = false;
+
+      // Strip positions in slide order (index 0 = destination end)
+      function stripPositions(i) {
+        if (dir === 'left')  return [[i,0],[i,1],[i,2],[i,3]];
+        if (dir === 'right') return [[i,3],[i,2],[i,1],[i,0]];
+        if (dir === 'up')    return [[0,i],[1,i],[2,i],[3,i]];
+        if (dir === 'down')  return [[3,i],[2,i],[1,i],[0,i]];
+      }
+
+      for (let i = 0; i < 4; i++) {
+        const pos = stripPositions(i);
+        const strip = pos.map(([r,c]) => grid[r][c]).filter(Boolean);
+        let ri = 0, j = 0;
+        while (j < strip.length) {
+          const [toR, toC] = pos[ri];
+          if (j+1 < strip.length && strip[j].value === strip[j+1].value) {
+            const newVal = strip[j].value * 2;
+            score += newVal;
+            if (newVal === 2048) won = true;
+            movements.push({ tile: strip[j],   toRow: toR, toCol: toC });
+            movements.push({ tile: strip[j+1], toRow: toR, toCol: toC });
+            merges.push({ primary: strip[j], shadow: strip[j+1], newVal });
+            newGrid[toR][toC] = strip[j];
+            moved = true;
+            j += 2;
+          } else {
+            movements.push({ tile: strip[j], toRow: toR, toCol: toC });
+            newGrid[toR][toC] = strip[j];
+            if (strip[j].row !== toR || strip[j].col !== toC) moved = true;
+            j++;
+          }
+          ri++;
+        }
+      }
+      return { moved, movements, merges, newGrid };
+    }
+
+    function isGameOver(grid) {
+      if (emptyPositions(grid).length) return false;
+      for (let r=0;r<4;r++) for (let c=0;c<4;c++) {
+        if (c<3 && grid[r][c]?.value === grid[r][c+1]?.value) return false;
+        if (r<3 && grid[r][c]?.value === grid[r+1][c]?.value) return false;
+      }
+      return true;
+    }
+
+    // ── Main move ─────────────────────────────────────────────────────────
+    function move(dir) {
+      if (animating || gameOver) return;
+      const grid = getGrid();
+      const { moved, movements, merges, newGrid } = computeMove(grid, dir);
+      if (!moved) return;
+
+      animating = true;
+
+      // Phase 1: enable transitions — clear inline 'none' override, add .moving class
+      movements.forEach(({ tile }) => {
+        tile.el.classList.remove('t-new');       // cancel any in-progress appear animation
+        tile.el.style.removeProperty('transition'); // inline 'none' was blocking transitions
+        tile.el.classList.add('moving');
+      });
+
+      // Single reflow: browser commits current positions with transitions now active
+      BOARD_EL.getBoundingClientRect();
+
+      // Phase 2: set new positions — CSS transition fires for each tile
+      movements.forEach(({ tile, toRow, toCol }) => {
+        tile.row = toRow; tile.col = toCol;
+        const { x, y, s } = tileXY(toRow, toCol);
+        tile.el.style.width  = s + 'px';
+        tile.el.style.height = s + 'px';
+        tile.el.style.setProperty('--base-transform', `translate(${x}px,${y}px)`);
+        tile.el.style.transform = `translate(${x}px,${y}px)`;
+      });
+
+      setTimeout(() => {
+        // Clean up: remove .moving, re-lock transition so next move starts clean
+        movements.forEach(({ tile }) => {
+          tile.el.classList.remove('moving');
+          tile.el.style.transition = 'none';
+        });
+
+        // Handle merges: upgrade primary tile value + pop animation
+        merges.forEach(({ primary, shadow, newVal }) => {
+          primary.value = newVal;
+          styleEl(primary.el, newVal);
+          primary.el.classList.remove('t-merge');
+          void primary.el.offsetWidth;
+          primary.el.classList.add('t-merge');
+          primary.el.addEventListener('animationend', () => primary.el.classList.remove('t-merge'), { once: true });
+          removeTile(shadow);
+        });
+
+        addRandomTile(newGrid);
+        updateScore();
+        if (isGameOver(getGrid())) gameOver = true;
+        animating = false;
+        if (gameOver || (won && !scoreSaved)) setTimeout(showEndPanel, 150);
+      }, ANIM_MS + 20);
+    }
+
+    // ── Score ─────────────────────────────────────────────────────────────
+    function updateScore() {
+      document.getElementById('score').textContent = score.toLocaleString();
+      const prev = parseInt(localStorage.getItem(LS_BEST) || '0');
+      const best = Math.max(score, prev);
+      localStorage.setItem(LS_BEST, best);
+      document.getElementById('best').textContent = best.toLocaleString();
+    }
+
+    // ── New game ──────────────────────────────────────────────────────────
+    function newGame() {
+      tiles.forEach(t => t.el.remove());
+      tiles = [];
+      score = 0; gameOver = false; won = false; scoreSaved = false; animating = false;
+      document.getElementById('end-panel').classList.remove('show');
+      document.getElementById('save-btn').textContent = 'Save';
+      document.getElementById('save-btn').disabled = false;
+      document.getElementById('name-input').value = '';
+
+      const grid = Array.from({length:4}, () => Array(4).fill(null));
+      addRandomTile(grid); addRandomTile(grid);
+      updateScore();
+    }
+
+    // ── End panel ─────────────────────────────────────────────────────────
+    function showEndPanel() {
+      document.getElementById('end-title').textContent = won ? '🎉 You Won!' : 'Game Over!';
+      document.getElementById('end-score-val').textContent = score.toLocaleString();
+      document.getElementById('keep-playing').style.display = won ? '' : 'none';
+      document.getElementById('end-panel').classList.add('show');
+    }
+
+    // ── Leaderboard ───────────────────────────────────────────────────────
+    function getScores() {
+      try { return JSON.parse(localStorage.getItem(LS_SCORES) || '[]'); } catch { return []; }
+    }
+
+    function saveScore() {
+      if (scoreSaved) return;
+      const name = document.getElementById('name-input').value.trim() || 'Anonymous';
+      const scores = getScores();
+      scores.push({ name, score, date: new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) });
+      scores.sort((a,b) => b.score - a.score);
+      localStorage.setItem(LS_SCORES, JSON.stringify(scores.slice(0,10)));
+      scoreSaved = true;
+      document.getElementById('save-btn').textContent = '✓ Saved';
+      document.getElementById('save-btn').disabled = true;
+      renderLeaderboard();
+    }
+
+    function renderLeaderboard() {
+      const scores = getScores();
+      const list = document.getElementById('score-list');
+      if (!scores.length) {
+        list.innerHTML = '<li class="no-scores">Play a game to set a score!</li>';
+        return;
+      }
+      const medals = ['🥇','🥈','🥉'];
+      list.innerHTML = scores.map((s,i) => `
+        <li class="score-entry">
+          <span class="rank">${medals[i] || (i+1)}</span>
+          <span class="sname">${s.name}</span>
+          <span class="sval">${s.score.toLocaleString()}</span>
+        </li>`).join('');
+    }
+
+    // ── Resize: reposition tiles without animation ────────────────────────
+    function reposition() {
+      tiles.forEach(t => applyTransform(t.el, t.row, t.col));
+    }
+    window.addEventListener('resize', reposition);
+
+    // ── Input ─────────────────────────────────────────────────────────────
+    const KEY_MAP = { ArrowLeft:'left', ArrowRight:'right', ArrowUp:'up', ArrowDown:'down' };
+    document.addEventListener('keydown', e => {
+      if (KEY_MAP[e.key]) { e.preventDefault(); move(KEY_MAP[e.key]); }
+    });
+
+    let touch0 = null;
+    BOARD_EL.addEventListener('touchstart', e => { touch0 = [e.touches[0].clientX, e.touches[0].clientY]; }, {passive:true});
+    BOARD_EL.addEventListener('touchend', e => {
+      if (!touch0) return;
+      const dx = e.changedTouches[0].clientX - touch0[0];
+      const dy = e.changedTouches[0].clientY - touch0[1];
+      touch0 = null;
+      if (Math.max(Math.abs(dx), Math.abs(dy)) < 20) return;
+      move(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
+    });
+
+    document.getElementById('new-game').addEventListener('click', newGame);
+    document.getElementById('try-again').addEventListener('click', newGame);
+    document.getElementById('save-btn').addEventListener('click', saveScore);
+    document.getElementById('name-input').addEventListener('keydown', e => { if (e.key === 'Enter') saveScore(); });
+    document.getElementById('keep-playing').addEventListener('click', () => {
+      won = false; scoreSaved = true;
+      document.getElementById('end-panel').classList.remove('show');
+    });
+
+    newGame();
+    renderLeaderboard();
+  </script>
+</body>
+</html>

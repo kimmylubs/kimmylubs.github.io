@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yelp Reviews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <nav>
+                <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../2048/">2048</a></li>
+      <li><a href="../allergens/">Allergens</a></li>
+      <li><a href="../bucketlist/">Bucket List</a></li>
+      <li><a href="../calculator/">Calculator</a></li>
+      <li><a href="../flappy/">Flappy Rabbit</a></li>
+      <li><a href="../fragments/">Fragments</a></li>
+      <li><a href="../kaling/">Kaling</a></li>
+      <li><a href="../shop/">Shop</a></li>
+      <li><a href="../travel/">Travels</a></li>
+      <li><a href="../unix/">Unix</a></li>
+      <li><a href="../yelp/" class="active">Yelp</a></li>
+    </ul>
+  </nav>
+
+  <div class="yelp-layout">
+    <aside class="review-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>My Reviews</h2>
+        <div style="display:flex;align-items:center;gap:0.5em">
+          <span class="review-count" id="review-count">—</span>
+          <button class="refresh-btn" id="refresh-btn" title="Re-scrape Yelp" onclick="rescrape()">↻</button>
+        </div>
+      </div>
+      <div id="loading" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading your reviews…</p>
+      </div>
+      <div id="error-state" class="error-state" style="display:none">
+        <p id="error-msg"></p>
+        <a class="import-cta" href="import.html">Import reviews →</a>
+        <button style="margin-top:0.5em;font-size:0.8rem" onclick="loadReviews()">Retry</button>
+      </div>
+      <ul class="review-list" id="review-list"></ul>
+    </aside>
+    <div id="map"></div>
+  </div>
+
+  <div id="detail-panel" class="detail-panel" style="display:none">
+    <button class="detail-close" onclick="closeDetail()">✕</button>
+    <div class="detail-stars" id="detail-stars"></div>
+    <h3 id="detail-name"></h3>
+    <p class="detail-address" id="detail-address"></p>
+    <p class="detail-date" id="detail-date"></p>
+    <p class="detail-text" id="detail-text"></p>
+    <a class="detail-link" id="detail-link" target="_blank">View on Yelp ↗</a>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

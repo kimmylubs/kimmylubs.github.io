@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Import Yelp Reviews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .import-wrap { max-width: 680px; margin: 2em auto; padding: 0 1em; }
+    .step { background: rgba(255,255,255,0.85); border-radius: 16px; padding: 1.5em; margin-bottom: 1.2em; box-shadow: 0 4px 16px rgba(155,114,207,0.14); border: 2px solid #e4dcf8; }
+    .step h3 { margin: 0 0 0.5em; color: #3d2c6e; display: flex; align-items: center; gap: 0.5em; }
+    .step-num { background: linear-gradient(135deg, #c4b5f4, #9b72cf); color: #fff; border-radius: 50%; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; flex-shrink: 0; }
+    .bookmarklet-btn { display: inline-block; background: linear-gradient(135deg, #d32323, #c01c1c); color: #fff; padding: 0.6em 1.4em; border-radius: 20px; font-weight: 700; text-decoration: none; box-shadow: 0 4px 12px rgba(211,35,35,0.3); font-size: 1rem; cursor: grab; border: none; font-family: 'Nunito', sans-serif; }
+    .bookmarklet-btn:hover { opacity: 0.88; }
+    code { background: #f0ecff; padding: 0.2em 0.5em; border-radius: 6px; font-size: 0.88rem; color: #3d2c6e; }
+    .upload-area { border: 2px dashed #c4b5f4; border-radius: 12px; padding: 2em; text-align: center; cursor: pointer; transition: background 0.2s; }
+    .upload-area:hover { background: #f5f0ff; }
+    .upload-area input { display: none; }
+    .status { margin-top: 0.8em; font-weight: 700; color: #7c5abf; min-height: 1.5em; }
+    .back-link { display: inline-block; margin-bottom: 1em; color: #9b72cf; text-decoration: none; font-weight: 700; }
+    .back-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../allergens/">Allergens</a></li>
+      <li><a href="../calculator/">Calculator</a></li>
+      <li><a href="../fragments/">Fragments</a></li>
+      <li><a href="../kaling/">Kaling</a></li>
+      <li><a href="../travel/">Travels</a></li>
+      <li><a href="../unix/">Unix</a></li>
+      <li><a href="../yelp/" class="active">Yelp</a></li>
+    </ul>
+  </nav>
+
+  <div class="import-wrap">
+    <a href="index.html" class="back-link">← Back to map</a>
+    <h1 class="page-title" style="text-align:left;padding:0 0 0.5em">Import Yelp Reviews</h1>
+    <p style="color:#6b5b9e;margin-bottom:1.5em">Since Yelp blocks automated scraping, you can extract your own reviews by running a script while you're logged in. Follow the steps below:</p>
+
+    <div class="step">
+      <h3><span class="step-num">1</span> Drag the button to your bookmarks bar</h3>
+      <p style="color:#6b5b9e;margin-bottom:1em">Drag the button below into your browser's bookmarks bar. (Show bookmarks bar: <code>⌘⇧B</code> on Mac)</p>
+      <a class="bookmarklet-btn" id="bookmarklet" href="#">⭐ Extract Yelp Reviews</a>
+    </div>
+
+    <div class="step">
+      <h3><span class="step-num">2</span> Go to your Yelp reviews page</h3>
+      <p style="color:#6b5b9e">Visit: <code>https://www.yelp.com/user_details_reviews_self?userid=FKPUeSBvXP5vde2FSJOGow</code></p>
+    </div>
+
+    <div class="step">
+      <h3><span class="step-num">3</span> Click the bookmarklet</h3>
+      <p style="color:#6b5b9e">Click "Extract Yelp Reviews" in your bookmarks bar. A JSON file will download automatically.</p>
+    </div>
+
+    <div class="step">
+      <h3><span class="step-num">4</span> Upload the JSON here</h3>
+      <div class="upload-area" onclick="document.getElementById('file-input').click()">
+        <input type="file" id="file-input" accept=".json" onchange="importFile(event)">
+        <p style="color:#9b72cf;font-weight:700;margin:0">Click to select yelp-reviews.json</p>
+        <p style="color:#b8a8e8;font-size:0.85rem;margin:0.3em 0 0">or drag & drop</p>
+      </div>
+      <p class="status" id="status"></p>
+    </div>
+  </div>
+
+  <script>
+    // Build the bookmarklet
+    const bookmarkletCode = `(function(){
+      try {
+        var state = window.yelp && window.yelp.react_apollo_state;
+        if (!state) { alert('No Yelp data found. Make sure you are on a Yelp page.'); return; }
+        var reviewKeys = Object.keys(state).filter(function(k){ return k.startsWith('Review:'); });
+        var reviews = reviewKeys.map(function(rk) {
+          var r = state[rk];
+          var biz = r.business && r.business.__ref ? state[r.business.__ref] : null;
+          var locRef = biz && biz.location && biz.location.__ref;
+          var loc = locRef ? state[locRef] : null;
+          var addr = (loc && loc.address) || {};
+          var address = [addr.addressLine1, addr.city, addr.regionCode].filter(Boolean).join(', ');
+          var dateStr = (r.createdAt && r.createdAt.localDateTimeForBusiness) || '';
+          var date = dateStr ? new Date(dateStr).toLocaleDateString('en-US', {year:'numeric',month:'short',day:'numeric'}) : '';
+          return {
+            id: r.encid,
+            name: biz ? biz.name : 'Unknown',
+            alias: biz ? (biz.alias || '') : '',
+            rating: r.rating,
+            text: (r.text && r.text.full) ? r.text.full.replace(/&#x27;/g,"'") : '',
+            date: date,
+            address: address,
+            city: addr.city || '',
+            url: biz && biz.alias ? 'https://www.yelp.com/biz/' + biz.alias : ''
+          };
+        });
+        var blob = new Blob([JSON.stringify(reviews, null, 2)], {type: 'application/json'});
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'yelp-reviews.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        alert('Downloaded ' + reviews.length + ' reviews from this page! Scroll down to get more, then click again.');
+      } catch(e) { alert('Error: ' + e.message); }
+    })()`;
+
+    document.getElementById('bookmarklet').href = 'javascript:' + encodeURIComponent(bookmarkletCode);
+
+    // File import
+    function importFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async function(e) {
+        try {
+          const reviews = JSON.parse(e.target.result);
+          document.getElementById('status').textContent = `Uploading ${reviews.length} reviews...`;
+          const resp = await fetch('/api/import-reviews', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(reviews),
+          });
+          if (!resp.ok) throw new Error(await resp.text());
+          document.getElementById('status').textContent = `✓ Imported ${reviews.length} reviews successfully!`;
+          setTimeout(() => { window.location.href = 'index.html'; }, 1500);
+        } catch (err) {
+          document.getElementById('status').textContent = '✗ Error: ' + err.message;
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // Support drag & drop on upload area
+    const area = document.querySelector('.upload-area');
+    area.addEventListener('dragover', e => { e.preventDefault(); area.style.background = '#ede9f8'; });
+    area.addEventListener('dragleave', () => { area.style.background = ''; });
+    area.addEventListener('drop', e => {
+      e.preventDefault(); area.style.background = '';
+      const file = e.dataTransfer.files[0];
+      if (file) { const inp = document.getElementById('file-input'); const dt = new DataTransfer(); dt.items.add(file); inp.files = dt.files; importFile({ target: inp }); }
+    });
+  </script>
+</body>
+</html>

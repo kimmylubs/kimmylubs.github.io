@@ -1,52 +1,50 @@
-
 body {
-      background-color: #E6E6FA; /* Soft lilac background */
-  overflow: hidden; 
+  background-color: #ede9f8;
 }
 
-  
-form{
-  margin: 15px;
+.unix-card {
+  max-width: 480px;
+  margin: 2em auto;
 }
-h1{
-  margin: 15px;
+
+.unix-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
 }
-  nav {
-   background-color: #C8BFE7; /* Soft, darker lilac */
-    padding: 1em;
-    text-align: center;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
-  nav li {
-    margin: 0 1em;
-  }
-  
-  nav a {
-    color: #fff;
-    font-size: 20px;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  
-  nav a:hover {
-    color: #ccc;
-  }
-  
-  nav a.active {
-    color: #66d9ef;
-  }
-  
-  h4{
-    text-align: center;
-    font-size: 25px;
-    padding: 10px;
-    border-radius: 10px;
-  }
+
+.unix-card label {
+  font-weight: 700;
+  color: #3d2c6e;
+  font-size: 0.95rem;
+}
+
+.unix-card input {
+  width: 100%;
+}
+
+.unix-buttons {
+  display: flex;
+  gap: 0.8em;
+  margin-top: 0.5em;
+}
+
+.unix-buttons button {
+  flex: 1;
+}
+
+.unix-hint {
+  font-size: 0.8rem;
+  color: #9b72cf;
+  margin: 0;
+  font-style: italic;
+}
+
+.unix-result {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #3d2c6e;
+  text-align: center;
+  margin: 0.8em 0 0;
+  min-height: 1.5em;
+}

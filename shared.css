@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --bg: #ede9f8;
+  --nav-bg: #c4b5f4;
+  --nav-text: #3d2c6e;
+  --accent: #9b72cf;
+  --accent-dark: #7c5abf;
+  --text: #2d2050;
+  --text-light: #6b5b9e;
+  --card-bg: rgba(255, 255, 255, 0.75);
+  --card-shadow: 0 4px 20px rgba(155, 114, 207, 0.18);
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* ── Nav ── */
+nav {
+  background: linear-gradient(120deg, #c4b5f4 0%, #b8a8e8 60%, #d4baef 100%);
+  padding: 0.6em 1.5em;
+  box-shadow: 0 3px 12px rgba(100, 70, 180, 0.22);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 0.2em;
+  flex-wrap: wrap;
+}
+
+nav li { margin: 0; }
+
+nav a {
+  color: #3d2c6e;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  padding: 0.45em 1em;
+  border-radius: 20px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  display: block;
+  letter-spacing: 0.01em;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.55);
+  color: #1a0a3e;
+  transform: translateY(-1px);
+}
+
+nav a.active {
+  background: rgba(255, 255, 255, 0.75);
+  color: #1a0a3e;
+  box-shadow: 0 2px 8px rgba(100,70,180,0.18);
+}
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5 {
+  color: var(--nav-text);
+  font-weight: 800;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.4rem; }
+
+/* ── Buttons ── */
+button, .btn {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--nav-bg), var(--accent));
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5em 1.4em;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+  box-shadow: 0 2px 8px rgba(155, 114, 207, 0.3);
+}
+
+button:hover, .btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+/* ── Inputs ── */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"] {
+  font-family: 'Nunito', sans-serif;
+  border: 2px solid var(--nav-bg);
+  border-radius: var(--radius-sm);
+  padding: 0.45em 0.8em;
+  outline: none;
+  background: #fff;
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-size: 0.95rem;
+}
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(155, 114, 207, 0.2);
+}
+
+/* ── Cards ── */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: 1.5em;
+  backdrop-filter: blur(6px);
+}
+
+/* ── Page header ── */
+.page-title {
+  text-align: center;
+  padding: 1.5em 1em 0.5em;
+  font-size: 2rem;
+  color: var(--nav-text);
+}
+
+/* ── Yelp star colors ── */
+.stars-1 { color: #f00; }
+.stars-2 { color: #f56040; }
+.stars-3 { color: #f8a40a; }
+.stars-4 { color: #8bc400; }
+.stars-5 { color: #3dba4e; }

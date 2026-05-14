@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bucket List</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <nav>
+                <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../2048/">2048</a></li>
+      <li><a href="../allergens/">Allergens</a></li>
+      <li><a href="../bucketlist/" class="active">Bucket List</a></li>
+      <li><a href="../calculator/">Calculator</a></li>
+      <li><a href="../flappy/">Flappy Rabbit</a></li>
+      <li><a href="../fragments/">Fragments</a></li>
+      <li><a href="../kaling/">Kaling</a></li>
+      <li><a href="../shop/">Shop</a></li>
+      <li><a href="../travel/">Travels</a></li>
+      <li><a href="../unix/">Unix</a></li>
+      <li><a href="../yelp/">Yelp</a></li>
+    </ul>
+  </nav>
+
+  <div class="bl-layout">
+    <aside class="bl-sidebar">
+      <div class="bl-sidebar-header">
+        <h2>Places I've Been</h2>
+        <span class="bl-count" id="bl-count">0</span>
+      </div>
+
+
+      <div class="bl-filter" id="bl-filter"></div>
+
+      <ul class="bl-list" id="bl-list"></ul>
+
+      <div class="bl-add-form" id="bl-add-form" style="display:none">
+        <div class="autocomplete-wrap">
+          <div class="input-ghost" id="input-ghost"></div>
+          <input type="text" id="add-input" placeholder="Add a place…" autocomplete="off">
+          <ul class="autocomplete-dropdown" id="ac-dropdown"></ul>
+        </div>
+        <div class="year-row">
+          <select id="year-select"></select>
+          <button class="year-edit-btn" onclick="window.toggleYearEditor()">✎</button>
+        </div>
+        <button onclick="window.addPlace()">Add</button>
+      </div>
+
+      <div class="year-editor" id="year-editor" style="display:none">
+        <div id="year-editor-list"></div>
+        <div class="year-editor-add">
+          <input type="text" id="year-new-input" placeholder="New category…">
+          <button onclick="window.addYearOption()">+</button>
+        </div>
+      </div>
+    </aside>
+    <div id="map"></div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

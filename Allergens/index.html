@@ -3,23 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculator</title>
+  <title>Allergens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../shared.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <nav>
-    <ul>
+                <ul>
       <li><a href="../index.html">Home</a></li>
-      <!-- <li><a href="../allergen/">Allergens</a></li> -->
+      <li><a href="../2048/">2048</a></li>
+      <li><a href="../allergens/" class="active">Allergens</a></li>
+      <li><a href="../bucketlist/">Bucket List</a></li>
       <li><a href="../calculator/">Calculator</a></li>
+      <li><a href="../flappy/">Flappy Rabbit</a></li>
       <li><a href="../fragments/">Fragments</a></li>
-      <li><a href="../kaling/">kaling</a></li>
+      <li><a href="../kaling/">Kaling</a></li>
+      <li><a href="../shop/">Shop</a></li>
+      <li><a href="../travel/">Travels</a></li>
       <li><a href="../unix/">Unix</a></li>
-      <!-- <li><a href="../shop/">Shop</a></li> -->
+      <li><a href="../yelp/">Yelp</a></li>
     </ul>
   </nav>
-<div class="allergens">
-    <h1>Allergens</h1>
-</div>
+  <div class="allergens">
+    <h1 class="page-title">Allergens</h1>
+
+    <div class="dropdown-section" id="allergen-section">
+      <button class="dropdown-toggle" onclick="toggle('allergen-section')">
+        <span class="dropdown-label">Allergens</span>
+        <span class="dropdown-count" id="allergen-count"></span>
+        <span class="dropdown-arrow">▼</span>
+      </button>
+      <div class="dropdown-body">
+        <input type="text" id="allergen-search" class="search-input" placeholder="Search allergens…" autocomplete="off">
+        <ul id="allergen-results" class="result-list"></ul>
+      </div>
+    </div>
+
+    <div class="dropdown-section" id="product-section">
+      <button class="dropdown-toggle" onclick="toggle('product-section')">
+        <span class="dropdown-label">Products</span>
+        <span class="dropdown-count" id="product-count"></span>
+        <span class="dropdown-arrow">▼</span>
+      </button>
+      <div class="dropdown-body">
+        <input type="text" id="product-search" class="search-input" placeholder="Search products…" autocomplete="off">
+        <ul id="product-results" class="result-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
 </body>
 </html>
