@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooking</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../2048/">2048</a></li>
+      <li><a href="../allergens/">Allergens</a></li>
+      <li><a href="../bucketlist/">Bucket List</a></li>
+      <li><a href="../calculator/">Calculator</a></li>
+      <li><a href="../cooking/" class="active">Cooking</a></li>
+      <li><a href="../flappy/">Flappy Rabbit</a></li>
+      <li><a href="../fragments/">Fragments</a></li>
+      <li><a href="../kaling/">Kaling</a></li>
+      <li><a href="../memory/">Memory</a></li>
+      <li><a href="../pet/">Pet</a></li>
+      <li><a href="../shop/">Shop</a></li>
+      <li><a href="../travel/">Travels</a></li>
+      <li><a href="../unix/">Unix</a></li>
+      <li><a href="../yelp/">Yelp</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── MENU ── -->
+  <div class="screen active" id="screen-menu">
+    <h1 class="page-title">👩‍🍳 Cooking</h1>
+    <p class="page-sub">what are we making today?</p>
+    <div class="recipe-grid" id="recipe-grid"></div>
+  </div>
+
+  <!-- ── GAME ── -->
+  <div class="screen" id="screen-game">
+    <div class="game-wrap">
+      <div class="game-header">
+        <span class="step-counter" id="step-counter">Step 1 / 4</span>
+        <div class="step-bar"><div class="step-bar-fill" id="step-bar-fill"></div></div>
+        <span class="game-recipe-name" id="game-recipe-name"></span>
+      </div>
+      <p class="step-instruction" id="step-instruction"></p>
+      <div class="game-main">
+        <div id="game-area"></div>
+        <div class="mama-panel">
+          <span class="mama-char" id="mama-char">👩‍🍳</span>
+          <div class="mama-bubble" id="mama-msg">Let's cook!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── REACTION OVERLAY (outside screens so it layers over everything) ── -->
+  <div class="hidden" id="reaction-overlay">
+    <div class="reaction-card">
+      <div class="reaction-score" id="reaction-score">85</div>
+      <div class="reaction-label" id="reaction-label">Good!</div>
+      <p class="reaction-hint">tap to continue</p>
+    </div>
+  </div>
+
+  <!-- ── RESULT ── -->
+  <div class="screen" id="screen-result">
+    <div class="result-wrap">
+      <span class="result-dish" id="result-dish">🍕</span>
+      <h2 class="result-name" id="result-name"></h2>
+      <span class="result-grade" id="result-grade">A</span>
+      <p class="result-mama-msg" id="result-mama-msg"></p>
+      <div class="result-scores" id="result-scores"></div>
+      <div class="result-actions">
+        <button id="btn-again">Play Again</button>
+        <button id="btn-menu">← Menu</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
