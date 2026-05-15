@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../2048/">2048</a></li>
+      <li><a href="../allergens/">Allergens</a></li>
+      <li><a href="../bucketlist/">Bucket List</a></li>
+      <li><a href="../calculator/">Calculator</a></li>
+      <li><a href="../flappy/">Flappy Rabbit</a></li>
+      <li><a href="../fragments/">Fragments</a></li>
+      <li><a href="../kaling/">Kaling</a></li>
+      <li><a href="../memory/">Memory</a></li>
+      <li><a href="../pet/" class="active">Pet</a></li>
+      <li><a href="../shop/">Shop</a></li>
+      <li><a href="../travel/">Travels</a></li>
+      <li><a href="../unix/">Unix</a></li>
+      <li><a href="../yelp/">Yelp</a></li>
+    </ul>
+  </nav>
+
+  <h1 class="page-title">My Pet</h1>
+
+  <div class="pet-page">
+    <div class="pet-card card">
+      <!-- Bunny art -->
+      <div class="bunny-wrap">
+        <div class="bunny" id="bunny">
+          <div class="b-ears">
+            <div class="b-ear"><div class="b-ear-inner"></div></div>
+            <div class="b-ear"><div class="b-ear-inner"></div></div>
+          </div>
+          <div class="b-head">
+            <div class="b-eyes">
+              <div class="b-eye" id="eye-l"></div>
+              <div class="b-eye" id="eye-r"></div>
+            </div>
+            <div class="b-cheeks">
+              <div class="b-cheek"></div>
+              <div class="b-cheek"></div>
+            </div>
+            <div class="b-mouth" id="mouth"></div>
+          </div>
+          <div class="b-body">
+            <div class="b-tail"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Name -->
+      <div class="name-row">
+        <span id="pet-name-display" class="pet-name">Mochi</span>
+        <button class="icon-btn" id="rename-btn" title="Rename">✏️</button>
+      </div>
+      <div class="rename-row hidden" id="rename-row">
+        <input type="text" id="rename-input" maxlength="12" placeholder="New name...">
+        <button id="rename-save">Save</button>
+      </div>
+
+      <!-- Status message -->
+      <p class="pet-msg" id="pet-msg">hi there!</p>
+
+      <!-- Stats -->
+      <div class="stats">
+        <div class="stat-row">
+          <span class="stat-label">🍎 Food</span>
+          <div class="stat-bar"><div class="stat-fill food" id="bar-food"></div></div>
+          <span class="stat-val" id="val-food">80</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">✨ Happy</span>
+          <div class="stat-bar"><div class="stat-fill happy" id="bar-happy"></div></div>
+          <span class="stat-val" id="val-happy">70</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button id="btn-feed">🍎 Feed</button>
+        <button id="btn-play">🎀 Play</button>
+        <button id="btn-sleep">💤 Sleep</button>
+      </div>
+
+      <!-- Info -->
+      <p class="pet-info" id="pet-info"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

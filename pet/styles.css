@@ -1,0 +1,265 @@
+.pet-page {
+  display: flex;
+  justify-content: center;
+  padding: 1em 1em 3em;
+}
+
+.pet-card {
+  width: 100%;
+  max-width: 340px;
+  text-align: center;
+  padding: 2em 2em 1.8em;
+}
+
+/* ── Bunny art ── */
+.bunny-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.2em;
+}
+
+.bunny {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: idle 2.4s ease-in-out infinite;
+}
+
+@keyframes idle {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+.bunny.hungry {
+  animation: hungry-shake 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes hungry-shake {
+  from { transform: rotate(-5deg); }
+  to   { transform: rotate(5deg); }
+}
+
+.bunny.sleeping { animation: none; opacity: 0.8; }
+
+.b-ears {
+  display: flex;
+  gap: 22px;
+  margin-bottom: -6px;
+}
+
+.b-ear {
+  width: 20px;
+  height: 46px;
+  background: #fce4f0;
+  border-radius: 50% 50% 35% 35%;
+  display: flex;
+  justify-content: center;
+  padding-top: 7px;
+  box-shadow: 0 -1px 4px rgba(155,114,207,0.12);
+}
+
+.b-ear-inner {
+  width: 10px;
+  height: 28px;
+  background: #f4aecb;
+  border-radius: 50%;
+}
+
+.b-head {
+  width: 90px;
+  height: 82px;
+  background: #fff8fb;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 3px 14px rgba(155,114,207,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.b-eyes {
+  display: flex;
+  gap: 20px;
+  margin-top: 6px;
+}
+
+.b-eye {
+  width: 11px;
+  height: 11px;
+  background: #3d2c6e;
+  border-radius: 50%;
+  transition: height 0.3s, border-radius 0.3s;
+}
+
+.bunny.sleeping .b-eye {
+  height: 3px;
+  border-radius: 2px;
+}
+
+.bunny.starving .b-eye {
+  border-radius: 2px;
+  background: transparent;
+  box-shadow: inset 0 0 0 2px #3d2c6e;
+  transform: rotate(45deg);
+}
+
+.b-cheeks {
+  display: flex;
+  gap: 30px;
+  position: absolute;
+  top: 46px;
+}
+
+.b-cheek {
+  width: 18px;
+  height: 11px;
+  background: rgba(255, 150, 180, 0.38);
+  border-radius: 50%;
+}
+
+.b-mouth {
+  width: 22px;
+  height: 11px;
+  border-bottom: 3px solid #f4aecb;
+  border-radius: 0 0 50% 50%;
+  transition: border-radius 0.3s, border-color 0.3s;
+}
+
+.bunny.sad .b-mouth {
+  border-bottom: none;
+  border-top: 3px solid #f4aecb;
+  border-radius: 50% 50% 0 0;
+  margin-top: 8px;
+}
+
+.b-body {
+  width: 72px;
+  height: 54px;
+  background: #fff8fb;
+  border-radius: 50%;
+  margin-top: -10px;
+  box-shadow: 0 3px 12px rgba(155,114,207,0.14);
+  position: relative;
+}
+
+.b-tail {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  right: -6px;
+  top: 14px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+}
+
+/* ── Name ── */
+.name-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  margin-bottom: 0.2em;
+}
+
+.pet-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--nav-text);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.2em;
+  border-radius: 6px;
+  box-shadow: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.icon-btn:hover { opacity: 1; transform: none; }
+
+.rename-row {
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  margin-bottom: 0.5em;
+}
+
+.rename-row.hidden { display: none; }
+
+.rename-row input { width: 130px; }
+
+/* ── Status ── */
+.pet-msg {
+  color: var(--text-light);
+  font-style: italic;
+  margin: 0.4em 0 1.2em;
+  font-size: 0.95rem;
+  min-height: 1.4em;
+}
+
+/* ── Stats ── */
+.stats { margin-bottom: 1.4em; }
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  margin-bottom: 0.55em;
+}
+
+.stat-label {
+  width: 72px;
+  text-align: left;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.stat-bar {
+  flex: 1;
+  height: 10px;
+  background: #ede9f8;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.stat-fill {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.5s ease;
+}
+
+.stat-fill.food  { background: linear-gradient(90deg, #f4aecb, #f9758a); }
+.stat-fill.happy { background: linear-gradient(90deg, #b8a8e8, #9b72cf); }
+
+.stat-val {
+  width: 28px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-align: right;
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  gap: 0.6em;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.actions button { font-size: 0.9rem; padding: 0.5em 1em; }
+
+/* ── Info footer ── */
+.pet-info {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin: 0;
+}

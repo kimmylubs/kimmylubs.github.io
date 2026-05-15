@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop</title>
+  <title>Memory</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../shared.css">
@@ -20,16 +20,29 @@
       <li><a href="../flappy/">Flappy Rabbit</a></li>
       <li><a href="../fragments/">Fragments</a></li>
       <li><a href="../kaling/">Kaling</a></li>
-            <li><a href="../memory/">Memory</a></li>
+      <li><a href="../memory/" class="active">Memory</a></li>
       <li><a href="../pet/">Pet</a></li>
-      <li><a href="../shop/" class="active">Shop</a></li>
+      <li><a href="../shop/">Shop</a></li>
       <li><a href="../travel/">Travels</a></li>
       <li><a href="../unix/">Unix</a></li>
       <li><a href="../yelp/">Yelp</a></li>
     </ul>
   </nav>
-  <h1 class="page-title">Shop</h1>
-  <p style="text-align:center; color: var(--text-light);">shopping list owo</p>
+  <h1 class="page-title">Memory Match</h1>
+  <div class="game-bar">
+    <span class="stat">Moves: <strong id="moves">0</strong></span>
+    <button id="restart-btn">New Game</button>
+    <span class="stat">Time: <strong id="timer">0:00</strong></span>
+  </div>
+  <div class="board" id="board"></div>
+  <div class="win-overlay hidden" id="win-overlay">
+    <div class="win-card card">
+      <div class="win-stars" id="win-stars"></div>
+      <h2>you won! ♡</h2>
+      <p class="win-stats" id="win-stats"></p>
+      <button id="win-restart">Play Again</button>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
