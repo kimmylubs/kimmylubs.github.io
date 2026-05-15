@@ -3,7 +3,7 @@
     { href: '/',            label: 'Home' },
     { href: '/2048/',       label: '2048' },
     { href: '/allergens/',  label: 'Allergens' },
-    { href: '/bucketlist/', label: 'Bucket List' },
+    { href: '/bucketlist/', label: 'Traveled' },
     { href: '/calculator/', label: 'Calculator' },
     { href: '/cooking/',    label: 'Cooking' },
     { href: '/flappy/',     label: 'Flappy Rabbit' },
