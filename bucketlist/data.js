@@ -54,4 +54,8 @@ window.INITIAL_PLACES = [
   { id: 'si-lj',        name: 'Ljubljana, Slovenia',    lat: 46.0569,  lng: 14.5058,   year: '2025',  region: 'EU' },
   { id: 'hr-zagreb',    name: 'Zagreb, Croatia',        lat: 45.8150,  lng: 15.9819,   year: '2025',  region: 'EU' },
   { id: 'mt-valletta',  name: 'Valletta, Malta',        lat: 35.8989,  lng: 14.5145,   year: '2025',  region: 'EU' },
+
+  // 2026 – UK
+  { id: 'uk-leeds',     name: 'Leeds, UK',              lat: 53.8008,  lng: -1.5491,   year: '2026',  region: 'EU' },
+  { id: 'uk-hull',      name: 'Hull, UK',               lat: 53.7457,  lng: -0.3367,   year: '2026',  region: 'EU' },
 ];

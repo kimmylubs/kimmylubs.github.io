@@ -7,14 +7,14 @@
     { href: '/calculator/', label: 'Calculator' },
     { href: '/cooking/',    label: 'Cooking' },
     { href: '/flappy/',     label: 'Flappy Rabbit' },
-    { href: '/fragments/',  label: 'Fragments' },
-    { href: '/kaling/',     label: 'Kaling' },
+    // { href: '/fragments/',  label: 'Fragments' },
+    // { href: '/kaling/',     label: 'Kaling' },
     { href: '/memory/',     label: 'Memory' },
     { href: '/pet/',        label: 'Pet' },
     { href: '/shop/',       label: 'Shop' },
     { href: '/travel/',     label: 'Travels' },
     { href: '/unix/',       label: 'Unix' },
-    { href: '/yelp/',       label: 'Yelp' },
+    // { href: '/yelp/',       label: 'Yelp' },
   ];
 
   const path = location.pathname;

@@ -1,4 +1,4 @@
-export const itemList = [
+window.itemList = [
     "Decyl Glucoside",
     "Alkyl (c8,c10) Polyglycoside",
     "APG0810",

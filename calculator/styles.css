@@ -2,8 +2,17 @@ body {
   background-color: #ede9f8;
 }
 
+#calc-page {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 1.5em;
+  padding: 2.5em 1em;
+  flex-wrap: wrap;
+}
+
 #calculator {
-  margin: 3em auto;
+  margin: 0;
   background: rgba(255,255,255,0.8);
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(155,114,207,0.2);
@@ -75,4 +84,86 @@ body {
   background: linear-gradient(135deg, #9b72cf, #7c5abf) !important;
   color: #fff !important;
   border-color: #7c5abf !important;
+}
+
+/* ── History ── */
+#calc-history {
+  width: 280px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(155,114,207,0.2);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+  font-family: 'Nunito', sans-serif;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85em 1.2em;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #3d2c6e;
+  border-bottom: 2px solid #ede9f8;
+}
+
+.history-header button {
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  padding: 0.25em 0.7em;
+  border-radius: 8px;
+  border: 1.5px solid #c4b5f4;
+  background: #f0eaff;
+  color: #7c5abf;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.history-header button:hover { background: #e0d4f8; }
+
+#history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.65em 1.2em;
+  border-bottom: 1px solid #f0eaff;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.history-item:hover { background: #f5f0ff; }
+.history-item:last-child { border-bottom: none; }
+
+.history-expr {
+  font-size: 0.82rem;
+  color: #9b72cf;
+}
+
+.history-result {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #3d2c6e;
+  white-space: nowrap;
+}
+
+.history-empty {
+  text-align: center;
+  color: #c4b5f4;
+  padding: 2.5em 1em;
+  font-size: 0.88rem;
+}
+
+@media (max-width: 640px) {
+  #calc-history { width: 100%; max-width: 280px; }
 }

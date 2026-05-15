@@ -1,6 +1,3 @@
-import { itemList }    from './allergenList.js';
-import { ProductList } from './productList.js';
-
 function render(ul, items, query) {
   const filtered = (query.trim()
     ? items.filter(i => i.toLowerCase().includes(query.toLowerCase()))
@@ -27,8 +24,8 @@ function setupSection(sectionId, toggleId, searchId, resultsId, data) {
   search.addEventListener('input', () => render(results, data, search.value));
 }
 
-document.getElementById('allergen-count').textContent = itemList.length;
-document.getElementById('product-count').textContent  = ProductList.length;
+document.getElementById('allergen-count').textContent = window.itemList.length;
+document.getElementById('product-count').textContent  = window.ProductList.length;
 
-setupSection('allergen-section', 'allergen-toggle', 'allergen-search', 'allergen-results', itemList);
-setupSection('product-section',  'product-toggle',  'product-search',  'product-results',  ProductList);
+setupSection('allergen-section', 'allergen-toggle', 'allergen-search', 'allergen-results', window.itemList);
+setupSection('product-section',  'product-toggle',  'product-search',  'product-results',  window.ProductList);

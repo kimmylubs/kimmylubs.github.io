@@ -1,4 +1,4 @@
-export const ProductList = ["Eye Care Acuvue Multi-Purpose Solution (2022-Oct)",
+window.ProductList = ["Eye Care Acuvue Multi-Purpose Solution (2022-Oct)",
   "Eye Care Bio True Advance Cleaner (2022-Oct)",
   "Eye Care Boston Original Conditioning Solution (2022-Oct)",
   "Eye Care Boston Advance Comfort Formula Conditioning Solution (2022-Oct)",
