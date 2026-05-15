@@ -294,14 +294,16 @@ function onStepDone(raw) {
   mama(expr === 'wonderful' ? 'wonderful' : expr === 'bad' ? 'worried' : '', mamaText);
   overlay.classList.remove('hidden');
 
+  let advTimer = null;
   const advance = () => {
+    if (advTimer !== null) { clearTimeout(advTimer); advTimer = null; }
     overlay.classList.add('hidden');
     overlay.removeEventListener('click', advance);
     G.stepIdx++;
     G.stepIdx >= G.recipe.steps.length ? showResult() : runStep();
   };
   setTimeout(() => overlay.addEventListener('click', advance), 400);
-  setTimeout(advance, 2400);
+  advTimer = setTimeout(advance, 2400);
 }
 
 function showResult() {
