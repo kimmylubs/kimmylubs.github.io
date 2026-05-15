@@ -118,6 +118,46 @@ const BOOKS = [
       },
     ],
   },
+
+  {
+    id: 'poppins',
+    title: 'Mary Poppins',
+    emoji: '🌂',
+    coverColor: '#E3F2FD',
+    spineColor:  '#1565C0',
+    pages: [
+      {
+        scene: 's-poppins-arrive',
+        char:  '🌂',
+        text:  'On the windiest day Cherry Tree Lane\nhad ever seen, something extraordinary\nblow in.\n\nA nanny.\nWith a magic carpet bag.\nAnd a talking parrot umbrella.',
+      },
+      {
+        scene: 's-banks-home',
+        char:  '🏠',
+        text:  'Jane and Michael Banks had chased away\nevery nanny in London.\n\nBut this one looked down her nose, sniffed,\nand announced she was\n\npractically perfect in every way.',
+      },
+      {
+        scene: 's-sugar-spoon',
+        char:  '🥄',
+        text:  '"A spoonful of sugar\nhelps the medicine go down!"\n\nWith Mary Poppins, cleaning your room\nwas an adventure.\n\nTidying up was practically magic.\nBecause it was.',
+      },
+      {
+        scene: 's-chalk-world',
+        char:  '🎠',
+        text:  'Bert the pavement artist drew\nthe most wonderful chalk pictures.\n\nWith one magical leap — SPLASH —\nthey were inside!\n\nDancing penguins!\nCarousel horses!\nA whole world in the pavement!',
+      },
+      {
+        scene: 's-chimney-sweep',
+        char:  '🎩',
+        text:  '"Step in time!\nStep in time!"\n\nThe chimney sweeps danced\nacross every rooftop in London,\nsoot-covered and laughing,\nwhile the whole city sparkled\nfar below.',
+      },
+      {
+        scene: 's-poppins-farewell',
+        char:  '🌂',
+        text:  'The wind changed.\n\nMary Poppins quietly packed her bag,\ngave the children one last look,\nand floated up into the sky.\n\nSome magic doesn\'t stay forever.\n\nBut it never truly leaves. ♡',
+      },
+    ],
+  },
 ];
 
 // ── State ──────────────────────────────────────────────────────────────────
@@ -191,6 +231,8 @@ const ALL_SCENES = [
   's-twilight-magic','s-open-sky','s-golden-sunrise','s-warm-glow',
   's-cozy-indoor','s-little-house','s-moonlit',
   's-summer-garden','s-rainy-window','s-matcha-cafe','s-bakery',
+  's-poppins-arrive','s-banks-home','s-sugar-spoon',
+  's-chalk-world','s-chimney-sweep','s-poppins-farewell',
 ];
 
 function applyScene(page) {
