@@ -16,6 +16,14 @@
     "region": ""
   },
   {
+    "id": "nl-amsterdam-26",
+    "name": "Amsterdam, Netherlands",
+    "lat": 52.3676,
+    "lng": 4.9041,
+    "year": "2026",
+    "region": "EU"
+  },
+  {
     "id": "kr-seoul",
     "name": "Seoul, South Korea",
     "lat": 37.5665,

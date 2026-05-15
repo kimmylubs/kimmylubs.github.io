@@ -13,6 +13,13 @@
 <body>
   <script src="/nav.js"></script>
 
+  <div class="travel-tabs">
+    <button class="travel-tab active" data-tab="traveled">🗺 Traveled</button>
+    <button class="travel-tab" data-tab="itineraries">✈️ Itineraries</button>
+  </div>
+
+  <!-- ── Traveled Tab ── -->
+  <div class="tab-panel active" id="tab-traveled">
   <div class="bl-layout">
     <aside class="bl-sidebar">
       <div class="bl-sidebar-header">
@@ -48,6 +55,348 @@
     </aside>
     <div id="map"></div>
   </div>
+  </div><!-- end tab-traveled -->
+
+  <!-- ── Itineraries Tab ── -->
+  <div class="tab-panel" id="tab-itineraries">
+    <div class="itin-wrap">
+      <nav class="second-nav">
+        <ul>
+          <li><a href="#section1">Sofia</a></li>
+          <li><a href="#section2">Belgrade</a></li>
+          <li><a href="#section3">Bucharest</a></li>
+          <li><a href="#section4">Chișinău</a></li>
+          <li><a href="#section5">Kyiv</a></li>
+          <li><a href="#section6">Minsk</a></li>
+          <li><a href="#section7">Vilnius</a></li>
+          <li><a href="#section8">Riga</a></li>
+          <li><a href="#section9">Tallinn</a></li>
+          <li><a href="#section10">Warsaw</a></li>
+          <li><a href="#section11">Copenhagen</a></li>
+          <li><a href="#section12">Oslo</a></li>
+          <li><a href="#section13">Stockholm</a></li>
+          <li><a href="#section14">Helsinki</a></li>
+        </ul>
+      </nav>
+      <div class="itin-content">
+        <section id="section1">
+          <h1>Sofia, Bulgaria — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Start with breakfast at one of the cafés around <strong>Doctor's Garden</strong>, a lovely central park perfect for easing into the day.</li>
+            <li>Walk to the <strong>Alexander Nevsky Cathedral</strong>, one of the largest Orthodox cathedrals in the world — the gold domes are stunning in the morning light.</li>
+            <li>Browse the antique and art market in the square beside the cathedral for books, coins, and Soviet-era curiosities.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Head to the <strong>Ancient Serdica ruins</strong> beneath the city — Roman streets and mosaics preserved under glass in the metro area.</li>
+            <li>Lunch at a traditional <em>mehana</em> (tavern) — try <strong>shopska salata</strong>, <strong>banitsa</strong> (cheese pastry), or <strong>kavarma</strong> (slow-cooked meat stew).</li>
+            <li>Visit the <strong>National Historical Museum</strong> for a deep dive into Thracian, Byzantine, and Bulgarian history.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Take the gondola lift up <strong>Vitosha Mountain</strong> for panoramic views over the whole city — in summer, wildflowers cover the slopes.</li>
+            <li>Return to the <strong>Vitosha Boulevard</strong> pedestrian strip for coffee, shopping, and people-watching.</li>
+            <li>End with dinner near <strong>Ivan Vazov National Theatre</strong> — the illuminated neo-Baroque building is a perfect backdrop for an evening out.</li>
+          </ul>
+        </section>
+        <section id="section2">
+          <h1>Belgrade, Serbia — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Walk through <strong>Kalemegdan Fortress</strong> at the confluence of the Sava and Danube — ancient walls, cannons, and a sweeping river view.</li>
+            <li>Grab a <strong>burek</strong> and yoghurt from a local bakery to fuel up before exploring.</li>
+            <li>Stroll down <strong>Knez Mihailova Street</strong>, Belgrade's grand pedestrian boulevard lined with 19th-century buildings and street artists.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Explore <strong>Skadarlija</strong>, the bohemian quarter — cobblestone streets, ivy-covered restaurants, and traditional Serbian folk music at lunch.</li>
+            <li>Try <strong>ćevapi</strong>, <strong>pljeskavica</strong>, or a slow-roasted <strong>jagnjetina</strong> (lamb) at one of the <em>kafanas</em> here.</li>
+            <li>Visit the <strong>Nikola Tesla Museum</strong> for interactive exhibits on the genius who was born in nearby Serbia.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Cross to <strong>Zemun</strong>, a quieter district with Habsburg architecture and a lovely riverfront promenade.</li>
+            <li>Climb <strong>Gardoš Tower</strong> for views over the Danube and old Zemun rooftops.</li>
+            <li>Belgrade's nightlife starts late — find a floating <em>splavovi</em> (river barge club) or a wine bar and stay as long as you like.</li>
+          </ul>
+        </section>
+        <section id="section3">
+          <h1>Bucharest, Romania — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Begin at <strong>Piața Revoluției</strong>, the square where the 1989 revolution unfolded — a haunting and important piece of history.</li>
+            <li>Visit the <strong>Romanian Athenaeum</strong>, a stunning neoclassical concert hall — even if there's no concert, the interior is breathtaking.</li>
+            <li>Walk through <strong>Cișmigiu Gardens</strong> for a quiet, tree-lined breakfast with a lake view.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Tour the <strong>Palace of the Parliament</strong> — the world's heaviest building, built by Ceaușescu, is jaw-dropping in its excess and scale.</li>
+            <li>Lunch in the <strong>Floreasca</strong> or <strong>Dorobanți</strong> neighborhoods — trendy cafés with excellent Romanian and international food.</li>
+            <li>Try <strong>sarmale</strong> (stuffed cabbage rolls), <strong>mămăligă</strong> (polenta), or <strong>mici</strong> (grilled minced meat rolls).</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Wander the <strong>Old Town (Lipscani)</strong> district — medieval streets, street art, and some of the best coffee shops in the city.</li>
+            <li>Visit <strong>Curtea Veche</strong>, the remains of the old princely court dating to the 15th century.</li>
+            <li>End with drinks on a rooftop bar overlooking the old town — Bucharest's skyline at dusk is surprisingly beautiful.</li>
+          </ul>
+        </section>
+        <section id="section4">
+          <h1>Chișinău, Moldova — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Start at <strong>Central Market</strong> for fresh produce, homemade cheese, pickled everything, and a very local breakfast atmosphere.</li>
+            <li>Walk up <strong>Stefan cel Mare Boulevard</strong>, the leafy main avenue lined with Soviet and contemporary architecture.</li>
+            <li>Visit <strong>Parcul Central</strong> and the <strong>Catedrala Nașterii Domnului</strong> beside it — the cathedral is striking and serene in the morning.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Head to a <strong>winery or wine cellar visit</strong> — Moldova is one of Europe's largest wine producers. <strong>Cricova</strong> or <strong>Mileștii Mici</strong> are extraordinary underground wine cities.</li>
+            <li>Lunch at a traditional restaurant — try <strong>plăcinte</strong> (stuffed pastries), <strong>zeamă</strong> (chicken noodle soup), or <strong>mămăligă cu brânză</strong>.</li>
+            <li>Visit the <strong>National Museum of History of Moldova</strong> for context on this small, fascinating country.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Explore the <strong>Parcul Dendrariu</strong> botanical garden — a peaceful escape with hundreds of plant species.</li>
+            <li>Browse <strong>Piața Centrală</strong> for local crafts, embroidered textiles, and hand-painted ceramics.</li>
+            <li>Evening wine-tasting at a local restaurant — Moldovan wines punch well above their international reputation.</li>
+          </ul>
+        </section>
+        <section id="section5">
+          <h1>Kyiv, Ukraine — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Visit <strong>Kyivo-Pecherska Lavra</strong> (Monastery of the Caves) — an 11th-century monastery with golden-domed churches and underground catacombs.</li>
+            <li>Walk along the <strong>Dnipro River</strong> embankment as the city wakes up and the golden domes catch the morning sun.</li>
+            <li>Breakfast of <strong>varenyky</strong> (dumplings) with sour cream and berries at a traditional Ukrainian café.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Explore <strong>Andriyivskyy Descent</strong>, a winding cobblestone street full of artists, galleries, antique dealers, and street performers.</li>
+            <li>Visit <strong>St. Michael's Golden-Domed Monastery</strong> and <strong>St. Sophia's Cathedral</strong> — both are UNESCO-listed and architecturally stunning.</li>
+            <li>Lunch in <strong>Podil</strong>, the historic lower city — try <strong>borscht</strong>, <strong>holubtsi</strong> (stuffed cabbage), or <strong>chicken Kyiv</strong> where it was invented.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Walk the <strong>Khreshchatyk</strong> boulevard on a weekend when it's pedestrianised and full of life.</li>
+            <li>Visit <strong>Maidan Nezalezhnosti</strong>, Independence Square — a powerful and moving place given its significance in Ukrainian history.</li>
+            <li>End the day at a rooftop bar in Podil watching the city lights reflect off the Dnipro.</li>
+          </ul>
+        </section>
+        <section id="section6">
+          <h1>Minsk, Belarus — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Walk <strong>Independence Avenue</strong> — one of Europe's finest examples of Stalinist architecture, grand and perfectly preserved.</li>
+            <li>Visit <strong>Trinity Hill</strong>, an 18th-century restored district with colourful houses by the Svislach River.</li>
+            <li>Breakfast at a local café — <strong>draniki</strong> (potato pancakes) with sour cream are a Belarusian staple.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Explore <strong>Oktyabrskaya Street</strong>, Minsk's street art district — the contrast of Soviet murals and modern graffiti is striking.</li>
+            <li>Visit the <strong>Great Patriotic War Museum</strong>, one of the most moving WWII museums in Europe.</li>
+            <li>Lunch at a traditional Belarusian restaurant — try <strong>machanka</strong> (thick pork stew with pancakes) or <strong>cold beet soup</strong>.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Visit the <strong>Island of Tears</strong>, a small memorial island in the Svislach River dedicated to Afghan War soldiers.</li>
+            <li>Explore <strong>Gorky Park</strong> and the riverfront — the Soviet-era funfair rides and river views are charmingly retro.</li>
+            <li>Dinner near <strong>Ploshcha Niezalieżnasci</strong> (Independence Square), watching the evening crowds in one of the safest and cleanest cities in Europe.</li>
+          </ul>
+        </section>
+        <section id="section7">
+          <h1>Vilnius, Lithuania — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Climb <strong>Gediminas Hill</strong> at sunrise for a panoramic view of the Baltic city skyline and the Neris River below.</li>
+            <li>Explore <strong>Vilnius Old Town</strong>, a UNESCO World Heritage Site — one of the largest and best-preserved old towns in Northern Europe.</li>
+            <li>Breakfast of <strong>šaltibarščiai</strong> (cold beetroot soup with boiled egg) or warm pastries at a bakery off Cathedral Square.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Wander through <strong>Užupis</strong>, a self-declared artists' republic with its own tongue-in-cheek constitution posted on the wall in 37 languages.</li>
+            <li>Visit the <strong>Church of St. Anne</strong>, a masterpiece of Gothic brickwork that allegedly made Napoleon want to carry it back to Paris.</li>
+            <li>Lunch on <strong>Pilies Street</strong> — try <strong>cepelinai</strong> (potato dumplings stuffed with meat), Lithuania's national dish.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Visit the <strong>KGB Museum</strong> — the preserved cells and interrogation rooms are sobering and essential.</li>
+            <li>Browse the artisan shops and amber jewellery boutiques of the old town.</li>
+            <li>End with craft beer and dinner in <strong>Užupis</strong> as the evening lights up the riverside.</li>
+          </ul>
+        </section>
+        <section id="section8">
+          <h1>Riga, Latvia — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Head straight to the <strong>Central Market</strong>, housed in repurposed Zeppelin hangars — the biggest market in Europe and a sensory overload in the best way.</li>
+            <li>Pick up <strong>rye bread</strong>, smoked fish, and Latvian dairy products for an instant local breakfast.</li>
+            <li>Walk to <strong>Art Nouveau District</strong> — Riga has the highest concentration of Art Nouveau buildings in the world.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Explore <strong>Riga Old Town</strong> — the medieval core is compact and beautiful, with the House of the Blackheads as its showpiece.</li>
+            <li>Climb <strong>St. Peter's Church tower</strong> for a 360° view of the old town's copper rooftops and the Daugava River.</li>
+            <li>Lunch at a modern Latvian restaurant — try <strong>grey peas with smoked bacon</strong>, <strong>mushroom soup</strong>, or smoked eel.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Visit the <strong>Latvian National Museum of Art</strong> for 19th and 20th-century Baltic and European paintings.</li>
+            <li>Stroll along the <strong>city canal</strong> and through the green parks between the old town and the art nouveau district.</li>
+            <li>End with a drink at a bar in the old town or catch live folk music — Riga has a strong choral and folk tradition.</li>
+          </ul>
+        </section>
+        <section id="section9">
+          <h1>Tallinn, Estonia — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Arrive early at <strong>Toompea Hill</strong> — the castle, churches, and lookout points over the terracotta rooftops are best before the crowds arrive.</li>
+            <li>Visit <strong>Alexander Nevsky Cathedral</strong> and the <strong>Dome Church</strong> for contrasting Orthodox and Lutheran architecture.</li>
+            <li>Breakfast of <strong>black rye bread</strong>, herring, and local cheese at a café in the old town.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Descend into <strong>Lower Town</strong> and explore <strong>Town Hall Square</strong>, one of the best-preserved medieval squares in Northern Europe.</li>
+            <li>Visit the <strong>Estonian Open Air Museum</strong> for reconstructed farmsteads, windmills, and coastal cottages from different centuries.</li>
+            <li>Lunch at a medieval-themed restaurant in the old town — try <strong>elk stew</strong>, <strong>sauerkraut soup</strong>, or mead-braised pork.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Walk the remarkably intact <strong>medieval city walls</strong> and climb a watchtower for views over the old town.</li>
+            <li>Explore <strong>Telliskivi Creative City</strong>, a repurposed industrial complex full of independent shops, food stalls, and studios.</li>
+            <li>Evening at a wine bar or one of Tallinn's excellent jazz clubs — the old town streets feel truly magical after dark.</li>
+          </ul>
+        </section>
+        <section id="section10">
+          <h1>Warsaw, Poland — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Begin at the <strong>Royal Castle</strong> on Castle Square — a symbol of Polish resilience, rebuilt after being deliberately destroyed in WWII.</li>
+            <li>Walk through the <strong>Old Town</strong>, faithfully reconstructed from 18th-century paintings and architect records — a UNESCO miracle of restoration.</li>
+            <li>Breakfast of <strong>zapiekanka</strong> (open-faced baguette) or fresh pastries near the market square.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Visit the <strong>POLIN Museum of the History of Polish Jews</strong> — one of the most thoughtfully designed museums in Europe.</li>
+            <li>Walk through <strong>Łazienki Park</strong>, a vast royal garden with a lake, peacocks, and the Palace on the Isle.</li>
+            <li>Lunch of <strong>pierogi</strong>, <strong>bigos</strong> (hunter's stew), or <strong>żurek</strong> (sour rye soup with egg and sausage).</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Visit the <strong>Warsaw Uprising Museum</strong> — an immersive, emotional tribute to the 1944 resistance.</li>
+            <li>Explore <strong>Praga</strong>, the east-bank district full of street art, vintage shops, and a thriving creative scene.</li>
+            <li>Dinner in Praga or near <strong>Nowy Świat</strong> — Warsaw's food scene is world-class.</li>
+          </ul>
+        </section>
+        <section id="section11">
+          <h1>Copenhagen, Denmark — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Rent a bike — Copenhagen is the world's most bike-friendly city and it's the fastest way to see everything.</li>
+            <li>Cycle to <strong>Nyhavn</strong> at sunrise when the colourful canal houses reflect in still water and the tourist crowds haven't arrived.</li>
+            <li>Breakfast of <strong>smørrebrød</strong> (open sandwiches) or <strong>wienerbrød</strong> (Danish pastry) at a bakery in the Meatpacking District.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Visit <strong>Tivoli Gardens</strong> — one of the world's oldest amusement parks, beautiful even outside of rides.</li>
+            <li>Walk through <strong>Strøget</strong>, one of Europe's longest pedestrian shopping streets, to <strong>Kongens Nytorv</strong>.</li>
+            <li>Lunch at the <strong>Torvehallerne</strong> food market — fresh seafood, smoked salmon, Nordic open sandwiches, and excellent coffee.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Visit <strong>Christiansborg Palace</strong> and climb the free tower for the best city views in Copenhagen.</li>
+            <li>Explore <strong>Freetown Christiania</strong>, the semi-autonomous neighborhood with its own rules, murals, and alternative culture.</li>
+            <li>Dinner in <strong>Vesterbro</strong> — the area has transformed into Copenhagen's hippest food and bar neighborhood.</li>
+          </ul>
+        </section>
+        <section id="section12">
+          <h1>Oslo, Norway — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Start at the <strong>Viking Ship Museum</strong> on the Bygdøy peninsula — three remarkably preserved 9th-century longships and burial treasures.</li>
+            <li>Walk along the <strong>Aker Brygge</strong> waterfront, where old docks have become a lively promenade of cafés and seafood stalls.</li>
+            <li>Breakfast of <strong>frokost</strong> (Norwegian breakfast) with gravlaks, brown cheese, and rye crispbread at a harbourfront café.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Visit <strong>The National Museum</strong> — home to Munch's <em>The Scream</em> and Norway's finest collection of art and design.</li>
+            <li>Walk up to the <strong>Royal Palace</strong> and through <strong>Slottsparken</strong> for a picnic on the lawn if the weather allows.</li>
+            <li>Lunch at the <strong>Mathallen</strong> food hall — Norwegian fish soup, smoked reindeer, and artisan cheeses from across the country.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Take the <strong>Holmenkollen</strong> metro line up into the forested hills for views over the Oslo Fjord and the famous ski jump.</li>
+            <li>Return and explore <strong>Grünerløkka</strong>, Oslo's boho neighborhood with vintage shops, independent coffee roasters, and record stores.</li>
+            <li>Dinner with a view — Oslo's elevated restaurants with fjord panoramas are worth it for a special evening.</li>
+          </ul>
+        </section>
+        <section id="section13">
+          <h1>Stockholm, Sweden — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Begin in <strong>Gamla Stan</strong> (Old Town) — one of the largest and best-preserved medieval city centres in Europe, built on a small island.</li>
+            <li>Visit the <strong>Royal Palace</strong> and watch the Changing of the Guard — more understated than London's but perfectly Scandinavian.</li>
+            <li>Breakfast of <strong>kanelbullar</strong> (cinnamon buns) and coffee at a <em>fika</em> café in the old town's winding lanes.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Visit the <strong>Vasa Museum</strong> on Djurgården island — a perfectly preserved 17th-century warship that sank on its maiden voyage.</li>
+            <li>Walk through <strong>Djurgården</strong>, a royal nature reserve with museums, gardens, and waterfront paths all within the city.</li>
+            <li>Lunch of <strong>Swedish meatballs</strong>, <strong>gravlax</strong>, or herring with crispbread at a museum café or nearby restaurant.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Explore <strong>Södermalm</strong>, Stockholm's coolest neighborhood — vintage boutiques, creative studios, and rooftop views over the city's waterways.</li>
+            <li>Visit <strong>Fotografiska</strong>, a world-class contemporary photography museum in a beautiful harbourfront building.</li>
+            <li>Evening drinks at a rooftop bar in Södermalm — Stockholm's water-threaded skyline at dusk is one of Europe's most beautiful.</li>
+          </ul>
+        </section>
+        <section id="section14">
+          <h1>Helsinki, Finland — One Day Itinerary</h1>
+          <div class="time-label">Morning</div>
+          <ul>
+            <li>Take a ferry to <strong>Suomenlinna</strong>, an 18th-century sea fortress on a cluster of islands — a UNESCO World Heritage Site with cannons, tunnels, and harbour views.</li>
+            <li>Return to the city and walk to <strong>Market Square (Kauppatori)</strong>, where vendors sell fresh salmon, berries, and reindeer hide right by the water.</li>
+            <li>Breakfast of <strong>karjalanpiirakka</strong> (Karelian pasties with egg butter) from a market stall.</li>
+          </ul>
+          <div class="time-label">Midday</div>
+          <ul>
+            <li>Visit <strong>Helsinki Cathedral</strong> in Senate Square — the neoclassical white cathedral and its grand steps are iconic Finland.</li>
+            <li>Explore the <strong>Temppeliaukio Church</strong> (Rock Church), carved directly into solid granite bedrock — an extraordinary piece of Finnish design.</li>
+            <li>Lunch of <strong>lohikeitto</strong> (salmon soup with cream), <strong>poronkäristys</strong> (sautéed reindeer), or a modern Nordic tasting menu.</li>
+          </ul>
+          <div class="time-label">Afternoon</div>
+          <ul>
+            <li>Visit the <strong>Ateneum Art Museum</strong> for Finnish and Nordic art including the best collection of Akseli Gallen-Kallela's mythological paintings.</li>
+            <li>Explore <strong>Design District Helsinki</strong> — Finland is a world leader in design; the boutiques here showcase everything from ceramics to furniture.</li>
+            <li>End with a <strong>traditional Finnish sauna</strong> — public saunas like Löyly or Allas Sea Pool offer a sauna followed by a dip in the Baltic Sea, the perfect Finnish ending.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </div><!-- end tab-itineraries -->
+
+  <script>
+    document.querySelectorAll('.travel-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.travel-tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.itin-content a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          document.querySelector('.itin-wrap').scrollTo({ top: target.offsetTop - 50, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="data.js"></script>

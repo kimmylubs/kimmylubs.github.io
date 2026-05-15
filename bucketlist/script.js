@@ -66,6 +66,10 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r
 
 map.on('click', () => deselectPin());
 
+map.whenReady(() => {
+  setTimeout(() => map.zoomIn(1, { animate: true }), 600);
+});
+
 // ── Persistence ──────────────────────────────────────────────────────────
 function save() {
   if (!EDIT_MODE) return;

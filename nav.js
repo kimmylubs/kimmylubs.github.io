@@ -1,21 +1,14 @@
 (function () {
   const LINKS = [
     { href: '/',            label: 'Home' },
-    { href: '/2048/',       label: '2048' },
     { href: '/allergens/',  label: 'Allergens' },
     { href: '/calculator/', label: 'Calculator' },
-    { href: '/cooking/',    label: 'Cooking' },
-    { href: '/flappy/',     label: 'Flappy Rabbit' },
-    { href: '/guestbook/', label: 'Guestbook' },
-    // { href: '/fragments/',  label: 'Fragments' },
-    // { href: '/kaling/',     label: 'Kaling' },
-    { href: '/memory/',     label: 'Memory' },
-    { href: '/pet/',        label: 'Pet' },
-    { href: '/shop/',       label: 'Shop' },
-    { href: '/travel/',     label: 'Travels' },
-    { href: '/bucketlist/', label: 'Traveled' },
     { href: '/unix/',       label: 'Unix' },
-    // { href: '/yelp/',       label: 'Yelp' },
+    { href: '/bucketlist/', label: 'Travel' },
+    { href: '/games/',      label: 'Games' },
+    { href: '/storybook/',  label: 'Storybook' },
+    { href: '/guestbook/',  label: 'Guestbook' },
+
   ];
 
   const path = location.pathname;

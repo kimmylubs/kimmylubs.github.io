@@ -3,16 +3,119 @@ body {
   overflow: hidden;
 }
 
+/* ── Tab bar ── */
+.travel-tabs {
+  display: flex;
+  gap: 0.4em;
+  padding: 0.5em 1em;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid #e4dcf8;
+  height: 44px;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.travel-tab {
+  padding: 0.3em 1.2em;
+  border-radius: 20px;
+  border: 2px solid #e4dcf8;
+  background: transparent;
+  color: #9b72cf;
+  font-weight: 700;
+  font-size: 0.88rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.travel-tab:hover { background: #f0ecff; opacity: 1; transform: none; }
+.travel-tab.active {
+  background: linear-gradient(135deg, #c4b5f4, #9b72cf);
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ── Tab panels ── */
+.tab-panel { display: none; height: calc(100vh - 52px - 44px); }
+.tab-panel.active { display: flex; flex-direction: column; }
+
 .bl-layout {
   display: flex;
-  height: calc(100vh - 52px);
+  height: 100%;
+  flex: 1;
+}
+
+/* ── Itineraries tab ── */
+.itin-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+nav.second-nav {
+  background: linear-gradient(120deg, #d4baef 0%, #c4b5f4 100%);
+  padding: 0.5em 1.5em;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(155,114,207,0.15);
+  flex-shrink: 0;
+}
+
+nav.second-nav ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 0.2em;
+}
+
+nav.second-nav a {
+  color: #3d2c6e; font-weight: 600; font-size: 0.85rem;
+  text-decoration: none; padding: 0.3em 0.8em;
+  border-radius: 20px; transition: background 0.2s;
+}
+
+nav.second-nav a:hover { background: rgba(255,255,255,0.5); }
+
+.itin-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.itin-content section {
+  padding: 2.5em 3em;
+  border-bottom: 2px solid #e4dcf8;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.itin-content section h1 {
+  font-size: 1.6rem; margin-bottom: 0.8em;
+  padding-bottom: 0.4em;
+  border-bottom: 3px solid #c4b5f4;
+  color: #3d2c6e;
+}
+
+.time-label {
+  display: inline-block;
+  background: linear-gradient(135deg, #c4b5f4, #9b72cf);
+  color: #fff; font-weight: 700; font-size: 0.85rem;
+  padding: 0.25em 1em; border-radius: 20px;
+  margin: 0.8em 0 0.4em;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+
+.itin-content section ul {
+  padding-left: 1.4em; margin-top: 0.4em;
+}
+
+.itin-content section ul li {
+  margin-bottom: 0.6em; line-height: 1.6; color: #2d2050;
 }
 
 /* ── Sidebar ── */
 .bl-sidebar {
   width: 300px;
   min-width: 260px;
-  background: rgba(255,255,255,0.9);
+  background: #f0ecff;
   backdrop-filter: blur(10px);
   border-right: 2px solid #e4dcf8;
   display: flex;

@@ -25,6 +25,12 @@
   // Inject styles
   const css = document.createElement('style');
   css.textContent = `
+  #mochi-home { display: flex; justify-content: center; margin-top: 1.4em; }
+  #mochi-home #mochi-panel {
+    position: relative; bottom: auto; right: auto; width: 268px;
+    box-shadow: 0 6px 24px rgba(155,114,207,0.28);
+  }
+  #mochi-home .w-close { display: none; }
   #mochi-toggle {
     position: fixed; bottom: 24px; right: 24px; z-index: 9998;
     width: 58px; height: 58px; border-radius: 50%;
@@ -138,8 +144,17 @@
       <a class="w-pet-link" href="/pet/">visit ${load().name || 'Mochi'} →</a>
     </div>`;
 
-  document.body.appendChild(toggle);
-  document.body.appendChild(panel);
+  const inlineEl = document.getElementById('mochi-home');
+  const isInline = !!inlineEl;
+
+  if (!isInline) document.body.appendChild(toggle);
+
+  if (isInline) {
+    panel.classList.remove('hidden');
+    inlineEl.appendChild(panel);
+  } else {
+    document.body.appendChild(panel);
+  }
 
   let state = decay(load());
   save(state);
@@ -162,15 +177,17 @@
     toggle.classList.toggle('hungry', fullness < 30);
   }
 
-  toggle.addEventListener('click', () => {
-    open = !open;
-    panel.classList.toggle('hidden', !open);
-    if (open) { state = decay(state); save(state); render(); }
-  });
+  if (!isInline) {
+    toggle.addEventListener('click', () => {
+      open = !open;
+      panel.classList.toggle('hidden', !open);
+      if (open) { state = decay(state); save(state); render(); }
+    });
 
-  panel.querySelector('.w-close').addEventListener('click', () => {
-    open = false; panel.classList.add('hidden');
-  });
+    panel.querySelector('.w-close').addEventListener('click', () => {
+      open = false; panel.classList.add('hidden');
+    });
+  }
 
   panel.querySelector('#w-feed').addEventListener('click', () => {
     state = decay(state); state.fullness = Math.min(100, state.fullness + 30); save(state); render();

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storybook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <script src="/nav.js"></script>
+
+  <div class="sb-layout">
+
+    <!-- ── Bookshelf sidebar ── -->
+    <aside class="sb-shelf">
+      <div class="shelf-title">📚 my books</div>
+      <div class="shelf-list" id="shelf-list"></div>
+    </aside>
+
+    <!-- ── Main book area ── -->
+    <main class="sb-main">
+      <div class="book-stage" id="book-stage">
+        <!-- Cover shown first, then open book -->
+        <div class="book-cover hidden" id="book-cover">
+          <div class="cover-emoji" id="cover-emoji"></div>
+          <div class="cover-title" id="cover-title"></div>
+          <button class="cover-open-btn" id="cover-open-btn">open ▸</button>
+        </div>
+
+        <div class="book-open hidden" id="book-open">
+          <button class="page-arrow left" id="prev-btn">‹</button>
+
+          <div class="book-spread" id="book-spread">
+            <div class="book-page left-page" id="left-page">
+              <div class="page-art-bg" id="art-bg">
+                <div class="page-art" id="page-art"></div>
+              </div>
+            </div>
+            <div class="book-spine"></div>
+            <div class="book-page right-page" id="right-page">
+              <p class="page-text" id="page-text"></p>
+              <div class="page-num" id="page-num"></div>
+            </div>
+          </div>
+
+          <button class="page-arrow right" id="next-btn">›</button>
+        </div>
+
+        <div class="sb-empty" id="sb-empty">
+          <div class="empty-art">📖</div>
+          <p>pick a book from the shelf!</p>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
