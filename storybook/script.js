@@ -144,7 +144,7 @@ const BOOKS = [
       {
         scene: 's-chalk-world',
         char:  '🎠',
-        text:  'Bert the pavement artist drew\nthe most wonderful chalk pictures.\n\nWith one magical leap — SPLASH —\nthey were inside!\n\nDancing penguins!\nCarousel horses!\nA whole world in the pavement!',
+        text:  'Bert drew the most wonderful\nchalk pictures on the pavement.\n\nWith one magical leap — SPLASH —\nthey were inside!\n\nDancing penguins! Carousel horses!\nA whole world in the pavement!',
       },
       {
         scene: 's-chimney-sweep',
@@ -154,7 +154,7 @@ const BOOKS = [
       {
         scene: 's-poppins-farewell',
         char:  '🌂',
-        text:  'The wind changed.\n\nMary Poppins quietly packed her bag,\ngave the children one last look,\nand floated up into the sky.\n\nSome magic doesn\'t stay forever.\n\nBut it never truly leaves. ♡',
+        text:  'The wind changed.\n\nMary Poppins packed her bag,\ngave the children one last look,\nand floated into the sky.\n\nSome magic doesn\'t stay.\nBut it never truly leaves. ♡',
       },
     ],
   },
