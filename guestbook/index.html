@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guestbook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <script src="/nav.js"></script>
+
+  <div class="gb-page">
+    <h1 class="page-title">Guestbook</h1>
+    <p class="page-sub">leave a little note ♡</p>
+
+    <div class="gb-form card">
+      <div class="emoji-row" id="emoji-row"></div>
+      <input type="text" id="gb-name" placeholder="Your name" maxlength="50" autocomplete="off">
+      <textarea id="gb-message" placeholder="Say something nice..." maxlength="500"></textarea>
+      <div class="gb-form-footer">
+        <span class="gb-char-count" id="gb-char-count">0 / 500</span>
+        <button id="gb-submit">Sign ♡</button>
+      </div>
+      <p class="gb-status" id="gb-status"></p>
+    </div>
+
+    <div class="gb-entries" id="gb-entries">
+      <p class="gb-loading">loading messages...</p>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
