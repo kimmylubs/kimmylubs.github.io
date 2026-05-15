@@ -333,35 +333,107 @@ document.getElementById('btn-menu').addEventListener('click', buildMenu);
 function gameChop(el, step, done) {
   const emojis = step.emojis || [step.emoji];
   const needed = step.needed || emojis.length;
-  let chopped  = 0;
+  let chopped  = 0, dragging = false, trail = [], slashTimer = null, finished = false;
   const t0     = Date.now();
 
   el.innerHTML = `
-    <div class="cutting-board" id="chop-board">
-      ${emojis.map((e, i) => `<div class="chop-item" data-i="${i}">${e}</div>`).join('')}
+    <div class="chop-wrap" id="chop-wrap">
+      <div class="cutting-board" id="chop-board">
+        ${emojis.map((e, i) => `<div class="chop-item" data-i="${i}">${e}</div>`).join('')}
+      </div>
+      <canvas id="chop-canvas"></canvas>
     </div>
-    <p class="mg-hint">🔪 Click each ingredient to chop!</p>
+    <p class="mg-hint">🔪 Hold & slash across ingredients to cut!</p>
     <div class="mg-bar-wrap"><div class="mg-bar-fill" id="chop-bar" style="width:0%"></div></div>`;
 
-  el.querySelectorAll('.chop-item').forEach(item => {
-    let hits = 0;
-    item.addEventListener('click', () => {
-      if (item.classList.contains('chopped')) return;
-      SFX.chop();
-      hits++;
-      item.classList.add('chopping');
-      setTimeout(() => item.classList.remove('chopping'), 180);
-      if (hits >= 2) {
-        item.classList.add('chopped');
-        chopped++;
-        document.getElementById('chop-bar').style.width = (chopped / needed * 100) + '%';
-        if (chopped >= needed) {
-          const elapsed = (Date.now() - t0) / 1000;
-          setTimeout(() => done(Math.max(40, 100 - Math.max(0, elapsed - needed * 1.2) * 7)), 350);
+  const board  = document.getElementById('chop-board');
+  const canvas = document.getElementById('chop-canvas');
+  const ctx    = canvas.getContext('2d');
+
+  function syncCanvas() {
+    const r = board.getBoundingClientRect();
+    canvas.width  = r.width;
+    canvas.height = r.height;
+  }
+
+  function getPos(cx, cy) {
+    const r = board.getBoundingClientRect();
+    return { x: cx - r.left, y: cy - r.top };
+  }
+
+  function drawTrail() {
+    syncCanvas();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (trail.length < 2) return;
+    ctx.strokeStyle = 'rgba(255,255,255,0.92)';
+    ctx.lineWidth = 4;
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.shadowColor = 'rgba(255,255,255,0.7)'; ctx.shadowBlur = 8;
+    ctx.beginPath(); ctx.moveTo(trail[0].x, trail[0].y);
+    trail.forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  }
+
+  function checkSlice() {
+    if (finished || trail.length < 2) return;
+    const boardRect = board.getBoundingClientRect();
+    el.querySelectorAll('.chop-item:not(.chopped)').forEach(item => {
+      const r   = item.getBoundingClientRect();
+      const cx  = r.left - boardRect.left + r.width / 2;
+      const cy  = r.top  - boardRect.top  + r.height / 2;
+      const rad = Math.max(r.width, r.height) * 0.55;
+      for (let i = 0; i < trail.length - 1; i++) {
+        const p1 = trail[i], p2 = trail[i + 1];
+        const dx = p2.x - p1.x, dy = p2.y - p1.y;
+        const len2 = dx * dx + dy * dy;
+        if (len2 === 0) continue;
+        const t    = Math.max(0, Math.min(1, ((cx - p1.x) * dx + (cy - p1.y) * dy) / len2));
+        const dist = Math.hypot(cx - (p1.x + t * dx), cy - (p1.y + t * dy));
+        if (dist < rad) {
+          SFX.chop();
+          item.classList.add('chopping');
+          setTimeout(() => { item.classList.remove('chopping'); item.classList.add('chopped'); }, 180);
+          chopped++;
+          document.getElementById('chop-bar').style.width = (chopped / needed * 100) + '%';
+          if (!finished && chopped >= needed) {
+            finished = true;
+            const elapsed = (Date.now() - t0) / 1000;
+            setTimeout(() => done(Math.max(40, 100 - Math.max(0, elapsed - needed * 1.5) * 6)), 400);
+          }
+          break;
         }
       }
     });
-  });
+  }
+
+  function clearTrail() {
+    syncCanvas(); ctx.clearRect(0, 0, canvas.width, canvas.height); trail = [];
+  }
+
+  const onDown = e => { dragging = true; if (slashTimer) clearTimeout(slashTimer); trail = [getPos(e.clientX, e.clientY)]; };
+  const onMove = e => { if (!dragging) return; trail.push(getPos(e.clientX, e.clientY)); if (trail.length > 60) trail.shift(); drawTrail(); };
+  const onUp   = () => { if (!dragging) return; dragging = false; checkSlice(); slashTimer = setTimeout(clearTrail, 280); };
+  const onTD   = e => { dragging = true; if (slashTimer) clearTimeout(slashTimer); trail = [getPos(e.touches[0].clientX, e.touches[0].clientY)]; };
+  const onTM   = e => { e.preventDefault(); if (!dragging) return; trail.push(getPos(e.touches[0].clientX, e.touches[0].clientY)); if (trail.length > 60) trail.shift(); drawTrail(); };
+  const onTU   = () => { dragging = false; checkSlice(); slashTimer = setTimeout(clearTrail, 280); };
+
+  board.addEventListener('mousedown', onDown);
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('mouseup', onUp);
+  board.addEventListener('touchstart', onTD, { passive: true });
+  board.addEventListener('touchmove', onTM, { passive: false });
+  document.addEventListener('touchend', onTU);
+
+  return () => {
+    if (slashTimer) clearTimeout(slashTimer);
+    board.removeEventListener('mousedown', onDown);
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onUp);
+    board.removeEventListener('touchstart', onTD);
+    board.removeEventListener('touchmove', onTM);
+    document.removeEventListener('touchend', onTU);
+  };
 }
 
 // ── STIR ───────────────────────────────────────────────────────────────────

@@ -169,6 +169,18 @@
 .mg-hint { font-size: 0.82rem; color: var(--text-light); text-align: center; }
 
 /* ── CHOP ── */
+.chop-wrap {
+  position: relative;
+  width: 100%;
+}
+
+#chop-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 12px;
+}
+
 .cutting-board {
   background: linear-gradient(135deg, #c8a97e, #b8956a);
   border-radius: 12px;
