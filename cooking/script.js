@@ -806,8 +806,13 @@ function gameGrate(el, step, done) {
       item.style.fontSize = `${Math.max(1.8, 3.8 - pct * 2)}rem`;
       document.getElementById('grate-bar').style.width = (pct * 100) + '%';
       const bit = document.createElement('span'); bit.className = 'grate-bit';
-      bit.textContent = '·'; bit.style.left = (15 + Math.random()*70) + '%';
-      bits.appendChild(bit); setTimeout(() => bit.remove(), 900);
+      bit.textContent = ['·','°',','][Math.floor(Math.random()*3)];
+      const boxR = box.getBoundingClientRect();
+      const bx = boxR.left + 10 + Math.random() * (boxR.width - 20);
+      const by = boxR.top  + 10 + Math.random() * (boxR.height - 20);
+      const ang = Math.random() * Math.PI * 2, spd = 25 + Math.random() * 55;
+      bit.style.cssText = `left:${bx}px;top:${by}px;--dx:${Math.cos(ang)*spd}px;--dy:${Math.sin(ang)*spd}px`;
+      document.body.appendChild(bit); setTimeout(() => bit.remove(), 700);
       if (strokes >= needed) { finished = true; item.style.transform = ''; setTimeout(() => done(100), 300); return; }
     }
     lastDir = dir; startY = y;
