@@ -1,14 +1,12 @@
 (function () {
   const LINKS = [
     { href: '/',            label: 'Home' },
-    { href: '/allergens/',  label: 'Allergens' },
-    { href: '/calculator/', label: 'Calculator' },
-    { href: '/unix/',       label: 'Unix' },
-    { href: '/bucketlist/', label: 'Travel' },
+    { href: '/tools/',      label: 'Tools' },
     { href: '/games/',      label: 'Games' },
-    { href: '/storybook/',  label: 'Storybook' },
     { href: '/guestbook/',  label: 'Guestbook' },
-
+    { href: '/storybook/',  label: 'Storybook' },
+    { href: '/study/',      label: 'Study' },
+    { href: '/bucketlist/', label: 'Travel' },
   ];
 
   const path = location.pathname;

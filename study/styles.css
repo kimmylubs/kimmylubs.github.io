@@ -1,0 +1,202 @@
+body { background: #ede9f8; }
+
+.study-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2em 1.5em;
+}
+
+.study-title {
+  font-size: 1.7em;
+  font-weight: 800;
+  color: #3d2c6e;
+  margin-bottom: 0.15em;
+}
+.study-title span { color: #8a5cf6; }
+.study-sub {
+  color: #9b72cf;
+  font-size: 0.88rem;
+  margin-bottom: 1.5em;
+}
+
+/* ── Tab bar ── */
+.tab-bar {
+  display: flex;
+  gap: 0.4em;
+  flex-wrap: wrap;
+  margin-bottom: 1.5em;
+}
+.tab {
+  padding: 0.4em 1.1em;
+  border-radius: 20px;
+  border: 2px solid #e4dcf8;
+  background: white;
+  color: #6d28d9;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: none;
+}
+.tab:hover { background: #f5f0ff; opacity: 1; transform: none; }
+.tab.active { background: #8a5cf6; color: white; border-color: #8a5cf6; }
+
+/* ── Tab content ── */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── Topic card ── */
+.topic {
+  background: white;
+  border-radius: 16px;
+  padding: 1.3em 1.5em;
+  margin-bottom: 1em;
+  border: 1.5px solid #e4dcf8;
+  box-shadow: 0 2px 12px rgba(138,92,246,0.07);
+}
+.topic h2 {
+  font-size: 1.05em;
+  font-weight: 800;
+  color: #5b21b6;
+  margin: 0 0 0.75em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid #f0ecff;
+}
+.topic h3 {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #9b72cf;
+  margin: 0.9em 0 0.4em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ── Definition list ── */
+.def-list { display: flex; flex-direction: column; gap: 0.2em; }
+.def-item {
+  display: grid;
+  grid-template-columns: 175px 1fr;
+  gap: 0.8em;
+  padding: 0.3em 0.5em;
+  border-radius: 7px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #3d2c6e;
+}
+.def-item:hover { background: #faf8ff; }
+.def-term { font-weight: 800; color: #5b21b6; }
+
+/* ── Numbered list ── */
+.num-list {
+  margin: 0;
+  padding-left: 1.3em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  font-size: 0.88rem;
+  color: #3d2c6e;
+  line-height: 1.45;
+}
+
+/* ── Pillar grid ── */
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6em;
+}
+.pillar {
+  background: linear-gradient(135deg, #f0ecff, #e8e3ff);
+  border-radius: 10px;
+  padding: 0.65em 0.9em;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #5b21b6;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  border: 1.5px solid #e4dcf8;
+}
+.pillar-num {
+  background: #8a5cf6;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+/* ── Details collapsibles (Services tab) ── */
+details {
+  border: 1.5px solid #e4dcf8;
+  border-radius: 14px;
+  margin-bottom: 0.7em;
+  background: white;
+  box-shadow: 0 2px 8px rgba(138,92,246,0.06);
+}
+summary {
+  padding: 0.8em 1.1em;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #5b21b6;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  user-select: none;
+}
+summary::-webkit-details-marker { display: none; }
+.sum-arrow { margin-left: auto; color: #9b72cf; transition: transform 0.2s; font-size: 0.75em; }
+details[open] .sum-arrow { transform: rotate(180deg); }
+details[open] > summary { border-bottom: 1.5px solid #f0ecff; }
+.details-body { padding: 1em 1.2em; }
+
+/* ── Note callout ── */
+.note {
+  background: #fef9ec;
+  border: 1.5px solid #fde68a;
+  border-radius: 8px;
+  padding: 0.45em 0.8em;
+  font-size: 0.82rem;
+  color: #78350f;
+  margin-top: 0.7em;
+}
+
+/* ── Support plan table ── */
+.support-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  margin-top: 0.6em;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.support-table th {
+  background: #8a5cf6;
+  color: white;
+  padding: 0.5em 0.8em;
+  text-align: left;
+  font-weight: 800;
+}
+.support-table td {
+  padding: 0.5em 0.8em;
+  border-bottom: 1px solid #f0ecff;
+  vertical-align: top;
+  color: #3d2c6e;
+}
+.support-table tr:last-child td { border-bottom: none; }
+.support-table tr:hover td { background: #faf8ff; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+  .def-item { grid-template-columns: 120px 1fr; font-size: 0.82rem; }
+  .support-table { font-size: 0.76rem; }
+  .support-table th, .support-table td { padding: 0.4em 0.5em; }
+}

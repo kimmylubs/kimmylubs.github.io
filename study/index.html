@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study — AWS CLF-C02</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <script src="/nav.js"></script>
+
+  <div class="study-wrap">
+    <h1 class="study-title">AWS Cloud Practitioner <span>CLF-C02</span></h1>
+    <p class="study-sub">Cloud Concepts 24% · Security 30% · Services 34% · Billing 12%</p>
+
+    <div class="tab-bar" id="tab-bar">
+      <button class="tab active" data-tab="concepts">Concepts</button>
+      <button class="tab" data-tab="infra">Infrastructure</button>
+      <button class="tab" data-tab="services">Services</button>
+      <button class="tab" data-tab="security">Security</button>
+      <button class="tab" data-tab="pricing">Pricing</button>
+      <button class="tab" data-tab="migration">Migration</button>
+    </div>
+
+    <!-- ── Concepts ── -->
+    <div class="tab-content active" id="tab-concepts">
+
+      <div class="topic">
+        <h2>Cloud & Service Models</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Cloud</span><span>on-demand IT resources via internet, pay-as-you-go</span></div>
+          <div class="def-item"><span class="def-term">IaaS</span><span>you manage OS and up — e.g. EC2</span></div>
+          <div class="def-item"><span class="def-term">PaaS</span><span>you manage apps & data — e.g. Elastic Beanstalk</span></div>
+          <div class="def-item"><span class="def-term">SaaS</span><span>you just use it — e.g. Gmail, Salesforce</span></div>
+        </div>
+        <h3>Deployment Models</h3>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Public</span><span>AWS-owned infrastructure, shared</span></div>
+          <div class="def-item"><span class="def-term">Private</span><span>single org, on-prem</span></div>
+          <div class="def-item"><span class="def-term">Hybrid</span><span>mix of public + private</span></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h2>6 Advantages of Cloud</h2>
+        <ol class="num-list">
+          <li>Trade fixed for variable cost</li>
+          <li>Benefit from massive economies of scale</li>
+          <li>Stop guessing capacity</li>
+          <li>Increase speed & agility</li>
+          <li>Stop spending on data centers</li>
+          <li>Go global in minutes</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h2>Well-Architected Framework — 6 Pillars</h2>
+        <div class="pillar-grid">
+          <div class="pillar"><span class="pillar-num">1</span>Operational Excellence</div>
+          <div class="pillar"><span class="pillar-num">2</span>Security</div>
+          <div class="pillar"><span class="pillar-num">3</span>Reliability</div>
+          <div class="pillar"><span class="pillar-num">4</span>Performance Efficiency</div>
+          <div class="pillar"><span class="pillar-num">5</span>Cost Optimization</div>
+          <div class="pillar"><span class="pillar-num">6</span>Sustainability</div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h2>Key Concepts</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Scalability</span><span>handle more demand by scaling up or out</span></div>
+          <div class="def-item"><span class="def-term">Elasticity</span><span>auto-scale up AND down with demand</span></div>
+          <div class="def-item"><span class="def-term">Agility</span><span>provision resources in minutes, not weeks</span></div>
+          <div class="def-item"><span class="def-term">High Availability</span><span>minimal downtime via multi-AZ deployments</span></div>
+          <div class="def-item"><span class="def-term">Fault Tolerance</span><span>continues working despite component failures</span></div>
+          <div class="def-item"><span class="def-term">Durability</span><span>data persists long-term (S3 = 11 nines)</span></div>
+          <div class="def-item"><span class="def-term">CapEx</span><span>upfront capital expense — buying on-prem servers</span></div>
+          <div class="def-item"><span class="def-term">OpEx</span><span>ongoing operational expense — cloud pay-as-you-go</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Infrastructure ── -->
+    <div class="tab-content" id="tab-infra">
+
+      <div class="topic">
+        <h2>Global Infrastructure</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Region</span><span>geographic area with 2+ AZs (e.g. us-east-1)</span></div>
+          <div class="def-item"><span class="def-term">Availability Zone</span><span>1+ data centers in a region; isolated but low-latency linked</span></div>
+          <div class="def-item"><span class="def-term">Edge Location</span><span>CloudFront CDN cache point; more of these than regions</span></div>
+          <div class="def-item"><span class="def-term">Local Zone</span><span>AWS compute closer to large metro areas</span></div>
+          <div class="def-item"><span class="def-term">Wavelength Zone</span><span>AWS infra in telecom networks for 5G ultra-low latency</span></div>
+          <div class="def-item"><span class="def-term">Outposts</span><span>AWS hardware rack in your own data center</span></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h2>Choosing a Region</h2>
+        <ol class="num-list">
+          <li><strong>Compliance</strong> — data residency laws?</li>
+          <li><strong>Latency</strong> — closest to your users</li>
+          <li><strong>Services</strong> — not all services available in all regions</li>
+          <li><strong>Pricing</strong> — varies by region</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h2>Scope of Services</h2>
+        <h3>Global (not tied to a region)</h3>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">IAM</span><span>users & roles available everywhere</span></div>
+          <div class="def-item"><span class="def-term">Route 53</span><span>global DNS</span></div>
+          <div class="def-item"><span class="def-term">CloudFront</span><span>global CDN via edge locations</span></div>
+          <div class="def-item"><span class="def-term">WAF & Shield</span><span>global protection</span></div>
+        </div>
+        <h3>Regional</h3>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">VPC</span><span>per region; spans all AZs in that region</span></div>
+          <div class="def-item"><span class="def-term">S3</span><span>regional storage; globally unique bucket names</span></div>
+          <div class="def-item"><span class="def-term">ELB</span><span>regional load balancer</span></div>
+        </div>
+        <h3>AZ-specific</h3>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">EC2 Instance</span><span>lives in a specific AZ</span></div>
+          <div class="def-item"><span class="def-term">EBS Volume</span><span>lives in a specific AZ</span></div>
+          <div class="def-item"><span class="def-term">Subnet</span><span>one subnet = one AZ</span></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h2>Interacting with AWS</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Console</span><span>browser-based GUI</span></div>
+          <div class="def-item"><span class="def-term">CLI</span><span>command-line; scriptable; automated</span></div>
+          <div class="def-item"><span class="def-term">SDK</span><span>code access in Python, JS, Java, etc.</span></div>
+          <div class="def-item"><span class="def-term">CloudShell</span><span>browser-based CLI with credentials built in</span></div>
+          <div class="def-item"><span class="def-term">APIs</span><span>every AWS action is an HTTPS API call</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Services ── -->
+    <div class="tab-content" id="tab-services">
+
+      <details open>
+        <summary>⚙️ Compute <span class="sum-arrow">▼</span></summary>
+        <div class="details-body">
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">EC2</span><span>virtual servers; you manage OS and up</span></div>
+            <div class="def-item"><span class="def-term">Lambda</span><span>serverless; runs code on events; max 15 min; pay per call</span></div>
+            <div class="def-item"><span class="def-term">ECS</span><span>Docker container management; AWS-managed</span></div>
+            <div class="def-item"><span class="def-term">EKS</span><span>managed Kubernetes on AWS</span></div>
+            <div class="def-item"><span class="def-term">Fargate</span><span>serverless containers; no EC2 to manage; works with ECS/EKS</span></div>
+            <div class="def-item"><span class="def-term">Elastic Beanstalk</span><span>deploy apps without managing infra; PaaS</span></div>
+            <div class="def-item"><span class="def-term">Lightsail</span><span>simplified cloud; VPS + managed DBs; good for simple apps</span></div>
+            <div class="def-item"><span class="def-term">Batch</span><span>managed batch processing; auto-provisions compute</span></div>
+            <div class="def-item"><span class="def-term">AMI</span><span>Amazon Machine Image; template for EC2 (OS + software); region-specific</span></div>
+            <div class="def-item"><span class="def-term">Auto Scaling</span><span>auto-adjust EC2 count based on demand; scale in/out</span></div>
+          </div>
+          <h3>EC2 Pricing Options</h3>
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">On-Demand</span><span>pay per hour/second; no commitment; most flexible</span></div>
+            <div class="def-item"><span class="def-term">Reserved</span><span>1-3 yr commit; up to 72% off; Standard or Convertible</span></div>
+            <div class="def-item"><span class="def-term">Spot</span><span>up to 90% off; unused capacity; can be interrupted (2 min notice)</span></div>
+            <div class="def-item"><span class="def-term">Savings Plans</span><span>commit to $/hr; flexible instance type; up to 66% off</span></div>
+            <div class="def-item"><span class="def-term">Dedicated Host</span><span>physical server for you; BYOL/compliance</span></div>
+          </div>
+          <h3>EC2 Instance Families</h3>
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">General (T, M)</span><span>balanced CPU/RAM; good default</span></div>
+            <div class="def-item"><span class="def-term">Compute (C)</span><span>CPU-heavy workloads</span></div>
+            <div class="def-item"><span class="def-term">Memory (R, X)</span><span>RAM-heavy; databases, caches</span></div>
+            <div class="def-item"><span class="def-term">Storage (I, D)</span><span>high I/O; big data</span></div>
+            <div class="def-item"><span class="def-term">Accelerated (P, G)</span><span>GPU; ML, graphics</span></div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🗄️ Storage <span class="sum-arrow">▼</span></summary>
+        <div class="details-body">
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">S3</span><span>object storage; unlimited; 11 nines durability; globally unique names</span></div>
+            <div class="def-item"><span class="def-term">EBS</span><span>block storage attached to EC2; stays in one AZ; like a hard drive</span></div>
+            <div class="def-item"><span class="def-term">EFS</span><span>elastic file system; shared NFS; multi-AZ; Linux only</span></div>
+            <div class="def-item"><span class="def-term">FSx</span><span>managed file systems: FSx for Windows, FSx for Lustre (HPC)</span></div>
+            <div class="def-item"><span class="def-term">Storage Gateway</span><span>hybrid; bridges on-prem storage to AWS cloud</span></div>
+            <div class="def-item"><span class="def-term">Instance Store</span><span>temporary block storage on EC2 host; lost if instance stops</span></div>
+          </div>
+          <h3>S3 Storage Classes</h3>
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">Standard</span><span>frequent access; high durability + availability</span></div>
+            <div class="def-item"><span class="def-term">Intelligent-Tiering</span><span>auto-moves objects between tiers; monitoring fee</span></div>
+            <div class="def-item"><span class="def-term">Standard-IA</span><span>infrequent access; retrieval fee; same durability</span></div>
+            <div class="def-item"><span class="def-term">One Zone-IA</span><span>single AZ; 20% cheaper than Standard-IA</span></div>
+            <div class="def-item"><span class="def-term">Glacier Instant</span><span>archive; millisecond retrieval</span></div>
+            <div class="def-item"><span class="def-term">Glacier Flexible</span><span>archive; minutes–hours retrieval</span></div>
+            <div class="def-item"><span class="def-term">Glacier Deep Archive</span><span>cheapest; 12h retrieval; long-term</span></div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🗃️ Database <span class="sum-arrow">▼</span></summary>
+        <div class="details-body">
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">RDS</span><span>managed relational DB; MySQL, PostgreSQL, Oracle, SQL Server, MariaDB</span></div>
+            <div class="def-item"><span class="def-term">Aurora</span><span>AWS relational DB; MySQL/PostgreSQL compatible; 5× faster; auto-scales</span></div>
+            <div class="def-item"><span class="def-term">DynamoDB</span><span>serverless NoSQL; key-value + document; ms latency; massive scale</span></div>
+            <div class="def-item"><span class="def-term">ElastiCache</span><span>in-memory caching; Redis or Memcached; sub-ms reads</span></div>
+            <div class="def-item"><span class="def-term">Redshift</span><span>data warehouse; OLAP; petabyte-scale analytics</span></div>
+            <div class="def-item"><span class="def-term">DocumentDB</span><span>MongoDB-compatible document DB</span></div>
+            <div class="def-item"><span class="def-term">Neptune</span><span>graph database</span></div>
+            <div class="def-item"><span class="def-term">QLDB</span><span>immutable ledger; cryptographically verifiable</span></div>
+            <div class="def-item"><span class="def-term">Glue</span><span>serverless ETL; discover, prepare, move data</span></div>
+            <div class="def-item"><span class="def-term">Athena</span><span>query S3 data with SQL; serverless; pay per query</span></div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🌐 Networking <span class="sum-arrow">▼</span></summary>
+        <div class="details-body">
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">VPC</span><span>virtual private cloud; isolated network; spans all AZs in a region</span></div>
+            <div class="def-item"><span class="def-term">Subnet</span><span>segment of VPC in one AZ; public (has IGW route) or private</span></div>
+            <div class="def-item"><span class="def-term">Internet Gateway</span><span>allows VPC ↔ public internet</span></div>
+            <div class="def-item"><span class="def-term">NAT Gateway</span><span>private subnet → internet outbound only; AWS-managed</span></div>
+            <div class="def-item"><span class="def-term">Security Group</span><span>stateful EC2-level firewall; allow rules only; default deny</span></div>
+            <div class="def-item"><span class="def-term">NACL</span><span>stateless subnet firewall; allow + deny; evaluated in number order</span></div>
+            <div class="def-item"><span class="def-term">VPC Peering</span><span>direct connection between two VPCs; non-transitive</span></div>
+            <div class="def-item"><span class="def-term">VPC Endpoints</span><span>reach AWS services without internet; Gateway (S3/DynamoDB) or Interface</span></div>
+            <div class="def-item"><span class="def-term">Transit Gateway</span><span>hub connecting many VPCs + on-prem; transitive</span></div>
+            <div class="def-item"><span class="def-term">Direct Connect</span><span>private dedicated line from on-prem to AWS</span></div>
+            <div class="def-item"><span class="def-term">VPN</span><span>encrypted tunnel over public internet to VPC</span></div>
+            <div class="def-item"><span class="def-term">Route 53</span><span>DNS + health checks + traffic routing policies</span></div>
+            <div class="def-item"><span class="def-term">CloudFront</span><span>CDN; caches content at edge; integrates with Shield for DDoS</span></div>
+            <div class="def-item"><span class="def-term">API Gateway</span><span>managed REST / WebSocket APIs; scales automatically</span></div>
+          </div>
+          <h3>ELB Types</h3>
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">ALB</span><span>Application LB; HTTP/HTTPS; Layer 7; path/host-based routing</span></div>
+            <div class="def-item"><span class="def-term">NLB</span><span>Network LB; TCP/UDP; Layer 4; ultra-low latency</span></div>
+            <div class="def-item"><span class="def-term">GLB</span><span>Gateway LB; routes to third-party virtual appliances (firewalls)</span></div>
+          </div>
+          <h3>Security Group vs NACL</h3>
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">Security Group</span><span>instance-level; stateful; allow only; remembers return traffic</span></div>
+            <div class="def-item"><span class="def-term">NACL</span><span>subnet-level; stateless; allow + deny; must allow return traffic explicitly</span></div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>📊 Management & Monitoring <span class="sum-arrow">▼</span></summary>
+        <div class="details-body">
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">CloudWatch</span><span>metrics, logs, alarms, dashboards; monitors AWS resources</span></div>
+            <div class="def-item"><span class="def-term">CloudTrail</span><span>audit log of all API calls; who did what, when, from where</span></div>
+            <div class="def-item"><span class="def-term">Config</span><span>records config changes over time; compliance rule checks</span></div>
+            <div class="def-item"><span class="def-term">Trusted Advisor</span><span>best practice checks in 5 categories; real-time recommendations</span></div>
+            <div class="def-item"><span class="def-term">Systems Manager</span><span>manage EC2 fleet; patch, run commands; no SSH needed</span></div>
+            <div class="def-item"><span class="def-term">CloudFormation</span><span>IaC; define infra as YAML/JSON templates; stack-based</span></div>
+            <div class="def-item"><span class="def-term">CDK</span><span>define infra with code (Python, JS); compiles to CloudFormation</span></div>
+            <div class="def-item"><span class="def-term">Organizations</span><span>manage multiple AWS accounts; consolidated billing; SCPs</span></div>
+            <div class="def-item"><span class="def-term">Control Tower</span><span>set up multi-account environment with guardrails</span></div>
+            <div class="def-item"><span class="def-term">Health Dashboard</span><span>AWS service status + personalized account health alerts</span></div>
+          </div>
+          <h3>Trusted Advisor — 5 Categories</h3>
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">Cost Optimization</span><span>unused resources, savings opportunities</span></div>
+            <div class="def-item"><span class="def-term">Performance</span><span>underutilized resources, service limits</span></div>
+            <div class="def-item"><span class="def-term">Security</span><span>open ports, missing MFA, IAM issues</span></div>
+            <div class="def-item"><span class="def-term">Fault Tolerance</span><span>backup, multi-AZ, redundancy</span></div>
+            <div class="def-item"><span class="def-term">Service Limits</span><span>approaching AWS quotas</span></div>
+          </div>
+          <div class="note">⚠️ Full Trusted Advisor checks require Business or Enterprise support plan</div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🔗 Integration & Messaging <span class="sum-arrow">▼</span></summary>
+        <div class="details-body">
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">SQS</span><span>message queue; decouple services; pull-based; messages wait until processed</span></div>
+            <div class="def-item"><span class="def-term">SNS</span><span>pub/sub; push to many subscribers (SQS, Lambda, email, SMS)</span></div>
+            <div class="def-item"><span class="def-term">EventBridge</span><span>serverless event bus; route events between AWS services and SaaS apps</span></div>
+            <div class="def-item"><span class="def-term">Step Functions</span><span>visual workflow; orchestrate Lambda + services; retry logic built in</span></div>
+            <div class="def-item"><span class="def-term">SES</span><span>Simple Email Service; send marketing/transactional emails</span></div>
+            <div class="def-item"><span class="def-term">Kinesis</span><span>real-time data streaming; ingest logs, clickstreams, IoT data</span></div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🛠️ Developer Tools <span class="sum-arrow">▼</span></summary>
+        <div class="details-body">
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">CodeCommit</span><span>git repositories; like GitHub on AWS</span></div>
+            <div class="def-item"><span class="def-term">CodeBuild</span><span>build & test code; managed CI</span></div>
+            <div class="def-item"><span class="def-term">CodeDeploy</span><span>deploy to EC2, Lambda, or on-prem automatically</span></div>
+            <div class="def-item"><span class="def-term">CodePipeline</span><span>CI/CD orchestration; commit → build → test → deploy</span></div>
+            <div class="def-item"><span class="def-term">CodeArtifact</span><span>managed package repository (npm, Maven, pip)</span></div>
+            <div class="def-item"><span class="def-term">X-Ray</span><span>distributed tracing; debug microservices; see request paths</span></div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>🤖 AI & ML <span class="sum-arrow">▼</span></summary>
+        <div class="details-body">
+          <div class="def-list">
+            <div class="def-item"><span class="def-term">SageMaker</span><span>build, train, deploy ML models; fully managed</span></div>
+            <div class="def-item"><span class="def-term">Rekognition</span><span>image & video analysis (faces, objects, text)</span></div>
+            <div class="def-item"><span class="def-term">Transcribe</span><span>speech → text</span></div>
+            <div class="def-item"><span class="def-term">Polly</span><span>text → speech</span></div>
+            <div class="def-item"><span class="def-term">Translate</span><span>language translation</span></div>
+            <div class="def-item"><span class="def-term">Comprehend</span><span>NLP; sentiment analysis, entity detection</span></div>
+            <div class="def-item"><span class="def-term">Lex</span><span>build chatbots (same tech as Alexa)</span></div>
+            <div class="def-item"><span class="def-term">Kendra</span><span>intelligent document search with natural language</span></div>
+            <div class="def-item"><span class="def-term">Personalize</span><span>real-time personalized recommendations</span></div>
+            <div class="def-item"><span class="def-term">Textract</span><span>extract text + data from documents/forms</span></div>
+            <div class="def-item"><span class="def-term">Forecast</span><span>time-series forecasting</span></div>
+            <div class="def-item"><span class="def-term">CodeGuru</span><span>AI code reviews + performance insights</span></div>
+          </div>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- ── Security ── -->
+    <div class="tab-content" id="tab-security">
+
+      <div class="topic">
+        <h2>Shared Responsibility Model</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">AWS</span><span>security OF the cloud — hardware, networking, facilities, managed services</span></div>
+          <div class="def-item"><span class="def-term">Customer</span><span>security IN the cloud — data, IAM, OS patching, app security</span></div>
+        </div>
+        <h3>Examples</h3>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">EC2</span><span>AWS: physical host → You: OS, apps, security groups</span></div>
+          <div class="def-item"><span class="def-term">RDS</span><span>AWS: OS + DB engine → You: data, access, backup config</span></div>
+          <div class="def-item"><span class="def-term">Lambda</span><span>AWS: infra + runtime → You: code + IAM permissions</span></div>
+          <div class="def-item"><span class="def-term">S3</span><span>AWS: infra → You: bucket policies, encryption, public access</span></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h2>IAM — Identity & Access Management</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">User</span><span>individual identity with credentials</span></div>
+          <div class="def-item"><span class="def-term">Group</span><span>collection of users; attach policies to group not individual</span></div>
+          <div class="def-item"><span class="def-term">Role</span><span>identity for services or cross-account access; no passwords</span></div>
+          <div class="def-item"><span class="def-term">Policy</span><span>JSON document defining what's allowed or denied</span></div>
+          <div class="def-item"><span class="def-term">Access Key</span><span>CLI/SDK auth; ID + secret pair; never share</span></div>
+        </div>
+        <h3>Best Practices</h3>
+        <ol class="num-list">
+          <li>Enable MFA on root and all users</li>
+          <li>Never use root account for daily tasks</li>
+          <li>Least privilege — only give permissions needed</li>
+          <li>Use roles instead of sharing credentials</li>
+          <li>Rotate access keys regularly</li>
+        </ol>
+      </div>
+
+      <div class="topic">
+        <h2>Security Services</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Shield Standard</span><span>free; always-on DDoS protection for all customers</span></div>
+          <div class="def-item"><span class="def-term">Shield Advanced</span><span>~$3,000/mo; enhanced DDoS + 24/7 response team</span></div>
+          <div class="def-item"><span class="def-term">WAF</span><span>web application firewall; block SQL injection, XSS, bad IPs</span></div>
+          <div class="def-item"><span class="def-term">GuardDuty</span><span>ML-based threat detection; monitors logs for suspicious activity</span></div>
+          <div class="def-item"><span class="def-term">Inspector</span><span>automated vulnerability scanning for EC2, containers, Lambda</span></div>
+          <div class="def-item"><span class="def-term">Macie</span><span>discovers & protects sensitive data (PII) in S3 using ML</span></div>
+          <div class="def-item"><span class="def-term">KMS</span><span>managed encryption keys; create, use, rotate</span></div>
+          <div class="def-item"><span class="def-term">CloudHSM</span><span>hardware security module; you own the keys, not AWS</span></div>
+          <div class="def-item"><span class="def-term">Secrets Manager</span><span>store & auto-rotate secrets (DB passwords, API keys)</span></div>
+          <div class="def-item"><span class="def-term">Certificate Manager</span><span>free SSL/TLS certs for AWS resources</span></div>
+          <div class="def-item"><span class="def-term">Security Hub</span><span>centralized security findings across services</span></div>
+          <div class="def-item"><span class="def-term">Detective</span><span>investigate & analyze security incidents</span></div>
+          <div class="def-item"><span class="def-term">Artifact</span><span>on-demand compliance reports (SOC, PCI, ISO)</span></div>
+          <div class="def-item"><span class="def-term">Firewall Manager</span><span>centrally manage WAF + Shield rules across accounts</span></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h2>Compliance & Governance</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">AWS Artifact</span><span>access compliance docs (SOC 1/2/3, PCI DSS, ISO 27001)</span></div>
+          <div class="def-item"><span class="def-term">Config</span><span>records resource configs; compliance rule checks over time</span></div>
+          <div class="def-item"><span class="def-term">SCP</span><span>Service Control Policy; guardrail on what accounts in Organizations can do</span></div>
+          <div class="def-item"><span class="def-term">Permission Boundary</span><span>max permissions an IAM entity can ever have</span></div>
+        </div>
+        <div class="note">⚠️ AWS handles physical/infrastructure compliance. You handle data and application compliance.</div>
+      </div>
+
+    </div>
+
+    <!-- ── Pricing ── -->
+    <div class="tab-content" id="tab-pricing">
+
+      <div class="topic">
+        <h2>EC2 Pricing Models</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">On-Demand</span><span>pay per hour/second; no commitment; most flexible, most expensive</span></div>
+          <div class="def-item"><span class="def-term">Reserved</span><span>1-3 yr commit; up to 72% off; Standard or Convertible</span></div>
+          <div class="def-item"><span class="def-term">Spot</span><span>up to 90% off; unused capacity; can be interrupted (2 min notice)</span></div>
+          <div class="def-item"><span class="def-term">Savings Plans</span><span>commit to $/hr spend; flexible on instance type/region; up to 66% off</span></div>
+          <div class="def-item"><span class="def-term">Dedicated Host</span><span>physical server reserved for you; BYOL; most expensive</span></div>
+        </div>
+        <h3>Reserved Instance Types</h3>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Standard RI</span><span>biggest discount; locked to specific instance type + region</span></div>
+          <div class="def-item"><span class="def-term">Convertible RI</span><span>smaller discount; can change instance type</span></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h2>Free Tier</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Always Free</span><span>Lambda 1M req/mo, DynamoDB 25GB, CloudWatch 10 metrics</span></div>
+          <div class="def-item"><span class="def-term">12 Months Free</span><span>from account creation — EC2 750hr t2/t3.micro, S3 5GB, RDS 750hr</span></div>
+          <div class="def-item"><span class="def-term">Trials</span><span>short-term for specific services (e.g. SageMaker Studio Lab)</span></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h2>Cost Management Tools</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Pricing Calculator</span><span>estimate costs before deploying</span></div>
+          <div class="def-item"><span class="def-term">Cost Explorer</span><span>visualize & analyze historical spend; forecasting; RI recommendations</span></div>
+          <div class="def-item"><span class="def-term">Budgets</span><span>set alerts when costs or usage exceeds threshold</span></div>
+          <div class="def-item"><span class="def-term">Cost & Usage Report</span><span>most detailed billing data; exports to S3</span></div>
+          <div class="def-item"><span class="def-term">TCO Calculator</span><span>compare total cost of on-prem vs AWS</span></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h2>AWS Organizations</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Consolidated Billing</span><span>one bill for all accounts; volume discounts shared</span></div>
+          <div class="def-item"><span class="def-term">SCP</span><span>restrict what member accounts can do; doesn't grant permissions</span></div>
+          <div class="def-item"><span class="def-term">Management Account</span><span>root/payer account; creates the organization</span></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h2>Support Plans</h2>
+        <table class="support-table">
+          <thead>
+            <tr><th>Plan</th><th>Price</th><th>Response</th><th>Key Features</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Basic</strong></td><td>Free</td><td>—</td><td>Docs, forums, Health Dashboard</td></tr>
+            <tr><td><strong>Developer</strong></td><td>$29+/mo</td><td>12–24h</td><td>Business-hours email, 1 primary contact</td></tr>
+            <tr><td><strong>Business</strong></td><td>$100+/mo</td><td>1h</td><td>24/7 phone/chat, full Trusted Advisor</td></tr>
+            <tr><td><strong>Enterprise On-Ramp</strong></td><td>$5,500+/mo</td><td>30 min</td><td>Pool of TAMs, Concierge team</td></tr>
+            <tr><td><strong>Enterprise</strong></td><td>$15,000+/mo</td><td>15 min</td><td>Dedicated TAM, training, account management</td></tr>
+          </tbody>
+        </table>
+        <div class="note">⚠️ Full Trusted Advisor access requires Business plan or above</div>
+      </div>
+
+    </div>
+
+    <!-- ── Migration ── -->
+    <div class="tab-content" id="tab-migration">
+
+      <div class="topic">
+        <h2>6 R's of Migration</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Rehost</span><span>lift & shift — move as-is; quickest, least effort</span></div>
+          <div class="def-item"><span class="def-term">Replatform</span><span>lift, tinker & shift — minor optimizations (e.g. switch to RDS)</span></div>
+          <div class="def-item"><span class="def-term">Repurchase</span><span>drop & shop — move to SaaS (e.g. Salesforce, ServiceNow)</span></div>
+          <div class="def-item"><span class="def-term">Refactor</span><span>re-architect for cloud-native; most work, most long-term benefit</span></div>
+          <div class="def-item"><span class="def-term">Retire</span><span>decommission what you no longer need</span></div>
+          <div class="def-item"><span class="def-term">Retain</span><span>keep on-prem for now; not ready or not worth migrating</span></div>
+        </div>
+      </div>
+
+      <div class="topic">
+        <h2>Snow Family — Offline Data Transfer</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Snowcone</span><span>8–14 TB; smallest; rugged; edge computing</span></div>
+          <div class="def-item"><span class="def-term">Snowball Edge</span><span>80+ TB; compute + storage; migration + edge workloads</span></div>
+          <div class="def-item"><span class="def-term">Snowmobile</span><span>100 PB; actual truck/shipping container; exabyte-scale</span></div>
+        </div>
+        <div class="note">Use Snow when: network transfer would take weeks+, limited bandwidth, or security concerns</div>
+      </div>
+
+      <div class="topic">
+        <h2>Migration Services</h2>
+        <div class="def-list">
+          <div class="def-item"><span class="def-term">Migration Hub</span><span>central dashboard to track migration progress</span></div>
+          <div class="def-item"><span class="def-term">Application Discovery</span><span>discover on-prem servers, dependencies, performance data</span></div>
+          <div class="def-item"><span class="def-term">DMS</span><span>Database Migration Service; migrate DBs with minimal downtime</span></div>
+          <div class="def-item"><span class="def-term">DataSync</span><span>online data transfer; on-prem ↔ AWS storage; automated, scheduled</span></div>
+          <div class="def-item"><span class="def-term">Transfer Family</span><span>managed SFTP/FTPS/FTP to S3 or EFS</span></div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById('tab-bar').addEventListener('click', e => {
+      const tab = e.target.closest('.tab');
+      if (!tab) return;
+      const id = tab.dataset.tab;
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + id).classList.add('active');
+    });
+  </script>
+</body>
+</html>
