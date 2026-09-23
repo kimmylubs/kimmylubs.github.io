@@ -17,11 +17,10 @@ const search = document.getElementById('place-search');
 const boroughFilter = document.getElementById('borough-filter');
 const panel = document.getElementById('place-panel');
 const message = document.getElementById('map-message');
-let areas = [], visibleAreas = [], allPlaces = [], activeArea = null;
+let areas = [], visibleAreas = [];
 
-function closePanel() { panel.hidden = true; activeArea = null; }
+function closePanel() { panel.hidden = true; }
 function showArea(area) {
-  activeArea = area.name;
   document.getElementById('panel-title').textContent = area.name;
   document.getElementById('panel-count').textContent = `${area.places.length} ${placeStatus} ${area.places.length === 1 ? 'place' : 'places'} · ${TOGO_MODE ? 'From my Want to go collection' : 'From my published Yelp reviews'}`;
   const list = document.getElementById('place-list');
@@ -83,7 +82,7 @@ async function loadPlaces() {
   try {
     const response = await fetch(`${TOGO_MODE ? '/yelp/nyctogo/' : NYC_MODE ? '/yelp/nyc/' : '/yelp/'}data.json?v=nyctogo-20260923`, { cache: 'no-cache' });
     if (!response.ok) throw new Error('Places could not load');
-    allPlaces = await response.json();
+    const allPlaces = await response.json();
     const grouped = new Map();
     allPlaces.forEach(place => {
       if (NYC_MODE && place.cityArea !== 'New York City, NY') throw new Error('Non-NYC place in NYC data');

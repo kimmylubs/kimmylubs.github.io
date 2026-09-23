@@ -24,10 +24,9 @@
     .site-nav { flex-shrink: 0; }
     .site-nav a { white-space: nowrap; }
     .section-tabs { display:flex; gap:6px; padding:10px 16px; background:#f8f5fc; border-bottom:1px solid #e4daed; overflow-x:auto; flex-shrink:0; }
-    .section-tabs a { flex-shrink:0; border-radius:16px; padding:6px 14px; font-size:13px; font-weight:800; color:#77568f; background:#eee5f5; text-decoration:none; }
-    .section-tabs a[aria-current="page"] { background:#795598; color:white; }
-    .travel-tabs { overflow-x:auto; }
-    .travel-tabs .travel-tab { flex-shrink:0; white-space:nowrap; text-decoration:none; }
+    .section-tabs :is(a, button) { flex-shrink:0; border-radius:16px; padding:6px 14px; font-size:13px; font-weight:800; color:#77568f; background:#eee5f5; text-decoration:none; font-family:inherit; border:0; box-shadow:none; line-height:1.4; white-space:nowrap; }
+    .section-tabs :is(a[aria-current="page"], button.active) { background:#795598; color:white; }
+    .section-tabs.travel-tabs { height:auto; min-height:50px; box-sizing:border-box; backdrop-filter:none; }
 
     @media (max-width: 700px) {
       .site-nav { padding: 6px 8px; }
@@ -51,6 +50,9 @@
   } else if (maplePages.includes(path)) {
     sectionName = 'MapleStory';
     tabs = [['/kaling/', 'Kaling'], ['/fragments/', 'Fragments']];
+  } else if (LINKS.find(link => link.href === '/yelp/').pages.includes(path)) {
+    sectionName = 'Yelp';
+    tabs = [['/yelp/', 'Worldwide'], ['/yelp/nyc/', 'NYC · Visited'], ['/yelp/nyctogo/', 'NYC · To Go']];
   } else if (path === '/travel/') {
     tabs = [['/bucketlist/', 'Travel Map'], ['/travel/', 'Travel Guides']];
   }
