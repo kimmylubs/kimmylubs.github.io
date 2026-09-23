@@ -1,211 +1,114 @@
 (function () {
-  const KEY = 'mochi_state';
-
-  function defaultState() {
-    return { name: 'Mochi', fullness: 80, happiness: 70, born: Date.now(), lastUpdate: Date.now() };
-  }
+  const host = document.getElementById('mochi-home') || document.getElementById('pet-home');
+  if (!host || !window.PuffsCare) return;
+  const care = window.PuffsCare;
+  const fullPage = host.id === 'pet-home';
+  let fallback = care.normalize(null), storageAvailable = true, reactionTimer;
   function load() {
-    try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s ? { ...defaultState(), ...s } : defaultState(); }
-    catch { return defaultState(); }
+    try { const raw = localStorage.getItem(care.KEY); return care.advance(raw ? JSON.parse(raw) : fallback); }
+    catch { storageAvailable = false; return care.advance(fallback); }
   }
-  function save(s) { localStorage.setItem(KEY, JSON.stringify(s)); }
-  function decay(s) {
-    const mins = (Date.now() - s.lastUpdate) / 60000;
-    return { ...s, fullness: Math.max(0, s.fullness - mins * 0.5), happiness: Math.max(0, s.happiness - mins * 0.3), lastUpdate: Date.now() };
+  function save(state) {
+    fallback = state;
+    try { localStorage.setItem(care.KEY, JSON.stringify(state)); storageAvailable = true; }
+    catch { storageAvailable = false; }
   }
-  function msg(s) {
-    if (s.fullness < 10) return 'please feed me...';
-    if (s.fullness < 25) return "i'm so hungry ;__;"
-    if (s.fullness < 45) return 'i could eat...';
-    if (s.happiness > 75 && s.fullness > 65) return 'i love you!! ♡';
-    if (s.happiness > 55) return 'this is nice :)';
-    return 'hi there!';
-  }
-
-  // Inject styles
-  const css = document.createElement('style');
-  css.textContent = `
-  #mochi-home { display: flex; justify-content: center; margin-top: 1.4em; }
-  #mochi-home #mochi-panel {
-    position: relative; bottom: auto; right: auto; width: 268px;
-    box-shadow: 0 6px 24px rgba(155,114,207,0.28);
-  }
-  #mochi-home .w-close { display: none; }
-  #mochi-toggle {
-    position: fixed; bottom: 24px; right: 24px; z-index: 9998;
-    width: 58px; height: 58px; border-radius: 50%;
-    background: linear-gradient(135deg, #c4b5f4, #9b72cf);
-    border: none; cursor: pointer; font-size: 1.5rem;
-    box-shadow: 0 4px 18px rgba(155,114,207,0.45);
-    transition: transform 0.2s; display: flex; align-items: center; justify-content: center;
-  }
-  #mochi-toggle:hover { transform: scale(1.1); }
-  #mochi-toggle.hungry { animation: w-wiggle 0.45s ease-in-out infinite alternate; }
-  @keyframes w-wiggle { from { transform: rotate(-12deg); } to { transform: rotate(12deg); } }
-  #mochi-badge {
-    position: absolute; top: -2px; right: -2px;
-    width: 16px; height: 16px; border-radius: 50%;
-    background: #f9758a; border: 2px solid #ede9f8;
-    display: none;
-  }
-  #mochi-toggle.hungry #mochi-badge { display: block; }
-  #mochi-panel {
-    position: fixed; bottom: 92px; right: 24px; z-index: 9998;
-    width: 268px; background: rgba(255,255,255,0.97);
-    border-radius: 18px; box-shadow: 0 8px 32px rgba(155,114,207,0.32);
-    backdrop-filter: blur(10px); font-family: 'Nunito', sans-serif;
-    transition: opacity 0.22s, transform 0.22s; transform-origin: bottom right;
-  }
-  #mochi-panel.hidden { opacity: 0; transform: scale(0.92) translateY(8px); pointer-events: none; }
-  .w-header {
-    background: linear-gradient(120deg, #c4b5f4, #b8a8e8);
-    padding: 0.65em 1em; border-radius: 18px 18px 0 0;
-    display: flex; justify-content: space-between; align-items: center;
-    color: #3d2c6e; font-weight: 800; font-size: 0.95rem;
-  }
-  .w-close {
-    background: none; border: none; cursor: pointer;
-    font-size: 1rem; color: #3d2c6e; font-weight: 700;
-    line-height: 1; padding: 0; box-shadow: none;
-    transition: opacity 0.2s;
-  }
-  .w-close:hover { opacity: 0.6; transform: none; }
-  .w-body { padding: 1em; }
-  .w-bunny { display: flex; flex-direction: column; align-items: center; margin-bottom: 0.7em; animation: w-idle 2.4s ease-in-out infinite; }
-  @keyframes w-idle { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-  .w-bunny.hungry { animation: w-wiggle 0.45s ease-in-out infinite alternate; }
-  .w-bunny.starving .w-eye { background: transparent !important; box-shadow: inset 0 0 0 2px #3d2c6e; transform: rotate(45deg); border-radius: 2px !important; }
-  .w-ears { display: flex; gap: 18px; margin-bottom: -4px; }
-  .w-ear { width: 15px; height: 32px; background: #fce4f0; border-radius: 50% 50% 35% 35%; display: flex; justify-content: center; padding-top: 5px; }
-  .w-ear-in { width: 7px; height: 18px; background: #f4aecb; border-radius: 50%; }
-  .w-head { width: 68px; height: 62px; background: #fff8fb; border-radius: 50%; box-shadow: 0 2px 10px rgba(155,114,207,0.15); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; gap: 3px; }
-  .w-eyes { display: flex; gap: 15px; margin-top: 5px; }
-  .w-eye { width: 9px; height: 9px; background: #3d2c6e; border-radius: 50%; transition: height 0.3s, border-radius 0.3s; }
-  .w-bunny.sleeping .w-eye { height: 2px; border-radius: 1px; }
-  .w-cheeks { display: flex; gap: 22px; position: absolute; top: 35px; }
-  .w-cheek { width: 13px; height: 8px; background: rgba(255,150,180,0.36); border-radius: 50%; }
-  .w-mouth { width: 16px; height: 8px; border-bottom: 2.5px solid #f4aecb; border-radius: 0 0 50% 50%; }
-  .w-bunny.sad .w-mouth { border-bottom: none; border-top: 2.5px solid #f4aecb; border-radius: 50% 50% 0 0; margin-top: 6px; }
-  .w-body-sh { width: 54px; height: 40px; background: #fff8fb; border-radius: 50%; margin-top: -8px; box-shadow: 0 2px 8px rgba(155,114,207,0.12); position: relative; }
-  .w-tail { position: absolute; width: 13px; height: 13px; background: #fff; border-radius: 50%; right: -4px; top: 11px; box-shadow: 0 1px 4px rgba(0,0,0,0.07); }
-  .w-msg { text-align: center; color: #6b5b9e; font-size: 0.82rem; font-style: italic; margin: 0 0 0.75em; }
-  .w-stats { margin-bottom: 0.8em; }
-  .w-stat { display: flex; align-items: center; gap: 0.5em; font-size: 0.78rem; color: #3d2c6e; margin-bottom: 0.3em; }
-  .w-stat-lbl { width: 56px; font-weight: 700; }
-  .w-bar { flex: 1; height: 8px; background: #ede9f8; border-radius: 4px; overflow: hidden; }
-  .w-fill { height: 100%; border-radius: 4px; transition: width 0.5s; }
-  .w-fill.food  { background: linear-gradient(90deg, #f4aecb, #f9758a); }
-  .w-fill.happy { background: linear-gradient(90deg, #b8a8e8, #9b72cf); }
-  .w-actions { display: flex; gap: 0.5em; }
-  .w-actions button { flex: 1; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.8rem; padding: 0.4em 0.3em; border-radius: 12px; border: none; cursor: pointer; background: linear-gradient(135deg, #c4b5f4, #9b72cf); color: #fff; box-shadow: 0 2px 8px rgba(155,114,207,0.28); transition: transform 0.15s, opacity 0.15s; }
-  .w-actions button:hover { transform: translateY(-1px); opacity: 0.88; }
-  .w-pet-link { display: block; text-align: center; margin-top: 0.7em; font-size: 0.75rem; color: #9b72cf; text-decoration: none; font-weight: 700; }
-  .w-pet-link:hover { text-decoration: underline; }
-  `;
-  document.head.appendChild(css);
-
-  // DOM
-  const toggle = document.createElement('button');
-  toggle.id = 'mochi-toggle';
-  toggle.title = 'Mochi';
-  toggle.innerHTML = '🐰<div id="mochi-badge"></div>';
-
-  const panel = document.createElement('div');
-  panel.id = 'mochi-panel';
-  panel.className = 'hidden';
-  panel.innerHTML = `
-    <div class="w-header">
-      <span id="w-name">Mochi ♡</span>
-      <button class="w-close" title="Close">—</button>
-    </div>
-    <div class="w-body">
-      <div class="w-bunny" id="w-bunny">
-        <div class="w-ears">
-          <div class="w-ear"><div class="w-ear-in"></div></div>
-          <div class="w-ear"><div class="w-ear-in"></div></div>
+  host.innerHTML = `
+    <section class="puffs-card" aria-label="Your little friend">
+      <div class="puffs-top"><span class="puffs-kicker">YOUR LITTLE FRIEND</span><span class="puffs-mood"></span></div>
+      <div class="puffs-scene">
+        <span class="puffs-sun" aria-hidden="true"></span><span class="puffs-cloud cloud-one" aria-hidden="true"></span><span class="puffs-cloud cloud-two" aria-hidden="true"></span>
+        <span class="puffs-spark sparkle-one" aria-hidden="true">✦</span><span class="puffs-spark sparkle-two" aria-hidden="true">✧</span>
+        <div class="puffs-ground" aria-hidden="true"><span>✿</span><span>✿</span><span>✿</span></div>
+        <button class="puffs-bunny" type="button" aria-label="Give your friend a gentle pat">
+          <span class="puffs-ears" aria-hidden="true"><i></i><i></i></span>
+          <span class="puffs-body" aria-hidden="true"><i class="puffs-tail"></i><i class="puffs-paw paw-left"></i><i class="puffs-paw paw-right"></i></span>
+          <span class="puffs-head" aria-hidden="true"><i class="puffs-eye eye-left"></i><i class="puffs-eye eye-right"></i><i class="puffs-blush blush-left"></i><i class="puffs-blush blush-right"></i><i class="puffs-nose"></i><i class="puffs-mouth"></i></span>
+          <span class="puffs-bow" aria-hidden="true">✿</span>
+        </button>
+        <span class="puffs-reaction" aria-hidden="true"></span><span class="puffs-zzz" aria-hidden="true">z z z</span>
+        <span class="puffs-scene-hint">tap for a little love</span>
+      </div>
+      <div class="puffs-content">
+        <div class="puffs-name-row"><h2 class="puffs-name"></h2><button class="puffs-rename" type="button" aria-label="Rename your friend" title="Rename your friend">✎</button></div>
+        <form class="puffs-rename-form" hidden><label for="puffs-name-input">Your friend’s name</label><div><input id="puffs-name-input" maxlength="24" required autocomplete="off"><button type="submit">Save</button><button type="button" class="puffs-cancel">Cancel</button></div></form>
+        <p class="puffs-message" role="status" aria-live="polite"></p>
+        <div class="puffs-stats">
+          ${[['fullness','🍓','Food'],['happiness','♡','Joy'],['energy','☾','Energy']].map(([key, icon, label]) => `<div class="puffs-stat"><div><span>${icon} ${label}</span><span data-value="${key}"></span></div><div class="puffs-meter" role="meter" aria-label="${label}" aria-valuemin="0" aria-valuemax="100" data-meter="${key}"><span></span></div></div>`).join('')}
         </div>
-        <div class="w-head">
-          <div class="w-eyes"><div class="w-eye"></div><div class="w-eye"></div></div>
-          <div class="w-cheeks"><div class="w-cheek"></div><div class="w-cheek"></div></div>
-          <div class="w-mouth" id="w-mouth"></div>
-        </div>
-        <div class="w-body-sh"><div class="w-tail"></div></div>
+        <div class="puffs-actions"><button type="button" data-action="feed"><span aria-hidden="true">🍓</span>Feed</button><button type="button" data-action="play"><span aria-hidden="true">🎀</span>Play</button><button type="button" data-action="sleep"><span aria-hidden="true">☾</span><span class="sleep-label">Nap</span></button></div>
+        <p class="puffs-info"></p>
+        ${fullPage ? '<a class="puffs-visit" href="/">← Back to the scrapbook</a>' : '<a class="puffs-visit" href="/pet/"></a>'}
+        <p class="puffs-storage"></p>
       </div>
-      <p class="w-msg" id="w-msg">hi there!</p>
-      <div class="w-stats">
-        <div class="w-stat"><span class="w-stat-lbl">🍎 Food</span><div class="w-bar"><div class="w-fill food" id="w-food"></div></div></div>
-        <div class="w-stat"><span class="w-stat-lbl">✨ Happy</span><div class="w-bar"><div class="w-fill happy" id="w-happy"></div></div></div>
-      </div>
-      <div class="w-actions">
-        <button id="w-feed">🍎 Feed</button>
-        <button id="w-play">🎀 Play</button>
-        <button id="w-sleep">💤 Sleep</button>
-      </div>
-      <a class="w-pet-link" href="/pet/">visit ${load().name || 'Mochi'} →</a>
-    </div>`;
-
-  const inlineEl = document.getElementById('mochi-home');
-  const isInline = !!inlineEl;
-
-  if (!isInline) document.body.appendChild(toggle);
-
-  if (isInline) {
-    panel.classList.remove('hidden');
-    inlineEl.appendChild(panel);
-  } else {
-    document.body.appendChild(panel);
-  }
-
-  let state = decay(load());
+    </section>`;
+  const $ = selector => host.querySelector(selector);
+  const card = $('.puffs-card');
+  let state = load();
   save(state);
-  let open = false;
-
-  function render() {
-    const { name, fullness, happiness } = state;
-    panel.querySelector('#w-name').textContent = name + ' ♡';
-    panel.querySelector('.w-pet-link').textContent = `visit ${name} →`;
-    panel.querySelector('#w-msg').textContent = msg(state);
-    panel.querySelector('#w-food').style.width  = fullness  + '%';
-    panel.querySelector('#w-happy').style.width = happiness + '%';
-
-    const b = panel.querySelector('#w-bunny');
-    b.classList.remove('hungry', 'sad', 'starving', 'sleeping');
-    if (fullness < 10)       b.classList.add('starving');
-    else if (fullness < 30)  b.classList.add('hungry');
-    else if (happiness < 30) b.classList.add('sad');
-
-    toggle.classList.toggle('hungry', fullness < 30);
+  function render(override) {
+    const asleep = state.sleepUntil > Date.now();
+    card.classList.toggle('is-asleep', asleep);
+    $('.puffs-scene-hint').textContent = asleep ? 'shh… tiny dreams in progress' : 'tap for a little love';
+    $('.puffs-name').textContent = `${state.name} ♡`;
+    $('.puffs-bunny').setAttribute('aria-label', `Give ${state.name} a gentle pat`);
+    $('.puffs-bunny').disabled = asleep;
+    $('.puffs-mood').textContent = asleep ? 'dreaming' : state.fullness < 30 ? 'snack time' : state.energy < 25 ? 'feeling sleepy' : 'cozy & loved';
+    const message = override || (asleep ? 'a tiny nap, a big dream ☁' : state.fullness < 30 ? 'a strawberry would be lovely ♡' : state.energy < 25 ? 'shall we have a cozy little nap?' : state.happiness < 40 ? 'a little playtime together?' : 'my favorite place is here with you.');
+    if ($('.puffs-message').textContent !== message) $('.puffs-message').textContent = message;
+    for (const key of ['fullness','happiness','energy']) {
+      const value = Math.round(state[key]);
+      $(`[data-value="${key}"]`).textContent = `${value}%`;
+      const meter = $(`[data-meter="${key}"]`);
+      meter.setAttribute('aria-valuenow', value);
+      meter.firstElementChild.style.width = `${value}%`;
+    }
+    $('[data-action="feed"]').disabled = asleep || state.fullness >= 100;
+    $('[data-action="play"]').disabled = asleep || state.energy < 10;
+    $('.sleep-label').textContent = asleep ? 'Wake' : 'Nap';
+    $('[data-action="sleep"]').setAttribute('aria-label', asleep ? 'Wake your friend' : 'Take a one-minute nap');
+    const days = Math.max(0, Math.floor((Date.now() - state.born) / 86400000));
+    $('.puffs-info').textContent = asleep ? `Resting · ${Math.ceil((state.sleepUntil - Date.now()) / 1000)}s left` : `${days ? `${days} day${days === 1 ? '' : 's'} together` : 'our first day together'} · ${state.careCount} little moments`;
+    if (!fullPage) $('.puffs-visit').textContent = `Spend a little time with ${state.name} →`;
+    $('.puffs-storage').textContent = storageAvailable ? '' : 'Your friend is here for this visit. Saving is unavailable in this browser.';
   }
-
-  if (!isInline) {
-    toggle.addEventListener('click', () => {
-      open = !open;
-      panel.classList.toggle('hidden', !open);
-      if (open) { state = decay(state); save(state); render(); }
-    });
-
-    panel.querySelector('.w-close').addEventListener('click', () => {
-      open = false; panel.classList.add('hidden');
-    });
-  }
-
-  panel.querySelector('#w-feed').addEventListener('click', () => {
-    state = decay(state); state.fullness = Math.min(100, state.fullness + 30); save(state); render();
-  });
-
-  panel.querySelector('#w-play').addEventListener('click', () => {
-    state = decay(state); state.happiness = Math.min(100, state.happiness + 25); state.fullness = Math.max(0, state.fullness - 5); save(state); render();
-  });
-
-  panel.querySelector('#w-sleep').addEventListener('click', () => {
-    state = decay(state); state.happiness = Math.min(100, state.happiness + 10);
-    const b = panel.querySelector('#w-bunny'); b.classList.add('sleeping');
-    panel.querySelector('#w-msg').textContent = '-ω- zzz';
+  function interact(action) {
+    state = load();
+    const resolved = action === 'sleep' && state.sleepUntil ? 'wake' : action;
+    state = care.act(state, resolved);
     save(state);
-    setTimeout(() => { b.classList.remove('sleeping'); render(); }, 3000);
+    clearTimeout(reactionTimer);
+    card.classList.remove('is-playing', 'is-feeding', 'is-petted');
+    const feedback = {feed:'nom nom… berry delicious! ♡',play:'again, again! that was fun!',pet:'oh! a little pat just for me ♡',wake:'hello again, sunshine!'};
+    render(feedback[resolved]);
+    const effects = { feed: ['is-feeding','🍓'], play: ['is-playing','✦'], pet: ['is-petted','♡'] };
+    if (effects[resolved]) {
+      const [className, symbol] = effects[resolved];
+      $('.puffs-reaction').textContent = symbol;
+      // Restart an animation after repeated clicks without changing the saved pet.
+      void card.offsetWidth;
+      card.classList.add(className);
+    }
+    reactionTimer = setTimeout(() => { card.classList.remove('is-playing','is-feeding','is-petted'); state = load(); render(); }, 2200);
+  }
+  host.querySelectorAll('[data-action]').forEach(button => button.addEventListener('click', () => interact(button.dataset.action)));
+  $('.puffs-bunny').addEventListener('click', () => interact('pet'));
+  $('.puffs-rename').addEventListener('click', () => {
+    $('.puffs-rename-form').hidden = false;
+    $('#puffs-name-input').value = state.name;
+    $('#puffs-name-input').focus();
   });
-
-  setInterval(() => { state = decay(state); save(state); if (open) render(); toggle.classList.toggle('hungry', state.fullness < 30); }, 10000);
-
+  function closeRename() { $('.puffs-rename-form').hidden = true; $('.puffs-rename').focus(); }
+  $('.puffs-cancel').addEventListener('click', closeRename);
+  $('.puffs-rename-form').addEventListener('submit', event => {
+    event.preventDefault();
+    const name = $('#puffs-name-input').value.trim();
+    if (!name) return;
+    state = load(); state.name = name.slice(0,24); save(state); render(); closeRename();
+  });
+  $('#puffs-name-input').addEventListener('keydown', event => { if (event.key === 'Escape') closeRename(); });
+  window.addEventListener('storage', event => { if (event.key === care.KEY || event.key === null) { clearTimeout(reactionTimer); card.classList.remove('is-playing','is-feeding','is-petted'); state = load(); render(); } });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) { state = load(); render(); } });
+  setInterval(() => { if (!document.hidden) { state = load(); if (!card.matches('.is-playing,.is-feeding,.is-petted')) render(); } }, 1000);
   render();
 })();

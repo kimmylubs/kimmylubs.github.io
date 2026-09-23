@@ -7,7 +7,6 @@
     { href: '/games/', label: 'Games', pages: ['/games/', '/2048/', '/flappy/', '/cooking/', '/memory/'] },
     { href: '/kaling/', label: 'MapleStory', pages: ['/kaling/', '/fragments/'] },
     { href: '/storybook/', label: 'Storybook' },
-    { href: '/guestbook/', label: 'Guestbook' },
   ];
 
   const path = location.pathname.replace(/\/index\.html$/, '/').replace(/\/?$/, '/');
