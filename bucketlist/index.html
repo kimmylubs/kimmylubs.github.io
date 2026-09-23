@@ -20,41 +20,13 @@
 
   <!-- ── Traveled Tab ── -->
   <div class="tab-panel active" id="tab-traveled">
-  <div class="bl-layout">
-    <aside class="bl-sidebar">
-      <div class="bl-sidebar-header">
-        <h2>Traveled</h2>
-        <span class="bl-count" id="bl-count">0</span>
-      </div>
-
-
-      <div class="bl-filter" id="bl-filter"></div>
-
-      <ul class="bl-list" id="bl-list"></ul>
-
-      <div class="bl-add-form" id="bl-add-form" style="display:none">
-        <div class="autocomplete-wrap">
-          <div class="input-ghost" id="input-ghost"></div>
-          <input type="text" id="add-input" placeholder="Add a place…" autocomplete="off">
-          <ul class="autocomplete-dropdown" id="ac-dropdown"></ul>
-        </div>
-        <div class="year-row">
-          <select id="year-select"></select>
-          <button class="year-edit-btn" onclick="window.toggleYearEditor()">✎</button>
-        </div>
-        <button onclick="window.addPlace()">Add</button>
-      </div>
-
-      <div class="year-editor" id="year-editor" style="display:none">
-        <div id="year-editor-list"></div>
-        <div class="year-editor-add">
-          <input type="text" id="year-new-input" placeholder="New category…">
-          <button onclick="window.addYearOption()">+</button>
-        </div>
-      </div>
-    </aside>
-    <div id="map"></div>
-  </div>
+    <div id="map" aria-label="World map of visited countries"></div>
+    <div class="map-summary" aria-live="polite">
+      <span class="map-eyebrow">MY TRAVEL MAP</span>
+      <h1><span id="country-count">…</span> countries visited</h1>
+      <p><span class="visited-swatch"></span> Visited <span class="unvisited-swatch"></span> Not yet</p>
+      <span id="map-status">Loading your map…</span>
+    </div>
   </div><!-- end tab-traveled -->
 
   <!-- ── Itineraries Tab ── -->
@@ -399,7 +371,6 @@
   </script>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
