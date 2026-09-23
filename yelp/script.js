@@ -71,7 +71,7 @@ function filterPlaces() {
 }
 async function loadPlaces() {
   try {
-    const response = await fetch('data.json');
+    const response = await fetch('data.json?v=places-20260923', { cache: 'no-cache' });
     if (!response.ok) throw new Error('Places could not load');
     allPlaces = await response.json();
     const grouped = new Map();
