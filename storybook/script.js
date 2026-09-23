@@ -27,8 +27,8 @@ function toggleFavorite(book) {
   renderLibrary(); if (activeBook) updateFavorite();
 }
 function renderLibrary() {
-  const query=$('#book-search').value.trim().toLowerCase();
-  const visible=BOOKS.filter(book=>(!favoritesOnly || favorites.has(book.id)) && book.title.toLowerCase().includes(query));
+  const visible=BOOKS.filter(book=>!favoritesOnly || favorites.has(book.id))
+    .sort((a,b)=>a.title.localeCompare(b.title, 'en'));
   const grid=$('#book-grid');grid.replaceChildren();
   visible.forEach(book=>{
     const article=document.createElement('article');article.className='library-book';
@@ -99,7 +99,6 @@ function openFromURL() {
   else backToLibrary(false);
 }
 $('#featured-read').addEventListener('click',()=>{const book=featuredBook();lastOpenedButton=book.id;openBook(book,resumePage(book));});
-$('#book-search').addEventListener('input',renderLibrary);
 $('#filter-all').addEventListener('click',()=>{favoritesOnly=false;renderLibrary();});
 $('#filter-favorites').addEventListener('click',()=>{favoritesOnly=true;renderLibrary();});
 $('#back-library').addEventListener('click',()=>backToLibrary());$('#another-story').addEventListener('click',()=>backToLibrary());

@@ -692,7 +692,7 @@
   const shelfList = document.getElementById('shelf-list');
   let activeGame = null;
 
-  GAMES.forEach(g => {
+  GAMES.sort((a,b)=>a.label.localeCompare(b.label, 'en', { numeric:true })).forEach(g => {
     const btn = document.createElement('div');
     btn.className = 'shelf-game';
     btn.dataset.id = g.id;

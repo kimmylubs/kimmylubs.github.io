@@ -6,7 +6,7 @@
   <meta name="description" content="A cozy library of little illustrated stories. Find a favorite and pick up where you left off.">
   <title>The Little Library · Kimmie's Scrapbook</title>
   <link rel="stylesheet" href="/shared.css">
-  <link rel="stylesheet" href="styles.css?v=reading-20260923">
+  <link rel="stylesheet" href="styles.css?v=sidebar-order-20260923">
   <link rel="stylesheet" href="scenes.css?v=reading-20260923">
 </head>
 <body>
@@ -14,11 +14,10 @@
   <div class="storybook-layout">
     <aside class="story-shelf" aria-label="Bookshelf">
       <div class="shelf-heading">📚 my books</div>
-      <label class="book-search">Find a story<input id="book-search" type="search" placeholder="Search titles…"></label>
       <div class="library-filters" aria-label="Library filter"><button type="button" id="filter-all" aria-pressed="true">All stories</button><button type="button" id="filter-favorites" aria-pressed="false">♡ Favorites</button></div>
       <p class="library-results" id="library-results" aria-live="polite"></p>
       <div class="book-grid" id="book-grid"></div>
-      <p class="library-empty" id="library-empty" hidden>No stories found. Try another title or browse all stories.</p>
+      <p class="library-empty" id="library-empty" hidden>No favorites yet. Open a story and tap the heart to save it.</p>
     </aside>
   <main class="library-wrap">
     <section id="library" aria-labelledby="library-title">
@@ -37,6 +36,6 @@
   </main>
   </div>
   <script src="books.js?v=reading-20260923"></script>
-  <script src="script.js?v=reading-20260923"></script>
+  <script src="script.js?v=sidebar-order-20260923"></script>
 </body>
 </html>
