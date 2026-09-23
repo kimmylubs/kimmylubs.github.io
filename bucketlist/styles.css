@@ -3,39 +3,6 @@ body {
   overflow: hidden;
 }
 
-/* ── Tab bar ── */
-.travel-tabs {
-  display: flex;
-  gap: 0.4em;
-  padding: 0.5em 1em;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(8px);
-  border-bottom: 2px solid #e4dcf8;
-  height: 44px;
-  box-sizing: border-box;
-  align-items: center;
-}
-
-.travel-tab {
-  padding: 0.3em 1.2em;
-  border-radius: 20px;
-  border: 2px solid #e4dcf8;
-  background: transparent;
-  color: #9b72cf;
-  font-weight: 700;
-  font-size: 0.88rem;
-  font-family: inherit;
-  cursor: pointer;
-  transition: background 0.15s, color 0.15s;
-}
-
-.travel-tab:hover { background: #f0ecff; opacity: 1; transform: none; }
-.travel-tab.active {
-  background: linear-gradient(135deg, #c4b5f4, #9b72cf);
-  color: #fff;
-  border-color: transparent;
-}
-
 /* ── Tab panels ── */
 .tab-panel { display: none; height: calc(100vh - 52px - 44px); }
 .tab-panel.active { display: flex; flex-direction: column; }

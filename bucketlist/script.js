@@ -90,7 +90,15 @@ async function loadMap() {
 }
 loadMap();
 
-document.querySelector('[data-tab="traveled"]').addEventListener('click', () => {
-  requestAnimationFrame(() => map.invalidateSize());
-});
+function showTravelPanel() {
+  const hash = location.hash.slice(1);
+  const selected = ['countries', 'itineraries'].includes(hash) || /^section\d+$/.test(hash)
+    ? (/^section\d+$/.test(hash) ? 'itineraries' : hash) : 'traveled';
+  document.querySelectorAll('.tab-panel').forEach(panel => {
+    panel.classList.toggle('active', panel.id === 'tab-' + selected);
+  });
+  if (selected === 'traveled') requestAnimationFrame(() => map.invalidateSize());
+}
+window.addEventListener('hashchange', showTravelPanel);
+showTravelPanel();
 window.addEventListener('resize', () => map.invalidateSize());

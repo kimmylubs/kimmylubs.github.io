@@ -7,19 +7,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../shared.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=travel-tabs-20260923">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="/page-polish.css">
 </head>
 <body class="polished-page map-page">
-  <script src="/nav.js?v=reading-20260923"></script>
-
-  <div class="travel-tabs section-tabs" role="navigation" aria-label="Travel pages">
-    <button class="travel-tab active" data-tab="traveled">Travel Map</button>
-    <button class="travel-tab" data-tab="countries">Countries</button>
-    <button class="travel-tab" data-tab="itineraries">Itineraries</button>
-    <a class="travel-tab" href="/travel/">Travel Guides</a>
-  </div>
+  <script src="/nav.js?v=travel-tabs-20260923"></script>
 
   <!-- ── Traveled Tab ── -->
   <div class="tab-panel active" id="tab-traveled">
@@ -362,18 +355,6 @@
   </div><!-- end tab-itineraries -->
 
   <script>
-    document.querySelectorAll('.travel-tab[data-tab]').forEach(btn => {
-      btn.setAttribute('aria-pressed', String(btn.classList.contains('active')));
-      btn.setAttribute('aria-controls', 'tab-' + btn.dataset.tab);
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.travel-tab[data-tab]').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
-        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        btn.setAttribute('aria-pressed', 'true');
-        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-      });
-    });
-
     document.querySelectorAll('.itin-content a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         e.preventDefault();
@@ -386,7 +367,7 @@
   </script>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=travel-tabs-20260923"></script>
   <script src="/page-polish.js?v=tabs-cleanup-20260923"></script>
 </body>
 </html>

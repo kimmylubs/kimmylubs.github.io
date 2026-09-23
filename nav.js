@@ -25,7 +25,7 @@
     .section-tabs { display:flex; gap:6px; padding:10px 16px; background:#f8f5fc; border-bottom:1px solid #e4daed; overflow-x:auto; flex-shrink:0; }
     .section-tabs :is(a, button) { flex-shrink:0; border-radius:16px; padding:6px 14px; font-size:13px; font-weight:800; color:#77568f; background:#eee5f5; text-decoration:none; font-family:inherit; border:0; box-shadow:none; line-height:1.4; white-space:nowrap; }
     .section-tabs :is(a[aria-current="page"], button.active) { background:#795598; color:white; }
-    .section-tabs.travel-tabs { height:auto; min-height:50px; box-sizing:border-box; backdrop-filter:none; }
+
 
     @media (max-width: 700px) {
       .site-nav { padding: 6px 8px; }
@@ -50,8 +50,8 @@
   } else if (LINKS.find(link => link.href === '/yelp/').pages.includes(path)) {
     sectionName = 'Yelp';
     tabs = [['/yelp/', 'Worldwide'], ['/yelp/nyc/', 'NYC · Visited'], ['/yelp/nyctogo/', 'NYC · To Go']];
-  } else if (path === '/travel/') {
-    tabs = [['/bucketlist/', 'Travel Map'], ['/travel/', 'Travel Guides']];
+  } else if (LINKS.find(link => link.href === '/bucketlist/').pages.includes(path)) {
+    tabs = [['/bucketlist/', 'Travel Map'], ['/bucketlist/#countries', 'Countries'], ['/bucketlist/#itineraries', 'Itineraries'], ['/travel/', 'Travel Guides']];
   }
   if (tabs) {
     const section = document.createElement('div');
@@ -60,5 +60,17 @@
     section.setAttribute('aria-label', `${sectionName} pages`);
     section.innerHTML = tabs.map(([href, label]) => `<a href="${href}"${path === href ? ' aria-current="page"' : ''}>${label}</a>`).join('');
     nav.after(section);
+    if (sectionName === 'Travel') {
+      function updateTravelSelection() {
+        const hash = ['#countries', '#itineraries'].includes(location.hash) ? location.hash : (/^#section\d+$/.test(location.hash) ? '#itineraries' : '');
+        section.querySelectorAll('a').forEach(link => {
+          const active = link.getAttribute('href') === path + (path === '/bucketlist/' ? hash : '');
+          if (active) link.setAttribute('aria-current', 'page');
+          else link.removeAttribute('aria-current');
+        });
+      }
+      window.addEventListener('hashchange', updateTravelSelection);
+      updateTravelSelection();
+    }
   }
 })();
