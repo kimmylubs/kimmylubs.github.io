@@ -1,5 +1,7 @@
-const NYC_MODE = document.body.dataset.mapScope === 'nyc';
-const areaLabel = NYC_MODE ? 'neighborhood' : 'city area';
+const TOGO_MODE = document.body.dataset.mapScope === 'nyctogo';
+const NYC_MODE = TOGO_MODE || document.body.dataset.mapScope === 'nyc';
+const placeStatus = TOGO_MODE ? 'saved' : 'visited';
+const areaLabel = TOGO_MODE ? 'location' : NYC_MODE ? 'neighborhood' : 'city area';
 const map = L.map('map', {
   minZoom: NYC_MODE ? 9 : 1, zoomSnap: 0.25, maxZoom: 17,
   zoomControl: false, worldCopyJump: !NYC_MODE,
@@ -21,7 +23,7 @@ function closePanel() { panel.hidden = true; activeArea = null; }
 function showArea(area) {
   activeArea = area.name;
   document.getElementById('panel-title').textContent = area.name;
-  document.getElementById('panel-count').textContent = `${area.places.length} visited ${area.places.length === 1 ? 'place' : 'places'} · From my published Yelp reviews`;
+  document.getElementById('panel-count').textContent = `${area.places.length} ${placeStatus} ${area.places.length === 1 ? 'place' : 'places'} · ${TOGO_MODE ? 'From my Want to go collection' : 'From my published Yelp reviews'}`;
   const list = document.getElementById('place-list');
   list.replaceChildren();
   [...area.places].sort((a,b) => a.name.localeCompare(b.name)).forEach(place => {
@@ -31,7 +33,7 @@ function showArea(area) {
     link.href = place.url;
     link.target = '_blank'; link.rel = 'noopener noreferrer';
     const location = document.createElement('small');
-    location.textContent = place.city;
+    location.textContent = place.address || place.city;
     li.append(link,location); list.append(li);
   });
   panel.hidden = false;
@@ -52,33 +54,34 @@ function renderPins() {
   });
   clusters.forEach(cluster => {
     const combined = cluster.areas.length > 1;
-    const title = combined ? `${cluster.count} visited places across ${cluster.areas.length} ${NYC_MODE ? 'neighborhoods' : 'cities'}. Zoom in.` : `${cluster.areas[0].name}: ${cluster.count} visited ${cluster.count === 1 ? 'place' : 'places'}`;
+    const title = combined ? `${cluster.count} ${placeStatus} places across ${cluster.areas.length} ${TOGO_MODE ? 'locations' : NYC_MODE ? 'neighborhoods' : 'cities'}. Zoom in.` : `${cluster.areas[0].name}: ${cluster.count} ${placeStatus} ${cluster.count === 1 ? 'place' : 'places'}`;
     const marker = L.marker([cluster.lat,cluster.lng], {
       title, alt: title,
-      icon: L.divIcon({ className: `place-pin${combined ? ' cluster' : ''}`, html: `<span>${cluster.count}</span>`, iconSize: combined ? [48,48] : [42,42], iconAnchor: combined ? [24,24] : [21,21] }),
+      icon: L.divIcon({ className: `place-pin${combined ? ' cluster' : ''}${TOGO_MODE && cluster.areas.some(a => a.places.some(p => p.locationAccuracy === 'area')) ? ' approximate' : ''}`, html: `<span>${cluster.count}</span>`, iconSize: combined ? [48,48] : [42,42], iconAnchor: combined ? [24,24] : [21,21] }),
     }).addTo(pinLayer);
     const tooltip = document.createElement('span'); tooltip.textContent = title;
     marker.bindTooltip(tooltip);
     marker.getElement()?.setAttribute('aria-label', title);
     marker.on('click', () => {
-      if (combined) { closePanel(); map.fitBounds(cluster.areas.map(a => [a.lat,a.lng]), { padding: [60,60], maxZoom: Math.min(map.getZoom()+3,17) }); }
+      if (combined && map.getZoom() >= 16) { showArea({name: 'Nearby places', places: cluster.areas.flatMap(a => a.places)}); }
+      else if (combined) { closePanel(); map.fitBounds(cluster.areas.map(a => [a.lat,a.lng]), { padding: [60,60], maxZoom: Math.min(map.getZoom()+3,17) }); }
       else showArea(cluster.areas[0]);
     });
   });
 }
 function filterPlaces() {
   const query = search.value.trim().toLocaleLowerCase();
-  visibleAreas = areas.map(area => ({ ...area, places: area.places.filter(p => (!boroughFilter || boroughFilter.value === 'all' || p.borough === boroughFilter.value) && `${p.name} ${p.city} ${area.name}`.toLocaleLowerCase().includes(query)) })).filter(a => a.places.length);
+  visibleAreas = areas.map(area => ({ ...area, places: area.places.filter(p => (!boroughFilter || boroughFilter.value === 'all' || p.borough === boroughFilter.value) && `${p.name} ${p.city} ${p.address || ""} ${area.name}`.toLocaleLowerCase().includes(query)) })).filter(a => a.places.length);
   const count = visibleAreas.reduce((total,a) => total+a.places.length,0);
-  document.getElementById('map-stats').textContent = `${count.toLocaleString()} visited ${count === 1 ? 'place' : 'places'} · ${visibleAreas.length} ${areaLabel}${visibleAreas.length === 1 ? '' : 's'} · From Yelp`;
+  document.getElementById('map-stats').textContent = `${count.toLocaleString()} ${placeStatus} ${count === 1 ? 'place' : 'places'} · ${visibleAreas.length} ${areaLabel}${visibleAreas.length === 1 ? '' : 's'} · From Yelp`;
   message.hidden = count > 0;
-  message.textContent = query ? 'No places match that search. Try a city or business name.' : 'No visited places have been added yet.';
+  message.textContent = query ? 'No places match that search. Try a city or business name.' : 'No places match this filter.';
   closePanel(); renderPins();
   if (query || boroughFilter) fitAreas();
 }
 async function loadPlaces() {
   try {
-    const response = await fetch(`${NYC_MODE ? '/yelp/nyc/' : '/yelp/'}data.json?v=nyc-20260923`, { cache: 'no-cache' });
+    const response = await fetch(`${TOGO_MODE ? '/yelp/nyctogo/' : NYC_MODE ? '/yelp/nyc/' : '/yelp/'}data.json?v=nyctogo-20260923`, { cache: 'no-cache' });
     if (!response.ok) throw new Error('Places could not load');
     allPlaces = await response.json();
     const grouped = new Map();

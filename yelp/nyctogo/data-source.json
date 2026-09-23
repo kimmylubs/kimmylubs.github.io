@@ -1,0 +1,11 @@
+{
+  "source": "https://www.yelp.com/collection/mZeCEkQN3cWoxmpbBFGaSg/My-Bookmarks",
+  "collectionTitle": "Want to go",
+  "collectedOn": "2026-09-23",
+  "total": 82,
+  "locationCounts": {
+    "business": 68,
+    "area": 14
+  },
+  "notes": "All 82 collection cards were read. Business coordinates come from visible Yelp business maps; 14 unavailable locations use existing OpenStreetMap area coordinates and are labeled approximate. Guksu Jip is assigned to Queens based on its Flushing address despite the collection label New York. This is a saved snapshot, not live synchronization."
+}

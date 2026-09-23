@@ -19,3 +19,7 @@ Location data © OpenStreetMap contributors, ODbL: https://www.openstreetmap.org
 ## NYC
 
 `/yelp/nyc/` shows the 419 NYC businesses in 70 neighborhood-area groups, with borough filtering. Coordinates represent neighborhood areas, not exact business addresses. Broader original location labels remain explicitly unspecified. NYC data provenance is in `nyc/data-source.json`.
+
+## NYC to go
+
+`/yelp/nyctogo/` contains all 82 businesses in the Want to go collection as of September 23, 2026. There are 68 business-map locations and 14 explicitly labeled approximate area locations. The list is a static snapshot, with its source linked on the map. Bookmarks stay separate from visited places. Business addresses and borough filters support finding a next stop.
