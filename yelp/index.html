@@ -3,53 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Yelp Reviews</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="description" content="A map of the places I've visited, collected from my published Yelp reviews.">
+  <title>My Places · Kimmie's Scrapbook</title>
   <link rel="stylesheet" href="../shared.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <link rel="stylesheet" href="/page-polish.css">
+  <link rel="stylesheet" href="../page-polish.css">
 </head>
-<body class="polished-page map-page">
+<body class="polished-page places-page">
   <script src="/nav.js"></script>
-
-  <div class="yelp-layout">
-    <aside class="review-sidebar" id="sidebar">
-      <div class="sidebar-header">
-        <h2>My Reviews</h2>
-        <div style="display:flex;align-items:center;gap:0.5em">
-          <span class="review-count" id="review-count">—</span>
-          <button class="refresh-btn" id="refresh-btn" title="Reload saved reviews" aria-label="Reload saved reviews" onclick="loadReviews()">↻</button>
-        </div>
-      </div>
-      <div id="loading" class="loading-state">
-        <div class="spinner"></div>
-        <p>Loading your reviews…</p>
-      </div>
-      <div id="error-state" class="error-state" style="display:none">
-        <p id="error-msg"></p>
-        <a class="import-cta" href="https://www.yelp.com/user_details?userid=FKPUeSBvXP5vde2FSJOGow" target="_blank" rel="noopener noreferrer">Visit my Yelp profile ↗</a>
-        <button style="margin-top:0.5em;font-size:0.8rem" onclick="loadReviews()">Retry</button>
-      </div>
-      <div id="empty-state" class="loading-state" style="display:none"><p>No reviews added to the map yet.</p><a href="https://www.yelp.com/user_details?userid=FKPUeSBvXP5vde2FSJOGow" target="_blank" rel="noopener noreferrer">Find me on Yelp ↗</a></div>
-      <ul class="review-list" id="review-list"></ul>
+  <header class="places-header">
+    <div><p class="eyebrow">MY LITTLE FOOTPRINTS</p><h1>Everywhere I've been</h1><p id="map-stats" aria-live="polite">Loading places…</p></div>
+    <div class="map-actions"><label for="place-search">Find a city or place</label><input id="place-search" type="search" placeholder="Try Brooklyn, coffee, or Paris…"><button id="show-all" type="button">Show all places</button></div>
+  </header>
+  <main class="places-main">
+    <div id="map" aria-label="Map of places visited, grouped by city"></div>
+    <div class="map-note">Pins group visits by city or area. Zoom in to separate nearby cities.<br>City-center locations, not exact business addresses.</div>
+    <div id="map-message" class="map-message" role="status" hidden></div>
+    <aside id="place-panel" class="place-panel" aria-labelledby="panel-title" hidden>
+      <button id="close-panel" type="button" aria-label="Close place list">×</button>
+      <p class="eyebrow">PLACES I'VE VISITED</p><h2 id="panel-title"></h2><p id="panel-count"></p>
+      <ul id="place-list"></ul>
     </aside>
-    <div id="map"></div>
-  </div>
-
-  <div id="detail-panel" class="detail-panel" style="display:none">
-    <button class="detail-close" aria-label="Close review" onclick="closeDetail()">✕</button>
-    <div class="detail-stars" id="detail-stars"></div>
-    <h3 id="detail-name"></h3>
-    <p class="detail-address" id="detail-address"></p>
-    <p class="detail-date" id="detail-date"></p>
-    <p class="detail-text" id="detail-text"></p>
-    <a class="detail-link" id="detail-link" target="_blank" rel="noopener noreferrer">View on Yelp ↗</a>
-  </div>
-
+  </main>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
-  <script src="/page-polish.js"></script>
+  <script src="../page-polish.js"></script>
 </body>
 </html>

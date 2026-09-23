@@ -1,0 +1,748 @@
+{
+  "source": "https://www.yelp.com/user_details_reviews_self?userid=FKPUeSBvXP5vde2FSJOGow",
+  "collectedOn": "2026-09-23",
+  "publishedReviewCount": 882,
+  "pagesCollected": 89,
+  "uniqueBusinesses": 882,
+  "cityAreas": 105,
+  "mapPrecision": "City centers; not exact business locations",
+  "geocoding": "OpenStreetMap Nominatim",
+  "license": "https://www.openstreetmap.org/copyright",
+  "cities": [
+    {
+      "name": "Truckee, CA",
+      "lat": 39.3279454,
+      "lng": -120.1835765,
+      "displayName": "Truckee, Nevada County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Grass Valley, CA",
+      "lat": 39.2190607,
+      "lng": -121.06292,
+      "displayName": "Grass Valley, Nevada County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Sacramento, CA",
+      "lat": 38.5810606,
+      "lng": -121.493895,
+      "displayName": "Sacramento, Sacramento County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "San Francisco, CA",
+      "lat": 37.7879363,
+      "lng": -122.4075201,
+      "displayName": "San Francisco, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Las Vegas, NV",
+      "lat": 36.1674263,
+      "lng": -115.1484131,
+      "displayName": "Las Vegas, Clark County, Nevada, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Roseville, CA",
+      "lat": 38.7521235,
+      "lng": -121.2880059,
+      "displayName": "Roseville, Placer County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "New York City, NY",
+      "lat": 40.7127281,
+      "lng": -74.0060152,
+      "displayName": "New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Jersey City, NJ",
+      "lat": 40.7215682,
+      "lng": -74.047455,
+      "displayName": "Jersey City, Hudson County, New Jersey, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Charleston, SC",
+      "lat": 32.7884363,
+      "lng": -79.9399309,
+      "displayName": "Charleston, Charleston County, South Carolina, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Puerto Natales, Chile",
+      "lat": -51.7262003,
+      "lng": -72.5059982,
+      "displayName": "Puerto Natales, Provincia de Última Esperanza, Región de Magallanes y de la Antártica Chilena, 6160000, Chile",
+      "countryCode": "cl"
+    },
+    {
+      "name": "Rocklin, CA",
+      "lat": 38.7907339,
+      "lng": -121.2357828,
+      "displayName": "Rocklin, Placer County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Punta Arenas, Chile",
+      "lat": -53.1625688,
+      "lng": -70.907822,
+      "displayName": "Punta Arenas, Provincia de Magallanes, Región de Magallanes y de la Antártica Chilena, 6201065, Chile",
+      "countryCode": "cl"
+    },
+    {
+      "name": "Saratoga Springs, NY",
+      "lat": 43.0822315,
+      "lng": -73.785373,
+      "displayName": "City of Saratoga Springs, Saratoga County, New York, 12866, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Napa, CA",
+      "lat": 38.4898675,
+      "lng": -122.3218414,
+      "displayName": "Napa County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Albany, NY",
+      "lat": 42.6511674,
+      "lng": -73.754968,
+      "displayName": "City of Albany, Albany County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Haarlem, Netherlands",
+      "lat": 52.3885317,
+      "lng": 4.6388048,
+      "displayName": "Haarlem, Noord-Holland, Nederland",
+      "countryCode": "nl"
+    },
+    {
+      "name": "Amsterdam, Netherlands",
+      "lat": 52.3730796,
+      "lng": 4.8924534,
+      "displayName": "Amsterdam, Noord-Holland, Nederland",
+      "countryCode": "nl"
+    },
+    {
+      "name": "Hull, UK",
+      "lat": 53.7623863,
+      "lng": -0.3301214,
+      "displayName": "Kingston upon Hull, Hull and East Yorkshire, England, United Kingdom",
+      "countryCode": "gb"
+    },
+    {
+      "name": "Hornsea, UK",
+      "lat": 53.9134596,
+      "lng": -0.1689412,
+      "displayName": "Hornsea, East Riding of Yorkshire, Hull and East Yorkshire, England, United Kingdom",
+      "countryCode": "gb"
+    },
+    {
+      "name": "Cooper City, FL",
+      "lat": 26.057783,
+      "lng": -80.2695109,
+      "displayName": "Cooper City, Broward County, Florida, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Hillegom, Netherlands",
+      "lat": 52.2922753,
+      "lng": 4.5834571,
+      "displayName": "Hillegom, Zuid-Holland, Nederland",
+      "countryCode": "nl"
+    },
+    {
+      "name": "Charlotte, NC",
+      "lat": 35.2272086,
+      "lng": -80.8430827,
+      "displayName": "Charlotte, Mecklenburg County, North Carolina, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Toronto, Canada",
+      "lat": 43.6534817,
+      "lng": -79.3839347,
+      "displayName": "Toronto, Golden Horseshoe, Ontario, Canada",
+      "countryCode": "ca"
+    },
+    {
+      "name": "Kingston, NY",
+      "lat": 41.9287812,
+      "lng": -74.0023825,
+      "displayName": "City of Kingston, Ulster County, New York, 12401, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Philadelphia, PA",
+      "lat": 39.9527237,
+      "lng": -75.1635262,
+      "displayName": "Philadelphia, Philadelphia County, Pennsylvania, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Newark, DE",
+      "lat": 39.6828358,
+      "lng": -75.7515682,
+      "displayName": "Newark, New Castle County, Delaware, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Bellevue, WA",
+      "lat": 47.6144219,
+      "lng": -122.192337,
+      "displayName": "Bellevue, King County, Washington, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Seattle, WA",
+      "lat": 47.6038321,
+      "lng": -122.330062,
+      "displayName": "Seattle, King County, Washington, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Lawrenceville, NJ",
+      "lat": 40.3009876,
+      "lng": -74.7373728,
+      "displayName": "Lawrenceville, Lawrence Township, Mercer County, New Jersey, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Pennsville, NJ",
+      "lat": 39.6534464,
+      "lng": -75.5165881,
+      "displayName": "Pennsville Township, Salem County, New Jersey, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Los Angeles, CA",
+      "lat": 34.0536909,
+      "lng": -118.242766,
+      "displayName": "Los Angeles, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Rowland Heights, CA",
+      "lat": 33.9734043,
+      "lng": -117.8941305,
+      "displayName": "Rowland Heights, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Monterey Park, CA",
+      "lat": 34.051522,
+      "lng": -118.129807,
+      "displayName": "Monterey Park, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Chino Hills, CA",
+      "lat": 33.9926803,
+      "lng": -117.760056,
+      "displayName": "Chino Hills, San Bernardino County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Alhambra, CA",
+      "lat": 34.093042,
+      "lng": -118.12706,
+      "displayName": "Alhambra, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Ontario, CA",
+      "lat": 34.065846,
+      "lng": -117.64843,
+      "displayName": "Ontario, San Bernardino County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Rancho Cucamonga, CA",
+      "lat": 34.1033192,
+      "lng": -117.575173,
+      "displayName": "Rancho Cucamonga, San Bernardino County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Chino, CA",
+      "lat": 34.0133561,
+      "lng": -117.690075,
+      "displayName": "Chino, San Bernardino County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Garden Grove, CA",
+      "lat": 33.7746292,
+      "lng": -117.9463717,
+      "displayName": "Garden Grove, Orange County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Pomona, CA",
+      "lat": 34.0553813,
+      "lng": -117.7517496,
+      "displayName": "Pomona, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Diamond Bar, CA",
+      "lat": 34.0286226,
+      "lng": -117.8103367,
+      "displayName": "Diamond Bar, Los Angeles County, California, 91765, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Westminster, CA",
+      "lat": 33.7578725,
+      "lng": -117.9859054,
+      "displayName": "Westminster, Orange County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Pasadena, CA",
+      "lat": 34.1476507,
+      "lng": -118.144155,
+      "displayName": "Pasadena, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Fountain Valley, CA",
+      "lat": 33.7038145,
+      "lng": -117.9627349,
+      "displayName": "Fountain Valley, Orange County, California, 92708, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Huntington Beach, CA",
+      "lat": 33.6783336,
+      "lng": -118.000016,
+      "displayName": "Huntington Beach, Orange County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Walnut, CA",
+      "lat": 34.0203253,
+      "lng": -117.8659441,
+      "displayName": "Walnut, Los Angeles County, California, 91789, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Rosemead, CA",
+      "lat": 34.0808629,
+      "lng": -118.073219,
+      "displayName": "Rosemead, Los Angeles County, California, 91770, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Artesia, CA",
+      "lat": 33.8690197,
+      "lng": -118.0796195,
+      "displayName": "Artesia, Los Angeles County, California, 90703, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "San Gabriel, CA",
+      "lat": 34.0990995,
+      "lng": -118.1085554,
+      "displayName": "San Gabriel, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Monrovia, CA",
+      "lat": 34.1483499,
+      "lng": -118.0014517,
+      "displayName": "Monrovia, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Arcadia, CA",
+      "lat": 34.1362075,
+      "lng": -118.0401497,
+      "displayName": "Arcadia, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "City Of Industry, CA",
+      "lat": 34.0182252,
+      "lng": -117.9593061,
+      "displayName": "City of Industry, Los Angeles County, California, 91715, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Hacienda Heights, CA",
+      "lat": 34.0004225,
+      "lng": -117.9752615,
+      "displayName": "Hacienda Heights, Los Angeles County, California, 91745, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "West Covina, CA",
+      "lat": 34.0686208,
+      "lng": -117.9389526,
+      "displayName": "West Covina, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Fullerton, CA",
+      "lat": 33.8708215,
+      "lng": -117.929416,
+      "displayName": "Fullerton, Orange County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Wilmington, DE",
+      "lat": 39.7459468,
+      "lng": -75.546589,
+      "displayName": "Wilmington, New Castle County, Delaware, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Glen Mills, PA",
+      "lat": 39.919698,
+      "lng": -75.4904323,
+      "displayName": "Glen Mills, Thornbury Township, Delaware County, Pennsylvania, 19342, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Vienna, Austria",
+      "lat": 48.2083537,
+      "lng": 16.3725042,
+      "displayName": "Wien, Österreich",
+      "countryCode": "at"
+    },
+    {
+      "name": "Cabazon, CA",
+      "lat": 33.9090305,
+      "lng": -116.7795345,
+      "displayName": "Cabazon, Riverside County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Dublin, Ireland",
+      "lat": 53.3493795,
+      "lng": -6.2605593,
+      "displayName": "Dublin, County Dublin, Leinster, Éire / Ireland",
+      "countryCode": "ie"
+    },
+    {
+      "name": "Ghent, Belgium",
+      "lat": 51.0538286,
+      "lng": 3.7250121,
+      "displayName": "Gent, Oost-Vlaanderen, Vlaanderen, België / Belgique / Belgien",
+      "countryCode": "be"
+    },
+    {
+      "name": "Brussels, Belgium",
+      "lat": 50.8467372,
+      "lng": 4.352493,
+      "displayName": "Bruxelles - Brussel, Brussel-Hoofdstad - Bruxelles-Capitale, Région de Bruxelles-Capitale - Brussels Hoofdstedelijk Gewest, België / Belgique / Belgien",
+      "countryCode": "be"
+    },
+    {
+      "name": "Nuremberg, Germany",
+      "lat": 49.453872,
+      "lng": 11.077298,
+      "displayName": "Nürnberg, Bayern, Deutschland",
+      "countryCode": "de"
+    },
+    {
+      "name": "Palm Springs, CA",
+      "lat": 33.8246269,
+      "lng": -116.540303,
+      "displayName": "Palm Springs, Riverside County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Eastvale, CA",
+      "lat": 33.9747067,
+      "lng": -117.566541,
+      "displayName": "Eastvale, Riverside County, California, 92880, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Anaheim, CA",
+      "lat": 33.8347516,
+      "lng": -117.911732,
+      "displayName": "Anaheim, Orange County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Irvine, CA",
+      "lat": 33.6856969,
+      "lng": -117.825981,
+      "displayName": "Irvine, Orange County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Tustin, CA",
+      "lat": 33.7458511,
+      "lng": -117.826166,
+      "displayName": "Tustin, Orange County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Buena Park, CA",
+      "lat": 33.870413,
+      "lng": -117.9962165,
+      "displayName": "Buena Park, Orange County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Melbourne, Australia",
+      "lat": -37.8142454,
+      "lng": 144.9631732,
+      "displayName": "Melbourne, Victoria, Australia",
+      "countryCode": "au"
+    },
+    {
+      "name": "Fishkill, NY",
+      "lat": 41.5355745,
+      "lng": -73.898702,
+      "displayName": "Town of Fishkill, Dutchess County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Singapore",
+      "lat": 1.357107,
+      "lng": 103.8194992,
+      "displayName": "Singapore",
+      "countryCode": "sg"
+    },
+    {
+      "name": "Universal City, CA",
+      "lat": 34.1419225,
+      "lng": -118.358411,
+      "displayName": "Universal City, Los Angeles County, California, 91608, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Glendale, CA",
+      "lat": 34.1469416,
+      "lng": -118.2478471,
+      "displayName": "Glendale, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Beverly Hills, CA",
+      "lat": 34.0696501,
+      "lng": -118.3963062,
+      "displayName": "Beverly Hills, Los Angeles County, California, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Talleyville, DE",
+      "lat": 39.8089953,
+      "lng": -75.5494778,
+      "displayName": "Talleyville, New Castle County, Delaware, 19803, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "London, UK",
+      "lat": 51.5074456,
+      "lng": -0.1277653,
+      "displayName": "Greater London, England, United Kingdom",
+      "countryCode": "gb"
+    },
+    {
+      "name": "Paris, France",
+      "lat": 48.8588897,
+      "lng": 2.320041,
+      "displayName": "Paris, Île-de-France, France métropolitaine, France",
+      "countryCode": "fr"
+    },
+    {
+      "name": "Honolulu, HI",
+      "lat": 21.304547,
+      "lng": -157.855676,
+      "displayName": "Honolulu, Honolulu County, Hawaii, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Kapolei, HI",
+      "lat": 21.344828,
+      "lng": -158.063333,
+      "displayName": "Kapolei, Honolulu County, Hawaii, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Wahiawa, HI",
+      "lat": 21.5006241,
+      "lng": -158.016672,
+      "displayName": "Wahiawa, Honolulu County, Hawaii, 96786, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Pearl City, HI",
+      "lat": 21.4001231,
+      "lng": -157.969428,
+      "displayName": "Pearl City, Honolulu County, Hawaii, 96782, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Aiea, HI",
+      "lat": 21.3822222,
+      "lng": -157.9336111,
+      "displayName": "Aiea, Honolulu County, Hawaii, 96701, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Haleiwa, HI",
+      "lat": 21.5935975,
+      "lng": -158.1044697,
+      "displayName": "Haleiwa, Waialua, Honolulu County, Hawaii, 96712, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "King Of Prussia, PA",
+      "lat": 40.0947625,
+      "lng": -75.3851334,
+      "displayName": "King of Prussia, Upper Merion Township, Montgomery County, Pennsylvania, 19406, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Osaka, Japan",
+      "lat": 34.6937569,
+      "lng": 135.5014539,
+      "displayName": "大阪市, 大阪府, 日本",
+      "countryCode": "jp"
+    },
+    {
+      "name": "Tokyo, Japan",
+      "lat": 35.6768601,
+      "lng": 139.7638947,
+      "displayName": "東京都, 日本",
+      "countryCode": "jp"
+    },
+    {
+      "name": "Urayasu, Japan",
+      "lat": 35.6539105,
+      "lng": 139.902563,
+      "displayName": "浦安市, 千葉県, 日本",
+      "countryCode": "jp"
+    },
+    {
+      "name": "Claymont, DE",
+      "lat": 39.8046257,
+      "lng": -75.4555011,
+      "displayName": "Claymont, New Castle County, Delaware, 19703, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Chicago, IL",
+      "lat": 41.8755616,
+      "lng": -87.6244212,
+      "displayName": "Chicago, South Chicago Township, Cook County, Illinois, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "New Orleans, LA",
+      "lat": 29.9561422,
+      "lng": -90.0733934,
+      "displayName": "New Orleans, Orleans Parish, Louisiana, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Hoboken, NJ",
+      "lat": 40.7433066,
+      "lng": -74.0323752,
+      "displayName": "Hoboken, Hudson County, New Jersey, 07030, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Bartonsville, PA",
+      "lat": 41.0050926,
+      "lng": -75.2796274,
+      "displayName": "Bartonsville, Pocono Township, Monroe County, Pennsylvania, 18321, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Pomona, NY",
+      "lat": 41.189153,
+      "lng": -74.054249,
+      "displayName": "Village of Pomona, Town of Haverstraw, Rockland County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Amherst, NY",
+      "lat": 42.9783924,
+      "lng": -78.7997616,
+      "displayName": "Town of Amherst, Erie County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Buffalo, NY",
+      "lat": 42.8864163,
+      "lng": -78.8781493,
+      "displayName": "Buffalo, Erie County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Tonawanda, NY",
+      "lat": 43.020679,
+      "lng": -78.878383,
+      "displayName": "City of Tonawanda, Erie County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "North Tonawanda, NY",
+      "lat": 43.0407742,
+      "lng": -78.8660527,
+      "displayName": "City of North Tonawanda, Niagara County, New York, 14120, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Cheektowaga, NY",
+      "lat": 42.9033917,
+      "lng": -78.7547536,
+      "displayName": "Town of Cheektowaga, Erie County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Jamestown, NY",
+      "lat": 42.0965167,
+      "lng": -79.2380322,
+      "displayName": "Jamestown, Chautauqua County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Syracuse, NY",
+      "lat": 43.0481221,
+      "lng": -76.1474244,
+      "displayName": "City of Syracuse, Onondaga County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "New Hyde Park, NY",
+      "lat": 40.7352157,
+      "lng": -73.6883239,
+      "displayName": "Village of New Hyde Park, Town of North Hempstead, Nassau County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Markham, Canada",
+      "lat": 43.8563707,
+      "lng": -79.3376825,
+      "displayName": "Markham, York Region, Golden Horseshoe, Ontario, Canada",
+      "countryCode": "ca"
+    },
+    {
+      "name": "Kenmore, NY",
+      "lat": 42.961748,
+      "lng": -78.870914,
+      "displayName": "Village of Kenmore, Town of Tonawanda, Erie County, New York, 14217, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Santa Monica, CA",
+      "lat": 34.0194704,
+      "lng": -118.491227,
+      "displayName": "Santa Monica, Los Angeles County, California, United States",
+      "countryCode": "us"
+    }
+  ]
+}
