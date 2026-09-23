@@ -9,12 +9,14 @@
   <link rel="stylesheet" href="../shared.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="/page-polish.css">
 </head>
-<body>
+<body class="polished-page map-page">
   <script src="/nav.js"></script>
 
   <div class="travel-tabs">
     <button class="travel-tab active" data-tab="traveled">🗺 Traveled</button>
+    <button class="travel-tab" data-tab="countries">Countries</button>
     <button class="travel-tab" data-tab="itineraries">✈️ Itineraries</button>
   </div>
 
@@ -28,6 +30,15 @@
       <span id="map-status">Loading your map…</span>
     </div>
   </div><!-- end tab-traveled -->
+
+  <section class="tab-panel" id="tab-countries" aria-labelledby="countries-heading">
+    <div class="countries-wrap">
+      <p class="countries-eyebrow">THE PLACES I'VE BEEN</p>
+      <h1 id="countries-heading">My visited countries</h1>
+      <p id="countries-summary" aria-live="polite">Loading countries…</p>
+      <ul id="countries-list" class="countries-list"></ul>
+    </div>
+  </section>
 
   <!-- ── Itineraries Tab ── -->
   <div class="tab-panel" id="tab-itineraries">
@@ -351,10 +362,13 @@
 
   <script>
     document.querySelectorAll('.travel-tab').forEach(btn => {
+      btn.setAttribute('aria-pressed', String(btn.classList.contains('active')));
+      btn.setAttribute('aria-controls', 'tab-' + btn.dataset.tab);
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.travel-tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.travel-tab').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
         document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
       });
     });
@@ -372,5 +386,6 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
+  <script src="/page-polish.js"></script>
 </body>
 </html>

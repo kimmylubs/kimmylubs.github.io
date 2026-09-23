@@ -22,11 +22,14 @@ function renderReview(review, index) {
   const li = document.createElement('li');
   li.className = 'review-item';
   li.dataset.index = index;
+  li.tabIndex = 0;
+  li.setAttribute('role', 'button');
+  li.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectReview(index); } });
   li.innerHTML = `
-    <div class="review-item-name">${review.name}</div>
+    <div class="review-item-name">${escapeText(review.name)}</div>
     <div class="review-item-meta">
       <span class="review-item-stars">${starsHtml(review.rating)}</span>
-      <span class="review-item-city">${review.city || review.address || ''}</span>
+      <span class="review-item-city">${escapeText(review.city || review.address || '')}</span>
     </div>`;
   li.addEventListener('click', () => selectReview(index));
   return li;
@@ -55,7 +58,7 @@ function selectReview(index) {
   document.getElementById('detail-date').textContent = review.date || '';
   document.getElementById('detail-text').textContent = review.text || '';
   const link = document.getElementById('detail-link');
-  if (review.url) { link.href = review.url; link.style.display = ''; }
+  if (typeof review.url === 'string' && /^https:\/\/(?:www\.)?yelp\.com\//i.test(review.url)) { link.href = review.url; link.style.display = ''; }
   else { link.style.display = 'none'; }
   document.getElementById('detail-panel').style.display = '';
 }
@@ -82,7 +85,7 @@ function renderMap(reviews) {
     if (!review.lat || !review.lng) return;
     const m = L.marker([review.lat, review.lng], { icon: buildMarkerIcon() })
       .addTo(map)
-      .bindTooltip(review.name, { permanent: false, direction: 'top', offset: [0, -8] });
+      .bindTooltip(Object.assign(document.createElement('span'), { textContent: review.name }), { permanent: false, direction: 'top', offset: [0, -8] });
     m.on('click', () => selectReview(i));
     markers[i] = m;
     bounds.push([review.lat, review.lng]);
@@ -96,11 +99,15 @@ async function loadReviews() {
   document.getElementById('loading').style.display = '';
   document.getElementById('error-state').style.display = 'none';
   document.getElementById('review-list').innerHTML = '';
+  document.getElementById('empty-state').style.display = 'none';
+  closeDetail();
 
   try {
-    const res = await fetch('/api/yelp-reviews');
+    const res = await fetch('data.json', { cache: 'no-cache' });
     if (!res.ok) throw new Error(`Server returned ${res.status}`);
     const reviews = await res.json();
+    if (!Array.isArray(reviews)) throw new Error('Invalid review data');
+    if (!reviews.length) document.getElementById('empty-state').style.display = '';
 
     window._reviews = reviews;
     document.getElementById('loading').style.display = 'none';
@@ -112,24 +119,15 @@ async function loadReviews() {
   } catch (err) {
     document.getElementById('loading').style.display = 'none';
     document.getElementById('error-state').style.display = '';
-    const isNoData = err.message.includes('503') || err.message.includes('No saved');
-    document.getElementById('error-msg').textContent = isNoData
-      ? 'Yelp blocks automated scraping. Use the import page to extract your reviews while logged in:'
-      : `Error: ${err.message}`;
+    document.getElementById('error-msg').textContent = 'Reviews could not load. Please try again in a moment.';
   }
 }
 
-async function rescrape() {
-  const btn = document.getElementById('refresh-btn');
-  btn.style.pointerEvents = 'none';
-  btn.textContent = '…';
-  try {
-    await fetch('/api/yelp-reviews', { method: 'DELETE' });
-    await loadReviews();
-  } finally {
-    btn.style.pointerEvents = '';
-    btn.textContent = '↻';
-  }
+function escapeText(value) {
+  const span = document.createElement('span');
+  span.textContent = String(value ?? '');
+  return span.innerHTML;
 }
 
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDetail(); });
 loadReviews();

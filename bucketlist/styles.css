@@ -457,3 +457,14 @@ nav.second-nav a:hover { background: rgba(255,255,255,0.5); }
   .map-summary { top: 12px; left: 12px; padding: 12px 16px; }
   .map-summary h1 { font-size: 19px; }
 }
+
+#tab-countries { overflow-y: auto; background: #f8f5fc; }
+.countries-wrap { width: 100%; max-width: 1000px; margin: 0 auto; padding: 40px 28px; }
+.countries-eyebrow { color: #876ba0; letter-spacing: .16em; font-size: 11px; font-weight: 800; }
+.countries-wrap h1 { margin: 10px 0; }
+#countries-summary { color: #7a6989; margin-bottom: 28px; }
+.countries-list { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; list-style: none; padding: 0; }
+.countries-list li { display: flex; align-items: center; gap: 13px; padding: 16px; background: #fff; border: 1px solid #e5dbed; border-radius: 12px; font-weight: 700; color: #573581; }
+.country-flag { font-size: 25px; }
+@media(max-width:700px) { .countries-list { grid-template-columns: repeat(2,minmax(0,1fr)); } .countries-wrap { padding: 24px 16px; } }
+@media(max-width:420px) { .countries-list { grid-template-columns: 1fr; } }

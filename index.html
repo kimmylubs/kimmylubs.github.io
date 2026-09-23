@@ -3,25 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kimmie's little corner of the internet: travels, tiny games, storybooks, and everyday discoveries.">
+  <title>Kimmie's Scrapbook</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="shared.css">
   <link rel="stylesheet" href="styles.css">
-  <title>Home</title>
+  <link rel="stylesheet" href="page-polish.css">
 </head>
-<body>
+<body class="polished-page">
   <script src="/nav.js"></script>
-  <div class="background">
-    <div class="home-content">
-      <h1 class="home-title">✦ scrapbook ✦</h1>
-      <p class="home-sub">kimmie's little corner of the internet</p>
-      <div id="mochi-home"></div>
-    </div>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
-  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main class="home-wrap" id="main">
+    <header class="home-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">A LITTLE COLLECTION OF ME</p>
+        <h1>Life, collected<br>in little <em>moments.</em></h1>
+        <p class="home-sub">Welcome to kimmie's scrapbook. Places I've been, things I love, and a few little things to play with.</p>
+        <a class="hero-link" href="#explore">Take a look around <span aria-hidden="true">↘</span></a>
+        <div class="tiny-note">made with curiosity & a little bit of lavender ♡</div>
+      </div>
+      <aside class="pet-note" aria-label="My virtual pet">
+        <span class="tape" aria-hidden="true"></span>
+        <p class="pet-caption">a little friend lives here</p>
+        <div id="mochi-home"></div>
+      </aside>
+    </header>
+    <section id="explore" aria-labelledby="explore-title">
+      <div class="section-heading"><h2 id="explore-title">Inside the scrapbook</h2><span>pick a little adventure</span></div>
+      <div class="explore-grid">
+        <a class="explore-card travel-card" href="/bucketlist/">
+          <div class="card-art" aria-hidden="true"><span>🌏</span><i>✦</i><b>↗</b></div>
+          <div class="card-copy"><span class="card-kicker">PLACES & MEMORIES</span><h3>My travels <span aria-hidden="true">↗</span></h3><p>A world of places, colored in one country at a time.</p></div>
+        </a>
+        <a class="explore-card games-card" href="/games/">
+          <div class="card-art" aria-hidden="true"><span>🎮</span><i>✧</i><b>+1</b></div>
+          <div class="card-copy"><span class="card-kicker">A LITTLE PLAY BREAK</span><h3>The game room <span aria-hidden="true">↗</span></h3><p>Match, cook, fly, and chase your next high score.</p></div>
+        </a>
+        <a class="explore-card books-card" href="/storybook/">
+          <div class="card-art" aria-hidden="true"><span>📚</span><i>☾</i><b>♡</b></div>
+          <div class="card-copy"><span class="card-kicker">JUST ONE MORE PAGE</span><h3>The bookshelf <span aria-hidden="true">↗</span></h3><p>Small stories and illustrated worlds to get lost in.</p></div>
+        </a>
+        <a class="explore-card study-card" href="/study/">
+          <div class="card-art" aria-hidden="true"><span>☁️</span><i>✦</i><b>Aa</b></div>
+          <div class="card-copy"><span class="card-kicker">ALWAYS LEARNING</span><h3>Study corner <span aria-hidden="true">↗</span></h3><p>My cloud study notes, gathered in one cozy spot.</p></div>
+        </a>
+      </div>
+    </section>
+    <section class="home-bottom" aria-label="More to explore">
+      <a class="update-note" href="/bucketlist/"><span class="eyebrow">FRESH IN THE SCRAPBOOK</span><h2>A world map, colored with memories.</h2><p>See the countries I've visited—including home in the US. <span aria-hidden="true">→</span></p></a>
+      <div class="quick-links"><h2>Before you go…</h2><a href="/guestbook/">🌸 Leave a little hello <span aria-hidden="true">↗</span></a><a href="/tools/">🧰 Open my everyday tools <span aria-hidden="true">↗</span></a><a href="/yelp/">🍜 My food & review map <span aria-hidden="true">↗</span></a></div>
+    </section>
+    <footer class="home-footer">Thanks for stopping by. Stay curious. ♡</footer>
+  </main>
   <script src="pet/widget.js"></script>
+  <script src="page-polish.js"></script>
 </body>
 </html>

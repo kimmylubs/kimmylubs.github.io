@@ -1,6 +1,7 @@
 // Country borders: Natural Earth 1:50m, public domain. See map-data.md.
 const map = L.map('map', {
-  minZoom: 2,
+  minZoom: 0,
+  zoomSnap: 0.25,
   maxZoom: 8,
   zoomControl: false,
   maxBounds: [[-65, -180], [85, 180]],
@@ -59,11 +60,31 @@ async function loadMap() {
         layer.on('click', () => layer.openTooltip());
       },
     }).addTo(map);
+    const countryNames = new Map();
+    countries.features.forEach(feature => {
+      const { code, name } = feature.properties;
+      if (visited.has(code) && !countryNames.has(code)) countryNames.set(code, name);
+    });
+    const list = document.getElementById('countries-list');
+    list.replaceChildren();
+    [...countryNames].sort((a, b) => a[1].localeCompare(b[1])).forEach(([code, name]) => {
+      const item = document.createElement('li');
+      const flag = document.createElement('span');
+      flag.className = 'country-flag';
+      flag.setAttribute('aria-hidden', 'true');
+      flag.textContent = String.fromCodePoint(...[...code].map(letter => 127397 + letter.charCodeAt(0)));
+      const label = document.createElement('span');
+      label.textContent = name;
+      item.append(flag, label);
+      list.append(item);
+    });
+    document.getElementById('countries-summary').textContent = `${visited.size} countries, including home in the United States. Listed A–Z.`;
     document.getElementById('country-count').textContent = visited.size;
     status.textContent = 'Scroll to zoom · Hover to explore';
   } catch (error) {
     document.getElementById('country-count').textContent = 'Your';
     status.textContent = 'The map could not load. Please refresh to try again.';
+    document.getElementById('countries-summary').textContent = 'Countries could not load. Please refresh to try again.';
     console.error(error);
   }
 }

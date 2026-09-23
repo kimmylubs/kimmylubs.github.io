@@ -1,0 +1,29 @@
+.polished-page :focus-visible { outline: 3px solid #775396; outline-offset: 4px; }
+.skip-link { position: fixed; top: -100px; left: 12px; z-index: 10000; padding: 12px 18px; background: #fff; color: #573581; border-radius: 8px; }
+.skip-link:focus { top: 10px; }
+.polished-page > nav:first-of-type { flex-shrink: 0; }
+.polished-page.map-page { height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+.map-page .travel-tabs { flex-shrink: 0; }
+.map-page .tab-panel, .map-page .yelp-layout { height: auto; min-height: 0; flex: 1; }
+.map-page #map { min-height: 0; min-width: 0; }
+.polished-page .sb-main { min-width: 0; }
+.polished-page .games-layout { height: calc(100dvh - var(--site-nav-height,52px)); }
+@media(max-width:700px) {
+  .polished-page > nav:first-of-type { padding: 6px 8px; }
+  .polished-page > nav:first-of-type ul { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; }
+  .polished-page > nav:first-of-type a { padding: 10px 12px; font-size: 13px; white-space: nowrap; }
+  .polished-page .games-layout { height: auto; }
+  .polished-page .games-main { height: calc(100dvh - var(--site-nav-height,52px) - 75px); min-height: 420px; }
+  .polished-page .shelf-game, .polished-page .shelf-book { flex-shrink: 0; min-height: 44px; }
+  .polished-page .study-wrap { padding: 20px 14px; }
+  .polished-page .topic { padding: 16px; overflow-x: auto; }
+  .polished-page .def-item { grid-template-columns: 1fr; gap: 4px; }
+  .polished-page .tab { min-height: 44px; }
+  .polished-page .review-sidebar { flex: 0 0 220px; min-width: 0; }
+  .polished-page .detail-panel { max-height: 55dvh; overflow: auto; }
+  .polished-page .itin-content section { padding: 24px 20px; }
+  .polished-page .map-summary { padding: 10px 14px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .polished-page *, .polished-page *::before, .polished-page *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}

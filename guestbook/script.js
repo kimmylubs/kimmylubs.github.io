@@ -93,13 +93,15 @@ onSnapshot(q, snapshot => {
     return `
       <div class="gb-entry card">
         <div class="gb-entry-header">
-          <span class="gb-emoji">${d.emoji || '🌸'}</span>
+          <span class="gb-emoji">${esc(EMOJIS.includes(d.emoji) ? d.emoji : '🌸')}</span>
           <span class="gb-name">${esc(d.name)}</span>
           <span class="gb-date">${dateStr}</span>
         </div>
         <p class="gb-message">${esc(d.message)}</p>
       </div>`;
   }).join('');
+}, () => {
+  document.getElementById('gb-entries').textContent = 'Messages could not load. Please refresh to try again.';
 });
 
 function esc(str) {
