@@ -46,8 +46,7 @@
   } else if (gamePages.includes(path)) {
     // Games uses its colorful side menu instead of duplicate top tabs.
   } else if (maplePages.includes(path)) {
-    sectionName = 'MapleStory';
-    tabs = [['/kaling/', 'Kaling'], ['/fragments/', 'Fragments']];
+    // MapleStory pages have a colorful side menu.
   } else if (LINKS.find(link => link.href === '/yelp/').pages.includes(path)) {
     sectionName = 'Yelp';
     tabs = [['/yelp/', 'Worldwide'], ['/yelp/nyc/', 'NYC · Visited'], ['/yelp/nyctogo/', 'NYC · To Go']];

@@ -1,0 +1,10 @@
+.maple-layout { display:flex; min-height:calc(100dvh - 54px); }
+.maple-shelf { width:190px; min-width:190px; background:linear-gradient(180deg,#3b2870 0%,#241654 100%); padding:1.4em .9em; box-shadow:4px 0 20px #24165459; }
+.maple-shelf-title { color:#d4c0ff; font-size:1rem; text-align:center; padding-bottom:.8em; border-bottom:2px dashed #c4b5f440; margin-bottom:1.2em; letter-spacing:.03em; }
+.maple-shelf-links { display:flex; flex-direction:column; gap:.6em; }
+.maple-shelf-link { display:flex; align-items:center; gap:.55em; padding:.85em .9em; border-left:7px solid #8e63c2; border-radius:4px 10px 10px 4px; background:#eadcf8; color:#1a0e30; font-size:.9rem; line-height:1.25; text-decoration:none; box-shadow:2px 3px 8px #0004; transition:transform .15s; }
+.maple-shelf-link span { font-size:1.35rem; }.maple-shelf-link:last-child { background:#c9e8fb; border-left-color:#48a4e8; }
+.maple-shelf-link:hover { transform:translateX(4px); }.maple-shelf-link[aria-current="page"] { outline:2px solid #ffffff70; transform:translateX(3px); }.maple-shelf-link:focus-visible { outline:3px solid white; outline-offset:4px; }
+.maple-main { flex:1; min-width:0; padding-bottom:30px; }.maple-main img { max-width:100%; height:auto; }
+@media(max-width:700px) { .maple-layout { flex-direction:column; }.maple-shelf { width:100%; min-width:0; padding:12px 14px; }.maple-shelf-title { margin-bottom:12px; padding-bottom:10px; }.maple-shelf-links { flex-direction:row; gap:12px; }.maple-shelf-link { flex:1; min-height:48px; }.maple-main .container,.maple-main .frag-layout { padding:20px 16px; }.maple-main .text-container { min-width:0; max-width:100%; padding:16px; overflow-x:auto; } }
+@media(prefers-reduced-motion:reduce) { .maple-shelf-link { transition:none; } }
