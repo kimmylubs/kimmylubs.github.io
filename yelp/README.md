@@ -15,3 +15,7 @@ Update `data.json` with published business names, original location labels, Yelp
 The map is static and works on GitHub Pages without the Node server. No Yelp credentials or API keys are included. Data provenance is recorded in `data-source.json`.
 
 Location data © OpenStreetMap contributors, ODbL: https://www.openstreetmap.org/copyright
+
+## NYC
+
+`/yelp/nyc/` shows the 419 NYC businesses in 70 neighborhood-area groups, with borough filtering. Coordinates represent neighborhood areas, not exact business addresses. Broader original location labels remain explicitly unspecified. NYC data provenance is in `nyc/data-source.json`.

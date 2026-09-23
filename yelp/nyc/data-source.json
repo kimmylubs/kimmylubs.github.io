@@ -1,0 +1,571 @@
+{
+  "collectedOn": "2026-09-23",
+  "source": "../data.json",
+  "places": 419,
+  "neighborhoodAreas": 70,
+  "precision": "Neighborhood-area pins, not individual business addresses; unspecified areas retain city/borough-level centers.",
+  "geocoding": "OpenStreetMap Nominatim; one Yelp-map fallback recorded below",
+  "areas": [
+    {
+      "name": "Flatiron District, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7410722,
+      "lng": -73.9896534,
+      "displayName": "Flatiron District, Manhattan Community Board 5, Manhattan, New York County, New York, 10010, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Financial District, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7076681,
+      "lng": -74.009271,
+      "displayName": "Financial District, Lower Manhattan, Manhattan, New York County, New York, 10045, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Kips Bay, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7395463,
+      "lng": -73.9770832,
+      "displayName": "Kips Bay, Manhattan Community Board 6, Manhattan, New York County, New York, 10016, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "East Village, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7292688,
+      "lng": -73.9873613,
+      "displayName": "East Village, Manhattan Community Board 3, Manhattan, New York County, New York, 10003, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Koreatown, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7476419,
+      "lng": -73.9865157,
+      "displayName": "Koreatown, Manhattan Community Board 5, Manhattan, New York County, New York, 10118, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Nolita, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7201124,
+      "lng": -73.9961673,
+      "displayName": "Shoo Shoo Nolita, 371, Broome Street, Little Italy, Lower Manhattan, Manhattan, New York County, New York, 10013, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Greenwich Village, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7335844,
+      "lng": -74.0028172,
+      "displayName": "Greenwich Village, 7th Avenue South, West Village, Manhattan, New York County, New York, 10014, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Arverne, Queens",
+      "borough": "Queens",
+      "lat": 40.5934173,
+      "lng": -73.7895462,
+      "displayName": "Arverne, Queens, Queens County, New York, 11692, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Chinatown, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7164913,
+      "lng": -73.9962504,
+      "displayName": "Chinatown, Lower Manhattan, Manhattan, New York County, New York, 10013, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Midtown West, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7552901,
+      "lng": -74.0067406,
+      "displayName": "West 30th Street Heliport, 12th Avenue, Manhattan Community Board 4, Manhattan, New York County, New York, 10199, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Upper West Side, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7870455,
+      "lng": -73.9754163,
+      "displayName": "Upper West Side, Manhattan Community Board 7, Manhattan, New York County, New York, 10024, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Fort Greene, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6907711,
+      "lng": -73.9766245,
+      "displayName": "Fort Greene, Brooklyn, Kings County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Civic Center, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7136793,
+      "lng": -74.0024042,
+      "displayName": "Civic Center, Lower Manhattan, Manhattan, New York County, New York, 10278, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "South Village, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7606384,
+      "lng": -73.9903951,
+      "displayName": "Four Four South Village, 368, West 46th Street, Hell's Kitchen, Manhattan Community Board 4, Manhattan, New York County, New York, 10036, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Central Park, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7827725,
+      "lng": -73.9653627,
+      "displayName": "Central Park, New York County, New York, 11025, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Astoria, Queens",
+      "borough": "Queens",
+      "lat": 40.7720145,
+      "lng": -73.9302673,
+      "displayName": "Astoria, Queens, Queens County, New York, 11102, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "East Williamsburg, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.7217727,
+      "lng": -73.9621944,
+      "displayName": "Marsha P. Johnson State Park, 90, Williamsburg, Brooklyn, Kings County, New York, 11249, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Bowery, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7267668,
+      "lng": -73.9917209,
+      "displayName": "Bowery, NoHo, Manhattan, New York County, New York, 10003, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Alphabet City, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7251022,
+      "lng": -73.9795833,
+      "displayName": "Alphabet City, Manhattan Community Board 3, Manhattan, New York County, New York, 10009, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "SoHo, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.72288,
+      "lng": -73.9987505,
+      "displayName": "SoHo, Manhattan, New York County, New York, 10012, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Stapleton, Staten Island",
+      "borough": "Staten Island",
+      "lat": 40.6264774,
+      "lng": -74.0776361,
+      "displayName": "Stapleton, Staten Island, Richmond County, New York, 10301, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Chelsea, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7464906,
+      "lng": -74.0015283,
+      "displayName": "Chelsea District, Manhattan Community Board 4, Manhattan, New York County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "West Village, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7341857,
+      "lng": -74.00558,
+      "displayName": "West Village, Manhattan, New York County, New York, 10014, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Park Slope, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6701033,
+      "lng": -73.9859723,
+      "displayName": "Park Slope, Brooklyn, Kings County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Theater District, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7579801,
+      "lng": -73.9855452,
+      "displayName": "Theater District, Manhattan Community Board 5, Manhattan, New York County, New York, 10036, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Little Italy, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7192728,
+      "lng": -73.9982152,
+      "displayName": "Little Italy, Lower Manhattan, Manhattan, New York County, New York, 10013, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Downtown Brooklyn, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6915721,
+      "lng": -73.9867644,
+      "displayName": "Downtown Brooklyn, Brooklyn, Kings County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "TriBeCa, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7153802,
+      "lng": -74.0093063,
+      "displayName": "Tribeca, Lower Manhattan, Manhattan, New York County, New York, 10007, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Union Square, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7360717,
+      "lng": -73.9901888,
+      "displayName": "Union Square, Manhattan Community Board 5, Manhattan, New York County, New York, 10003, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Boerum Hill, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6856262,
+      "lng": -73.9841707,
+      "displayName": "Boerum Hill, Brooklyn, Kings County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Brooklyn (area unspecified)",
+      "borough": "Brooklyn",
+      "lat": 40.6526006,
+      "lng": -73.9497211,
+      "displayName": "Brooklyn, Kings County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Cadman Plaza, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6984206,
+      "lng": -73.990603,
+      "displayName": "Cadman Plaza Park, Brooklyn, Kings County, New York, 11201, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Sunset Park, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6442221,
+      "lng": -74.0075907,
+      "displayName": "Sunset Park, Brooklyn, Kings County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "NoHo, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7258746,
+      "lng": -73.9939566,
+      "displayName": "NoHo, Manhattan, New York County, New York, 10012, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "South Slope, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6604004,
+      "lng": -73.9944088,
+      "displayName": "South Slope, Brooklyn, Kings County, New York, 11232, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Gramercy, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7355189,
+      "lng": -73.9840794,
+      "displayName": "Gramercy, Manhattan Community Board 6, Manhattan, New York County, New York, 10010, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Fresh Meadows, Queens",
+      "borough": "Queens",
+      "lat": 40.7348246,
+      "lng": -73.7934668,
+      "displayName": "Fresh Meadows, Queens, Queens County, New York, 11365, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Borough Park, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.633993,
+      "lng": -73.9968059,
+      "displayName": "Borough Park, Brooklyn, Kings County, New York, 11219, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Murray Hill, Queens",
+      "borough": "Queens",
+      "lat": 40.7627097,
+      "lng": -73.8146116,
+      "displayName": "Murray Hill, Barton Avenue, Murray Hill, Flushing, Queens, Queens County, New York, 11354, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Williamsburg, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.714622,
+      "lng": -73.95345,
+      "displayName": "Williamsburg, Brooklyn, Kings County, New York, 11249, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Columbia Street Waterfront District, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6872869,
+      "lng": -74.0019197,
+      "displayName": "Columbia Street Waterfront District, Brooklyn, Kings County, New York, 11231, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Meatpacking District, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7408029,
+      "lng": -74.0080691,
+      "displayName": "Meatpacking District, Manhattan, New York County, New York, 10014, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Flushing, Queens",
+      "borough": "Queens",
+      "lat": 40.7654301,
+      "lng": -73.8174291,
+      "displayName": "Flushing, Queens, Queens County, New York, 11354, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Lower East Side, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7159357,
+      "lng": -73.9868057,
+      "displayName": "Lower East Side, Manhattan Community Board 3, Manhattan, New York County, New York, 10002, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Woodside, Queens",
+      "borough": "Queens",
+      "lat": 40.7453798,
+      "lng": -73.9054145,
+      "displayName": "Woodside, Queens, Queens County, New York, 11377, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Long Island City, Queens",
+      "borough": "Queens",
+      "lat": 40.7455316,
+      "lng": -73.9484995,
+      "displayName": "Long Island City, Queens, Queens County, New York, 11109, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Bensonhurst, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6049772,
+      "lng": -73.9934061,
+      "displayName": "Bensonhurst, New Utrecht, Brooklyn, Kings County, New York, 11214, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Prospect Heights, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6778708,
+      "lng": -73.9684725,
+      "displayName": "Prospect Heights, Brooklyn, Kings County, New York, 11238, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Midtown East, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7598219,
+      "lng": -73.9724708,
+      "displayName": "Midtown East, Manhattan Community Board 5, Manhattan, New York County, New York, 10152, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Bath Beach, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6018495,
+      "lng": -74.000501,
+      "displayName": "Bath Beach, Brooklyn, Kings County, New York, 11214, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Two Bridges, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.7112884,
+      "lng": -73.9922333,
+      "displayName": "Two Bridges, Manhattan Community Board 3, Manhattan, New York County, New York, 10002, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "New York City (area unspecified)",
+      "borough": "Unspecified",
+      "lat": 40.7127281,
+      "lng": -74.0060152,
+      "displayName": "New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Bayside, Queens",
+      "borough": "Queens",
+      "lat": 40.7684351,
+      "lng": -73.7770774,
+      "displayName": "Bayside, Queens, Queens County, New York, 11361, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Elmhurst, Queens",
+      "borough": "Queens",
+      "lat": 40.7365804,
+      "lng": -73.8783932,
+      "displayName": "Elmhurst, Queens, Queens County, New York, 11373, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Flatbush, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6520481,
+      "lng": -73.959027,
+      "displayName": "Flatbush, Brooklyn, Kings County, New York, 11226, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Auburndale, Queens",
+      "borough": "Queens",
+      "lat": 40.7614516,
+      "lng": -73.7897239,
+      "displayName": "Auburndale, 192nd Street, Queens, Queens County, New York, 11358, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Dyker Heights, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6204716,
+      "lng": -74.0116668,
+      "displayName": "Dyker Heights, Brooklyn, Kings County, New York, 11228, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Bay Ridge, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6320062,
+      "lng": -74.0232101,
+      "displayName": "Bay Ridge, Brooklyn, Kings County, New York, 11209, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Prospect Lefferts Gardens, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.660598,
+      "lng": -73.961082,
+      "displayName": "546 Flatbush Ave, Brooklyn, NY 11225",
+      "countryCode": "us",
+      "source": "Yelp business map for the sole place in this neighborhood"
+    },
+    {
+      "name": "Flatlands, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6212155,
+      "lng": -73.9348597,
+      "displayName": "Flatlands, Brooklyn, Kings County, New York, 11234, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Forest Hills, Queens",
+      "borough": "Queens",
+      "lat": 40.7214147,
+      "lng": -73.8438267,
+      "displayName": "Forest Hills, Queens, Queens County, New York, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Upper East Side, Manhattan",
+      "borough": "Manhattan",
+      "lat": 40.775479,
+      "lng": -73.9550233,
+      "displayName": "Upper East Side, Manhattan Community Board 8, Manhattan, New York County, New York, 10028, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Bedford-Stuyvesant, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6834364,
+      "lng": -73.9412488,
+      "displayName": "Bedford-Stuyvesant, Brooklyn, Kings County, New York, 11216, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Cobble Hill, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.687547,
+      "lng": -73.9973352,
+      "displayName": "Cobble Hill, Brooklyn, Kings County, New York, 11201, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Rego Park, Queens",
+      "borough": "Queens",
+      "lat": 40.722865,
+      "lng": -73.8621025,
+      "displayName": "Rego Park, Queens, Queens County, New York, 11374, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Sheepshead Bay, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.5912161,
+      "lng": -73.9445822,
+      "displayName": "Sheepshead Bay, Brooklyn, Kings County, New York, 11229, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Sunnyside, Queens",
+      "borough": "Queens",
+      "lat": 40.7398242,
+      "lng": -73.9354153,
+      "displayName": "Sunnyside, Queens, Queens County, New York, 11101, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Maspeth, Queens",
+      "borough": "Queens",
+      "lat": 40.723158,
+      "lng": -73.912637,
+      "displayName": "Maspeth, Queens, Queens County, New York, 11378, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "Jackson Heights, Queens",
+      "borough": "Queens",
+      "lat": 40.7556561,
+      "lng": -73.8857755,
+      "displayName": "Jackson Heights, Queens, Queens County, New York, 11372, United States",
+      "countryCode": "us"
+    },
+    {
+      "name": "New Lots, Brooklyn",
+      "borough": "Brooklyn",
+      "lat": 40.6606524,
+      "lng": -73.891511,
+      "displayName": "New Lots, East New York, Brooklyn, Kings County, New York, 11207, United States",
+      "countryCode": "us"
+    }
+  ]
+}

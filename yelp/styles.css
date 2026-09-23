@@ -26,3 +26,12 @@ body.places-page { height:100vh; height:100dvh; display:flex; flex-direction:col
 .map-message { position:absolute; z-index:500; top:20px; left:50%; transform:translateX(-50%); background:white; padding:18px; border-radius:12px; box-shadow:0 4px 20px #51306820; text-align:center; width:min(380px,90%); color:#674a7d; }
 [hidden] { display:none !important; }
 @media(max-width:700px) { .places-header { padding:15px 16px; flex-direction:column; align-items:stretch; gap:13px; } .places-header h1 { font-size:23px; } .map-actions { grid-template-columns:minmax(0,1fr) auto; } .map-note { max-width:calc(100% - 68px); font-size:10px; padding:7px 9px; } .place-panel { top:auto; left:10px; right:10px; bottom:25px; width:auto; max-width:none; max-height:55%; padding:18px; } }
+
+.scope-switch { display:flex; gap:5px; margin-bottom:13px; }
+.scope-switch a { text-decoration:none; color:#77568f; background:#eee5f5; border-radius:15px; padding:5px 12px; font-size:12px; font-weight:800; }
+.scope-switch a[aria-current="page"] { background:#795598; color:white; }
+.borough-control { display:flex; flex-direction:column; gap:7px; }
+.borough-control label { color:#796688; font-size:11px; font-weight:700; }
+.borough-control select { background:white; color:#573581; padding:10px; border:1px solid #d6c4e5; border-radius:10px; font:inherit; font-size:13px; }
+@media(max-width:1000px) { [data-map-scope="nyc"] .places-header { flex-wrap:wrap; gap:14px; } }
+@media(max-width:700px) { .scope-switch { margin-bottom:10px; } [data-map-scope="nyc"] .places-header { gap:10px; } .borough-control { flex-direction:row; align-items:center; } .borough-control select { flex:1; } }

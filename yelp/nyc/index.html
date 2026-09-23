@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="My New York City places, grouped by neighborhood. Explore the restaurants, cafes, and other spots I have visited around home.">
+  <title>NYC · My Places · Kimmie's Scrapbook</title>
+  <link rel="stylesheet" href="/shared.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="/yelp/styles.css?v=nyc-20260923">
+  <link rel="stylesheet" href="/page-polish.css">
+</head>
+<body class="polished-page places-page" data-map-scope="nyc">
+  <script src="/nav.js"></script>
+  <header class="places-header">
+    <div><div class="scope-switch" aria-label="Map scope"><a href="/yelp/">Worldwide</a><a href="/yelp/nyc/" aria-current="page">NYC · Home</a></div><p class="eyebrow">MY HOME CITY</p><h1>My NYC</h1><p id="map-stats" aria-live="polite">Loading places…</p></div>
+    <div class="map-actions"><label for="place-search">Find a neighborhood or place</label><input id="place-search" type="search" placeholder="Try Chinatown, Flushing, or coffee…"><button id="show-all" type="button">Show all NYC</button></div>
+    <div class="borough-control"><label for="borough-filter">Borough</label><select id="borough-filter"><option value="all">All NYC</option><option>Manhattan</option><option>Brooklyn</option><option>Queens</option><option>Staten Island</option></select></div>
+  </header>
+  <main class="places-main">
+    <div id="map" aria-label="NYC-only map of visited places, grouped by neighborhood"></div>
+    <div class="map-note">Only NYC places. Zoom in to explore neighborhoods.<br>Neighborhood-area pins, not exact business addresses.</div>
+    <div id="map-message" class="map-message" role="status" hidden></div>
+    <aside id="place-panel" class="place-panel" aria-labelledby="panel-title" hidden>
+      <button id="close-panel" type="button" aria-label="Close place list">×</button>
+      <p class="eyebrow">PLACES I'VE VISITED</p><h2 id="panel-title"></h2><p id="panel-count"></p>
+      <ul id="place-list"></ul>
+    </aside>
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/yelp/script.js?v=nyc-20260923"></script>
+  <script src="/page-polish.js"></script>
+</body>
+</html>
