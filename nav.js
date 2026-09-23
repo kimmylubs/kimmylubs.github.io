@@ -44,8 +44,7 @@
     sectionName = 'Tools';
     tabs = [['/tools/', 'Tools'], ['/unix/', 'Unix'], ['/calculator/', 'Calculator'], ['/allergens/', 'Allergens'], ['/study/', 'Study']];
   } else if (gamePages.includes(path)) {
-    sectionName = 'Games';
-    tabs = [['/games/', 'Games'], ['/2048/', '2048'], ['/flappy/', 'Flappy Rabbit'], ['/cooking/', 'Cooking'], ['/memory/', 'Memory Match']];
+    // Games uses its colorful side menu instead of duplicate top tabs.
   } else if (maplePages.includes(path)) {
     sectionName = 'MapleStory';
     tabs = [['/kaling/', 'Kaling'], ['/fragments/', 'Fragments']];

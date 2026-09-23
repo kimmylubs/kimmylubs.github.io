@@ -3,64 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Storybook</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../shared.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="/page-polish.css">
+  <meta name="description" content="A cozy library of little illustrated stories. Find a favorite and pick up where you left off.">
+  <title>The Little Library · Kimmie's Scrapbook</title>
+  <link rel="stylesheet" href="/shared.css">
+  <link rel="stylesheet" href="styles.css?v=reading-20260923">
+  <link rel="stylesheet" href="scenes.css?v=reading-20260923">
 </head>
-<body class="polished-page">
-  <script src="/nav.js?v=puffs-20260923"></script>
-
-  <div class="sb-layout">
-
-    <!-- ── Bookshelf sidebar ── -->
-    <aside class="sb-shelf">
-      <div class="shelf-title">📚 my books</div>
-      <div class="shelf-list" id="shelf-list"></div>
+<body>
+  <script src="/nav.js?v=reading-20260923"></script>
+  <div class="storybook-layout">
+    <aside class="story-shelf" aria-label="Bookshelf">
+      <div class="shelf-heading">📚 my books</div>
+      <label class="book-search">Find a story<input id="book-search" type="search" placeholder="Search titles…"></label>
+      <div class="library-filters" aria-label="Library filter"><button type="button" id="filter-all" aria-pressed="true">All stories</button><button type="button" id="filter-favorites" aria-pressed="false">♡ Favorites</button></div>
+      <p class="library-results" id="library-results" aria-live="polite"></p>
+      <div class="book-grid" id="book-grid"></div>
+      <p class="library-empty" id="library-empty" hidden>No stories found. Try another title or browse all stories.</p>
     </aside>
-
-    <!-- ── Main book area ── -->
-    <main class="sb-main">
-      <div class="book-stage" id="book-stage">
-        <!-- Cover shown first, then open book -->
-        <div class="book-cover hidden" id="book-cover">
-          <div class="cover-emoji" id="cover-emoji"></div>
-          <div class="cover-title" id="cover-title"></div>
-          <button class="cover-open-btn" id="cover-open-btn">open ▸</button>
-        </div>
-
-        <div class="book-open hidden" id="book-open">
-          <button class="page-arrow left" id="prev-btn">‹</button>
-
-          <div class="book-spread" id="book-spread">
-            <div class="book-page left-page" id="left-page">
-              <div class="page-art-bg" id="art-bg">
-                <div class="page-art" id="page-art"></div>
-              </div>
-            </div>
-            <div class="book-spine"></div>
-            <div class="book-page right-page" id="right-page">
-              <p class="page-text" id="page-text"></p>
-              <div class="page-num" id="page-num"></div>
-            </div>
-          </div>
-
-          <button class="page-arrow right" id="next-btn">›</button>
-        </div>
-
-        <div class="sb-empty" id="sb-empty">
-          <div class="empty-art">📖</div>
-          <p>pick a book from the shelf!</p>
-        </div>
-      </div>
-    </main>
-
+  <main class="library-wrap">
+    <section id="library" aria-labelledby="library-title">
+      <header class="library-hero"><div><p class="library-kicker">ONE MORE PAGE, THEN BED.</p><h1 id="library-title">The little <em>library.</em></h1><p class="library-intro">Familiar tales, tiny adventures, and a little magic.<br>Find a cozy spot. There’s a story waiting for you.</p><p id="library-summary" class="library-summary"></p></div><article class="featured-story"><div class="featured-art" aria-hidden="true">🐰<span>✦</span><i>☾</i></div><div><p class="library-kicker" id="featured-label">A COZY PLACE TO START</p><h2 id="featured-title"></h2><p id="featured-description"></p><button id="featured-read" type="button">Read this story →</button></div></article></header>
+      <p class="library-footnote">Your place and favorites are saved in this browser. A little world to return to.</p>
+    </section>
+    <section id="reader" aria-labelledby="reader-title" hidden>
+      <div class="reader-toolbar"><button id="back-library" class="quiet-button" type="button">← Library</button><div class="reader-heading"><p class="library-kicker">A LITTLE STORY</p><h1 id="reader-title" tabindex="-1"></h1></div><div class="reader-options"><button id="reader-favorite" class="quiet-button" type="button" aria-label="Favorite this story" aria-pressed="false">♡</button><button id="text-smaller" class="quiet-button" type="button" aria-label="Smaller story text">A−</button><button id="text-larger" class="quiet-button" type="button" aria-label="Larger story text">A+</button></div></div>
+      <div class="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuemin="0" aria-valuemax="100" id="reading-progress"><span></span></div>
+      <div class="reading-spread" id="reading-spread"><div class="left-page" id="left-page" aria-hidden="true"><div class="scene-char" id="scene-char"></div><div class="scene-caption" id="scene-caption"></div></div><article class="reading-page"><span class="page-ornament" aria-hidden="true">✦</span><div class="page-text" id="page-text"></div><span class="page-number" id="page-number"></span></article></div>
+      <div class="reader-controls"><button id="previous-page" type="button">← Previous</button><label for="page-select">Page <select id="page-select" aria-label="Go to page"></select></label><button id="next-page" type="button">Next →</button></div>
+      <p class="reader-hint" id="reader-hint" role="status">Use the arrow keys or swipe to turn the page.</p>
+      <div class="reader-finish" id="reader-finish" hidden><span aria-hidden="true">✧</span><h2>A little adventure, complete.</h2><p>Stay for another story?</p><button id="another-story" type="button">Back to the library →</button><button id="reread-story" class="quiet-button" type="button">Read again</button></div>
+    </section>
+    <p id="reading-storage" class="library-footnote" role="status"></p>
+  </main>
   </div>
-
-  <script src="script.js"></script>
-  <script src="/page-polish.js?v=tabs-cleanup-20260923"></script>
+  <script src="books.js?v=reading-20260923"></script>
+  <script src="script.js?v=reading-20260923"></script>
 </body>
 </html>
