@@ -435,3 +435,20 @@ nav.second-nav a:hover { background: rgba(255,255,255,0.5); }
 .country-flag { font-size: 25px; }
 @media(max-width:700px) { .countries-list { grid-template-columns: repeat(2,minmax(0,1fr)); } .countries-wrap { padding: 24px 16px; } }
 @media(max-width:420px) { .countries-list { grid-template-columns: 1fr; } }
+
+/* Owner-initiated country publishing */
+.map-summary .add-country { display:block; pointer-events:auto; margin-top:12px; }
+.add-country { font:inherit; font-size:13px; padding:9px 14px; border-radius:12px; background:#795598; color:white; border:0; cursor:pointer; }
+#country-editor { width:min(440px, calc(100vw - 32px)); box-sizing:border-box; max-height:85dvh; overflow:auto; border:1px solid #e4dcf8; border-radius:20px; padding:28px; background:#fffafc; color:#3d2c6e; box-shadow:0 20px 70px #24113c44; }
+#country-editor::backdrop { background:#24113c66; }
+#country-editor h2 { font-size:23px; margin:8px 28px 12px 0; }
+#country-editor p { font-size:13px; line-height:1.6; }
+#close-country-editor { position:absolute; top:12px; right:12px; background:transparent; color:#795598; border:0; font-size:24px; padding:4px 10px; box-shadow:none; }
+#country-form { display:flex; flex-direction:column; gap:12px; }
+#country-form label { font-weight:800; font-size:13px; }
+#country-form :is(input,select) { width:100%; box-sizing:border-box; font:inherit; font-size:16px; color:#3d2c6e; background:white; border:1px solid #cbb8dd; border-radius:10px; padding:12px; }
+#country-form details { font-size:13px; background:#f1eaf7; padding:12px; border-radius:10px; }
+#country-form summary { cursor:pointer; font-weight:700; }
+#country-form button { background:#795598; color:white; border:0; border-radius:12px; padding:12px; font:inherit; font-weight:800; cursor:pointer; }
+#country-form button:disabled,.add-country:disabled { opacity:.5; cursor:wait; }
+#publish-status { margin:0; }

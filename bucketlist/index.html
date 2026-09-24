@@ -7,12 +7,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../shared.css">
-  <link rel="stylesheet" href="styles.css?v=travel-tabs-20260923">
+  <link rel="stylesheet" href="styles.css?v=countries-ui-20260924">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="/page-polish.css">
 </head>
 <body class="polished-page map-page">
   <script src="/nav.js?v=travel-tabs-20260923"></script>
+
+  <dialog id="country-editor" aria-labelledby="country-editor-title">
+    <button type="button" id="close-country-editor" aria-label="Close country editor">×</button>
+    <h2 id="country-editor-title">A new place, a new memory.</h2>
+    <p>Add a visited country to your public travel map.</p>
+    <form id="country-form">
+      <label for="country-picker">Country</label>
+      <select id="country-picker" required><option value="">Loading countries…</option></select>
+      <details>
+        <summary>Owner access · first-time setup</summary>
+        <p>Create a <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">fine-grained GitHub token</a> with an expiration date. Select only <strong>kimmylubs.github.io</strong> and give <strong>Contents: Read and write</strong> permission.</p>
+        <p>Paste it below when publishing. It is sent only to GitHub, never saved in browser storage, and cleared after each attempt or when this window closes. Visitors cannot publish without repository access.</p>
+      </details>
+      <label for="github-token">GitHub token</label>
+      <input id="github-token" type="password" autocomplete="off" spellcheck="false" autocapitalize="none" required placeholder="Paste your repository token">
+      <button type="submit" id="publish-country">Add &amp; publish country</button>
+      <p id="publish-status" role="status" aria-live="polite">Publishes for everyone. Updates may take a few minutes to appear on other devices.</p>
+    </form>
+  </dialog>
 
   <!-- ── Traveled Tab ── -->
   <div class="tab-panel active" id="tab-traveled">
@@ -22,6 +41,7 @@
       <h1><span id="country-count">…</span> countries visited</h1>
       <p><span class="visited-swatch"></span> Visited <span class="unvisited-swatch"></span> Not yet</p>
       <span id="map-status">Loading your map…</span>
+      <button type="button" class="add-country" data-add-country disabled>＋ Add country</button>
     </div>
   </div><!-- end tab-traveled -->
 
@@ -30,6 +50,7 @@
       <p class="countries-eyebrow">THE PLACES I'VE BEEN</p>
       <h1 id="countries-heading">My visited countries</h1>
       <p id="countries-summary" aria-live="polite">Loading countries…</p>
+      <button type="button" class="add-country" data-add-country disabled>＋ Add country</button>
       <ul id="countries-list" class="countries-list"></ul>
     </div>
   </section>
@@ -367,7 +388,7 @@
   </script>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="script.js?v=travel-tabs-20260923"></script>
+  <script type="module" src="script.js?v=countries-ui-20260924"></script>
   <script src="/page-polish.js?v=tabs-cleanup-20260923"></script>
 </body>
 </html>
