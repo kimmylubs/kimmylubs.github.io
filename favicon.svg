@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Little rabbit</title>
+  <rect width="64" height="64" rx="16" fill="#e8dcfa"/>
+  <g stroke="#795598" stroke-width="2.5">
+    <ellipse cx="23" cy="22" rx="7" ry="18" fill="#fffafc" transform="rotate(-12 23 22)"/>
+    <ellipse cx="41" cy="22" rx="7" ry="18" fill="#fffafc" transform="rotate(12 41 22)"/>
+    <ellipse cx="32" cy="42" rx="23" ry="18" fill="#fffafc"/>
+  </g>
+  <ellipse cx="22" cy="18" rx="3" ry="10" fill="#f3b4cd" transform="rotate(-12 22 18)"/>
+  <ellipse cx="42" cy="18" rx="3" ry="10" fill="#f3b4cd" transform="rotate(12 42 18)"/>
+  <ellipse cx="18" cy="46" rx="5" ry="3" fill="#f7cddd"/>
+  <ellipse cx="46" cy="46" rx="5" ry="3" fill="#f7cddd"/>
+  <circle cx="24" cy="40" r="2.5" fill="#49305f"/>
+  <circle cx="40" cy="40" r="2.5" fill="#49305f"/>
+  <path d="M29 45Q32 42 35 45L32 48Z" fill="#d788aa"/>
+  <path d="M32 48q-3 5-6 1m6-1q3 5 6 1" fill="none" stroke="#795598" stroke-width="2" stroke-linecap="round"/>
+</svg>
