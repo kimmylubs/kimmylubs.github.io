@@ -10,6 +10,6 @@ Natural Earth data is public domain: https://www.naturalearthdata.com/about/term
 
 ## Publishing from the UI
 
-Use **Add country** on the map or Countries tab. Select an unvisited country and publish with a fine-grained GitHub token limited to this repository with Contents read/write. The token is sent only to the GitHub API, never persisted, and cleared after each publish attempt or closing the dialog. No automatic/background writes occur.
+Use **Add country**, choose a country, and prepare the update. The page reads the latest public country list from GitHub, adds the selected code, and offers a copy button and a link to GitHub's file editor. Replace the editor contents with the copied list, review the diff, then commit to main using your GitHub login. Prepare a fresh list if other edits may have happened in the meantime.
 
-The publisher fetches the latest `main` file and SHA before adding a code; existing countries are preserved and conflicts require a retry. It updates the current map after a successful commit. Other visitors see the addition once GitHub Pages deploys. Already-published countries create no duplicate commit. Tests use mock responses and do not change real travel history.
+No credentials are requested or stored by the site, and it makes no write API calls. Preparing or copying a list does not change the map or claim a successful save. The public map updates when the GitHub commit is deployed. Already-published countries are detected before preparing a draft.

@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="../shared.css">
-  <link rel="stylesheet" href="styles.css?v=countries-ui-20260924">
+  <link rel="stylesheet" href="styles.css?v=github-save-20260924">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="/page-polish.css">
 </head>
@@ -21,15 +21,20 @@
     <form id="country-form">
       <label for="country-picker">Country</label>
       <select id="country-picker" required><option value="">Loading countries…</option></select>
-      <details>
-        <summary>Owner access · first-time setup</summary>
-        <p>Create a <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">fine-grained GitHub token</a> with an expiration date. Select only <strong>kimmylubs.github.io</strong> and give <strong>Contents: Read and write</strong> permission.</p>
-        <p>Paste it below when publishing. It is sent only to GitHub, never saved in browser storage, and cleared after each attempt or when this window closes. Visitors cannot publish without repository access.</p>
-      </details>
-      <label for="github-token">GitHub token</label>
-      <input id="github-token" type="password" autocomplete="off" spellcheck="false" autocapitalize="none" required placeholder="Paste your repository token">
-      <button type="submit" id="publish-country">Add &amp; publish country</button>
-      <p id="publish-status" role="status" aria-live="polite">Publishes for everyone. Updates may take a few minutes to appear on other devices.</p>
+      <button type="submit" id="publish-country">Prepare country update</button>
+      <p id="publish-status" role="status" aria-live="polite">Prepare your update, then save it using your GitHub login. No token needed.</p>
+      <div id="github-save-steps" hidden>
+        <ol>
+          <li>Copy the updated list below.</li>
+          <li>Open GitHub and replace the file contents with the copied list.</li>
+          <li>Review the changes, then click <strong>Commit changes</strong> to save to main.</li>
+        </ol>
+        <label for="country-draft">Updated country list</label>
+        <textarea id="country-draft" readonly rows="5" spellcheck="false"></textarea>
+        <button type="button" id="copy-country-list">1. Copy updated list</button>
+        <a id="github-edit-link" target="_blank" rel="noopener noreferrer">2. Open GitHub to save ↗</a>
+        <p>GitHub may ask you to sign in. Your public map updates after deployment, usually within a few minutes. If you leave this open for a while, prepare a fresh list before saving.</p>
+      </div>
     </form>
   </dialog>
 
@@ -388,7 +393,7 @@
   </script>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script type="module" src="script.js?v=countries-ui-20260924"></script>
+  <script type="module" src="script.js?v=github-save-20260924"></script>
   <script src="/page-polish.js?v=tabs-cleanup-20260923"></script>
 </body>
 </html>

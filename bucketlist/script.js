@@ -1,4 +1,4 @@
-import { publishCountry } from './publish.mjs?v=countries-ui-20260924';
+import { prepareCountry, editUrl } from './publish.mjs?v=github-save-20260924';
 
 // Country borders: Natural Earth 1:50m, public domain. See map-data.md.
 const map = L.map('map', {
@@ -99,7 +99,9 @@ async function loadMap() {
     const picker = document.getElementById('country-picker');
     const form = document.getElementById('country-form');
     const message = document.getElementById('publish-status');
-    const token = document.getElementById('github-token');
+    const draft = document.getElementById('country-draft');
+    const steps = document.getElementById('github-save-steps');
+    document.getElementById('github-edit-link').href = editUrl;
     const submit = document.getElementById('publish-country');
     let busy = false;
     function refreshPicker() {
@@ -112,30 +114,38 @@ async function loadMap() {
       button.addEventListener('click', () => { dialog.showModal(); picker.focus(); });
     });
     document.getElementById('close-country-editor').addEventListener('click', () => dialog.close());
-    dialog.addEventListener('close', () => { token.value = ''; });
-    window.addEventListener('pagehide', () => { token.value = ''; });
+    picker.addEventListener('change', () => { steps.hidden = true; message.textContent = 'Prepare your update, then save it using your GitHub login.'; });
+    document.getElementById('copy-country-list').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(draft.value);
+        message.textContent = 'Copied! Open GitHub, replace the file contents with your copied list, review the changes, then click Commit changes.';
+      } catch {
+        draft.focus(); draft.select();
+        message.textContent = 'Copy the selected text manually, then open GitHub to paste and save it.';
+      }
+    });
     dialog.addEventListener('cancel', event => { if (busy) event.preventDefault(); });
     form.addEventListener('submit', async event => {
       event.preventDefault();
       if (busy || !form.reportValidity()) return;
       busy = true;
       const code = picker.value;
-      submit.disabled = picker.disabled = token.disabled = true;
+      submit.disabled = picker.disabled = true;
+      steps.hidden = true;
       document.getElementById('close-country-editor').disabled = true;
-      message.textContent = 'Saving to GitHub…';
+      message.textContent = 'Reading the latest country list…';
       try {
-        const result = await publishCountry(code, token.value, available);
-        visited.clear(); result.codes.forEach(value => visited.add(value));
-        renderCountries(); refreshPicker();
-        message.textContent = result.added
-          ? `${countryNames.get(code)} saved! Your map is updated here. The public website will update after GitHub finishes deploying, usually within a few minutes.`
-          : `${countryNames.get(code)} is already published as visited. Your map is up to date.`;
+        const result = await prepareCountry(code, available);
+        draft.value = result.content;
+        steps.hidden = result.alreadyVisited;
+        message.textContent = result.alreadyVisited
+          ? `${countryNames.get(code)} is already saved on GitHub. Refresh the map after deployment finishes.`
+          : `${countryNames.get(code)} is ready to add. It is not saved yet—complete the steps below on GitHub.`;
       } catch (error) {
-        message.textContent = error instanceof TypeError ? 'Could not reach GitHub. Check your connection and try again; retrying safely checks whether the country was already saved.' : error.message;
+        message.textContent = error instanceof TypeError ? 'Could not reach GitHub. Check your connection and try again.' : error.message;
       } finally {
-        token.value = '';
         busy = false;
-        submit.disabled = picker.disabled = token.disabled = false;
+        submit.disabled = picker.disabled = false;
         document.getElementById('close-country-editor').disabled = false;
       }
     });
